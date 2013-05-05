@@ -367,6 +367,9 @@
                 </div><!--container-->
 
             </div>
+            
+            
+   <!--tab2-->         
             <div style="background: rgb(39,39,39); border:transparent;"  id="tabs-2">
 
                 <div style="background: #333; border:transparent;" id="container" class="ltr">
@@ -381,53 +384,95 @@
                     </header>
 
                     <form id="form56"  action="registrarContratoArrendamiento.jsp" target="iframe2" >
-
+                        
+                        <fieldset>
                         <h3><span style="color: #2e6e9e;" > <p align="center"><font color="white">Datos Arrendador:</font></span></p></h3> 
+                        
+                         <table align="left" border="0" >
+                             <td width="255"><font color="white">Codigo Arrendador:</font></td>
+                             <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px "  type="text" name="codArrendador" value="" required /></td>
 
-                        &nbsp&nbsp&nbsp&nbsp&nbsp<font color="white">Codigo Arrendador:</font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                        <input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px "  type="text" name="codArrendador" value="" required />
-
-                        </td><br><br>
-
-
-                        <h3><span style="color: #2e6e9e;" > <p align="center"><font color="white">Datos Arrendatario:</font></span></p></h3> 
-                        &nbsp&nbsp&nbsp&nbsp&nbsp<td width="1114" height="38" valign="top"><label for="Salas" id="combo"><font color="white">Nombre Comprador:</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                            <input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px "  type="text" name="codArrendatario" value="" required />
-
-                        </td><br><br>
-
-                        <h3><span style="color: #2e6e9e;" > <p align="center"><font color="white">Datos Inmueble:</font></span></p></h3> 
-                        &nbsp&nbsp&nbsp&nbsp&nbsp<td width="1114" height="38" valign="top"><label for="Salas" id="combo"><font color="white">Codigo Inmueble:</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                            <input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px "  type="text" name="codInmueble" value="" required />
-
-
-                        </td><br><br>
-
-
-                        <h3><span style="color: #2e6e9e;" > <p align="center"><font color="white">Duracion Contrato:</font></span></p></h3> 
-                        &nbsp&nbsp&nbsp&nbsp&nbsp<font color="white">cantidad de Meses:</font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                          <input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px "  type="text" name="cantidadMeses" value="" required /><br><br>
-                        &nbsp&nbsp&nbsp&nbsp&nbsp<font color="white">fecha inicio:</font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp             <input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px " type="text" name="fechaIni" value="" required /><br><br>
-
-
-                        <h3><span style="color: #2e6e9e;" > <p align="center"><font color="white">Precio Arrendamiento:</font></span></p></h3>
-                        &nbsp&nbsp&nbsp&nbsp&nbsp<font color="white">Cantidad Arrendamiento:</font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp               <input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px "  type="text" name="cantArrendamiento" value="" required /><br><br>
-                        &nbsp&nbsp&nbsp&nbsp&nbsp<font color="white">Cifra:</font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                          <input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px " type="text" name="cifra" value="" required /><br><br>
-                        &nbsp&nbsp&nbsp&nbsp&nbsp<font color="white">Dias plazo:</font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                          <input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px "  type="text" name="diasPlazo" value="" required /><br><br>
-
-                        <h3><span style="color: #2e6e9e;" > <p align="center"><font color="white">Porcentaje Ganancia Inmobiliaria:</font></span></p></h3>
-                        &nbsp&nbsp&nbsp&nbsp&nbsp<font color="white">Porcentaje Ganado:</font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                           <input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px " type="text" name="porcGanado" value="" required /><br><br>
-
-
-                        <h3><span style="color: #2e6e9e;" > <p align="center"><font color="white">Datos Constancia Documento:</font></span></p></h3>
-                        &nbsp&nbsp&nbsp&nbsp&nbsp<font color="white">Ciudad Firma Documento:</font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                          <input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px "  type="text" name="ciuFirma" value="" required /><br><br>
-                        &nbsp&nbsp&nbsp&nbsp&nbsp<font color="white">Dia firma Documento:</font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                 <input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px "  type="text" name="diaFirma" value="" required /><br><br>
-                        &nbsp&nbsp&nbsp&nbsp&nbsp<font color="white">mes Firma Documento:</font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                       <input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px "  type="text" name="mesFirma" value="" required /><br><br>
-                        &nbsp&nbsp&nbsp&nbsp&nbsp<font color="white">año Firma Documento:</font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp                <input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px "  type="text" name="anoFirma" value="" required  /><br><br>
-
+                        
+                         </table>
+                        </fieldset>
                         <br><br>
+                        
+                        <fieldset>
+                             
+                        <h3><span style="color: #2e6e9e;" > <p align="center"><font color="white">Datos Arrendatario:</font></span></p></h3> 
+                        <table align="left" border="0" >
+                        <td width="255"><label for="Salas" id="combo"><font color="white">Nombre Comprador:</label></td>
+                        <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px "  type="text" name="codArrendatario" value="" required /></td>
+                             </table>
+                        </fieldset>
+                        <br><br>
+                        
+                        <fieldset>
+                        <h3><span style="color: #2e6e9e;" > <p align="center"><font color="white">Datos Inmueble:</font></span></p></h3> 
+                         <table align="left" border="0" >
+                        <td width="255"><label for="Salas" id="combo"><font color="white">Codigo Inmueble:</label></td>
+                        <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px "  type="text" name="codInmueble" value="" required /></td>
 
 
-
+                        
+                         </table>
+                        </fieldset>
+                        <br><br>
+                        
+                        <fieldset>
+                        <h3><span style="color: #2e6e9e;" > <p align="center"><font color="white">Duracion Contrato:</font></span></p></h3> 
+                         <table align="left" border="0" >
+                        <td width="255"><font color="white">cantidad de Meses:</font></td>
+                        <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px "  type="text" name="cantidadMeses" value="" required /></td>
+                        <tr>
+                        <td width="255"><font color="white">fecha inicio:</font></td>
+                        <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px " type="text" name="fechaIni" value="" required /></td>
+                         </table>
+                        </fieldset>
+                        <br><br>
+                        
+                        <fieldset>
+                        <h3><span style="color: #2e6e9e;" > <p align="center"><font color="white">Precio Arrendamiento:</font></span></p></h3>
+                         <table align="left" border="0" >
+                        <td width="255"><font color="white">Cantidad Arrendamiento:</font></td>
+                        <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px "  type="text" name="cantArrendamiento" value="" required /></td>
+                        <tr>
+                        <td width="255"><font color="white">Cifra:</font></td>
+                        <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px " type="text" name="cifra" value="" required /></td>
+                        <tr>
+                        <td width="255"><font color="white">Dias plazo:</font></td>
+                        <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px "  type="text" name="diasPlazo" value="" required /></td>
+                         </table>
+                        </fieldset>
+                        <br><br>
+                        
+                        <fieldset>
+                        <h3><span style="color: #2e6e9e;" > <p align="center"><font color="white">Porcentaje Ganancia Inmobiliaria:</font></span></p></h3>
+                         <table align="left" border="0" >
+                             <td width="255"><font color="white">Porcentaje Ganado:</font></td>
+                             <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px " type="text" name="porcGanado" value="" required /></td>
+                         </table>
+                        </fieldset>
+                        <br><br>
+                        
+                        <fieldset>
+                        <h3><span style="color: #2e6e9e;" > <p align="center"><font color="white">Datos Constancia Documento:</font></span></p></h3>
+                         <table align="left" border="0" >
+                        <td width="255"><font color="white">Ciudad Firma Documento:</font></td>
+                        <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px "  type="text" name="ciuFirma" value="" required /></td>
+                        <tr>
+                        <td width="255"><font color="white">Dia firma Documento:</font></td>
+                        <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px "  type="text" name="diaFirma" value="" required /></td>
+                        <tr>
+                        <td width="255"><font color="white">mes Firma Documento:</font></td>
+                        <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px "  type="text" name="mesFirma" value="" required /></td>
+                        <tr>
+                        <td width="255"><font color="white">año Firma Documento:</font></td>
+                        <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px "  type="text" name="anoFirma" value="" required  /></td>
+                        </table>
+                        </fieldset>
+                        <br><br>
+                        
                         <p align="center"><input  type="submit" value="Registrar Datos"  >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<INPUT TYPE="reset" VALUE=" Borrar Campos "></p>
 
                         <center><iframe name="iframe2" width="320" height="150" scrolling="no" frameborder="0"></iframe></center>
@@ -437,6 +482,9 @@
                 </div><!--container-->
 
             </div>
+   
+   
+   
             <div style="background: rgb(39,39,39); border:transparent;" id="tabs-3">
 
                 <center>
