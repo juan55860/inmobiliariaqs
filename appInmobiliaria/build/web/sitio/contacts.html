@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Contacts</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" media="screen" href="css/reset.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
+
+        <link rel="stylesheet" type="text/css" media="screen" href="css/jqtransform.css">
+        <script src="js/jquery-1.7.min.js"></script>
+        <script src="js/jquery.easing.1.3.js"></script>
+        <script src="js/cufon-yui.js"></script>
+        <script src="js/vegur_400.font.js"></script>
+        <script src="js/Vegur_bold_700.font.js"></script>
+        <script src="js/cufon-replace.js"></script>
+        <script src="js/tms-0.4.x.js"></script>
+        <script src="js/jquery.jqtransform.js"></script>
+        <script src="js/FF-cash.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('.form-1').jqTransform();
+
+            });
+        </script>
+        <script>
+
+        </script>
+
+    </head>
+    <body>
+        <div class="main">
+            <!--==============================header=================================-->
+
+            <!--==============================content================================-->
+            <section id="content"><div class="ic"></div>
+                <div class="container_12">	
+                    <div class="grid_4">
+                        <h2 class="top-1 p3">Registrar Clientes</h2>
+                        <form id="form" method="post" action="buying.html" >
+                            <fieldset>
+                                <p>
+                                    <label><strong>Nombre:</strong>
+                                        <input type="text" value="">
+                                    </label>
+                                    <label><strong>Apellido:</strong>
+                                        <input type="text" value="">
+                                    </label>
+
+                                    <label>Tipo de Identificacion: </label>
+                                    <select name="select"  style="border:transparent; background-color: rgb(19, 19, 19);font: 14px Arial,Helvetica,sans-serif; color:rgb(83,83,83); 
+                                            height: 28px; " >
+                                        <option value="0">Seleccione una opcion</option>
+                                        <option value="1">Cedula</option>
+                                        <option value="2">NIT</option>
+                                    </select>  
+                                </p>
+                                <p>&nbsp;</p>
+                                <p>
+                                    <label><strong>Identificacion:</strong>
+                                        <input type="text" value="">
+                                    </label>
+                                    <label><strong>Direccion:</strong>
+                                        <input type="text" value="">
+                                    </label>
+                                    <label><strong>Teléfono:</strong>
+                                        <input type="text" value="">
+                                    </label>
+                                    <label><strong>Correo:</strong>
+                                        <input type="text" value="">
+                                    </label>
+                                    <label><strong>Contraseña:</strong>
+                                        <input type="text" value="">
+                                    </label>
+                                    <label>Rol: </label>
+                                    <select name="select"  style="border:transparent; background-color: rgb(19, 19, 19);font: 14px Arial,Helvetica,sans-serif; color:rgb(83,83,83); 
+                                            height: 28px; " >
+                                        <option value="0">Seleccione una opcion</option>
+                                        <option value="1">Arrendador</option>
+                                        <option value="2">Arrendatario</option>
+                                    </select> 
+                                </p>
+                                <p>&nbsp; </p>
+                                <div class="btns"><a href="contacts.html" class="button">Clear</a><a href="#" class="button" onClick="document.getElementById('form').submit()">Send</a></div>
+                            </fieldset>  
+                        </form> 
+                    </div>
+
+                    <div class="clear"></div>
+                </div>  
+            </section> 
+        </div>    
+
+
+    </body>
+</html>
