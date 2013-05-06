@@ -111,23 +111,22 @@ public class javapdf {
     public void Colocar_Destino(){
        
        this.rutaDestino = "C:\\Users\\usuario\\Documents\\NetBeansProjects\\appInmobiliaria\\web\\Administrador\\pdf\\";
-  
+         
     }
 
     private void Colocar_Texto(modelo.Contrato contrato ,String fechaEscritura,String numEscritura,String numNotaria, String ciuNotaria,String diaNueEsc,String mesNueEsc,String anoNueEsc,String numNotarNue,String ciuNueEsc,String ciuFirma,String diaFirma,String mesFirma,String anoFirma, String cantVenta, String hora, String nombreNotaria) {
         this.textoVenta = "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t PROMESA DE COMPRAVENTA\n\n\n"
-                +"\t\t\t\t\t\t\t\t\t\t\t\t\tEntre los suscritos a saber, con codigo : "+contrato.getCodArrendador()+", registrado en la inmobiliaria \n"
-                +"\t\t\t\t\t\t\t\t\t\t\t\t\tquien para los efectos del\n"
-                +"\t\t\t\t\t\t\t\t\t\t\t\t\tpresente contrato se denominará el(la) PROMITENTE VENDEDOR(A)  y  \n"
-                +"\t\t\t\t\t\t\t\t\t\t\t\t\tcon codigo: " + contrato.getCodArrendatario()+", registrado en la inmobiliaria, \n"
-                +"\t\t\t\t\t\t\t\t\t\t\t\t\tquien para los efectos del presente contrato se \n"
-                +"\t\t\t\t\t\t\t\t\t\t\t\t\tdenominará EL  PROMITENTE  COMPRADOR, manifestaron que han decidido\n"
-                +"\t\t\t\t\t\t\t\t\t\t\t\t\tcelebrar un contrato de PROMESA DE COMPRAVENTA de bien inmueble, en\n"
-                +"\t\t\t\t\t\t\t\t\t\t\t\t\tadelante la promesa, se regirá por la siguiente cláusulas:\n\n"
+                +"\t\t\t\t\t\t\t\t\t\t\t\t\tEntre los suscritos a saber, con codigo : "+contrato.getCodArrendador()+", registrado en la inmobiliaria quien\n"
+                +"\t\t\t\t\t\t\t\t\t\t\t\t\tpara los efectos del presente contrato se denominará el(la)  PROMITENTE\n"
+                +"\t\t\t\t\t\t\t\t\t\t\t\t\tVENDEDOR(A)  y  con codigo: " + contrato.getCodArrendatario()+", registrado en la inmobiliaria, quien\n"
+                +"\t\t\t\t\t\t\t\t\t\t\t\t\tpara los efectos del presente contrato se denominará EL PROMITENTE \n"
+                +"\t\t\t\t\t\t\t\t\t\t\t\t\tCOMPRADOR, manifestaron que han decidido celebrar un contrato de PROMESA\n"
+                +"\t\t\t\t\t\t\t\t\t\t\t\t\tDE COMPRAVENTA de bien inmueble, en adelante la promesa, se regirá por las\n"
+                +"\t\t\t\t\t\t\t\t\t\t\t\t\tsiguientes cláusulas:\n\n"
 
 +"\t\t\t\t\t\t\t\t\t\t\t\t\tPRIMERA.-OBJETO: El PROMITENTE  VENDEDOR promete vender al\n"
                 +"\t\t\t\t\t\t\t\t\t\t\t\t\tPROMITENTE COMPRADOR y éste promete comprar el bien inmueble con\n"
-                +"\t\t\t\t\t\t\t\t\t\t\t\t\tcódigo"+contrato.getCodInmueble()+"  ofrecido por nuestra inmobiliaria, con  escritura pública número: " +numEscritura+" \n"
+                +"\t\t\t\t\t\t\t\t\t\t\t\t\tcódigo: "+contrato.getCodInmueble()+"  ofrecido por nuestra inmobiliaria, con  escritura pública número: " +numEscritura+" \n"
                 +"\t\t\t\t\t\t\t\t\t\t\t\t\tdel "+fechaEscritura+" de la NOTARIA "+numNotaria+" de "+ ciuNotaria+", mediante la cual el\n"+
                 "\t\t\t\t\t\t\t\t\t\t\t\t\tPROMITENTE  VENDEDOR lo adquirió.\n\n "
                 
@@ -198,29 +197,28 @@ public class javapdf {
     private void Colocar_Texto2(modelo.Contrato contrato, String cantidadMeses, String fechaIni, String cifra,String diasPlazo) {
        this.textoArrendamiento = "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Contrato de Arrendamiento\n\n\n"
                +"\t\t\t\t\t\t\t\t\t\t\t\tEntre los suscritos a saber:\n\n"
-               +"\t\t\t\t\t\t\t\t\t\t\t\tPARTES\n\n"
-               +"\t\t\t\t\t\t\t\t\t\t\t\tLa persona con codigo "+contrato.getCodArrendador()+" por una parte, quien\n "
-               + "en adelante se denominará el ARRENDADOR  y  la persona con codigo " + contrato.getCodArrendatario()+" \n"
-               + "\t\t\t\t\t\t\t\t\t\t\t\tmayor de edad, identificado como aparece al pie de su firma,\n"
-               + "\t\t\t\t\t\t\t\t\t\t\t\tquien en adelante se denominará EL ARRENDATARIO, han decidido celebrar el \n"
-               +"\t\t\t\t\t\t\t\t\t\t\t\tcontrato de arrendamiento del bien inmueble con código "+contrato.getCodInmueble()+" , que se \n"
-               +"\t\t\t\t\t\t\t\t\t\t\t\trige por las siguientes cláusulas:\n\n"
+               +"\t\t\t\t\t\t\t\t\t\t\t\tPARTES:\n\n"
+               +"\t\t\t\t\t\t\t\t\t\t\t\tLa persona con codigo "+contrato.getCodArrendador()+" por una parte, quien en adelante se denominará\n "
+               +"\t\t\t\t\t\t\t\t\t\t\t\tel ARRENDADOR  y  la persona con codigo " + contrato.getCodArrendatario()+" mayor de edad, identificado\n"
+               + "\t\t\t\t\t\t\t\t\t\t\t\tcomo aparece al pie de su firma, quien en adelante se denominará EL\n"
+               + "\t\t\t\t\t\t\t\t\t\t\t\tARRENDATARIO, han decidido celebrar el contrato de arrendamiento del \n"
+               +"\t\t\t\t\t\t\t\t\t\t\t\tbien inmueble con código "+contrato.getCodInmueble()+" , que se rige por las siguientes cláusulas:\n\n"
                
-               +"\t\t\t\t\t\t\t\t\t\t\t\tPRIMERA. DURACIÓN. DURACIÓN. El término de duración de este contrato será de\n"
-               +"\t\t\t\t\t\t\t\t\t\t\t\t"+contrato.getDuracion()+" (meses) contados a partir del día "+fechaIni+" .Si al\n "
-               +"\t\t\t\t\t\t\t\t\t\t\t\tvencimiento de este plazo ninguna de las partes ha manifestado su  intención\n "
-               +"\t\t\t\t\t\t\t\t\t\t\t\tde darlo por terminado, se entenderá prorrogado por un término igual al\n "
-               +"\t\t\t\t\t\t\t\t\t\t\t\tinicialmente pactado. El aviso de  terminación del contrato deberá darse por\n "
+               +"\t\t\t\t\t\t\t\t\t\t\t\tPRIMERA. DURACIÓN. DURACIÓN. El término de duración de este contrato\n"
+               +"\t\t\t\t\t\t\t\t\t\t\t\tserá de "+contrato.getDuracion()+" (meses) contados a partir del día "+fechaIni+".\n "
+               +"\t\t\t\t\t\t\t\t\t\t\t\tSi al vencimiento de este plazo ninguna de las partes ha manifestado su\n "
+               +"\t\t\t\t\t\t\t\t\t\t\t\tintención de darlo por terminado, se entenderá prorrogado por un término igual\n "
+               +"\t\t\t\t\t\t\t\t\t\t\t\tal inicialmente pactado. El aviso de  terminación del contrato deberá darse por\n "
                +"\t\t\t\t\t\t\t\t\t\t\t\tel arrendatario a la entidad arrendadora en forma escrita con tres (3)  meses de\n"
                +"\t\t\t\t\t\t\t\t\t\t\t\tanticipación al vencimiento del mismo.\n\n"
                
-               +"\t\t\t\t\t\t\t\t\t\t\t\tSEGUNDA. PRECIO.  El precio del arrendamiento es de "+cifra+" PESOS COLOMBIANOS \n"
-               +"\t\t\t\t\t\t\t\t\t\t\t\t($ "+contrato.getValor()+" ) mensuales, que el arrendatario pagará por periodos anticipados\n"
-               +"\t\t\t\t\t\t\t\t\t\t\t\ten las oficinas de la entidad arrendadora, en esta  ciudad, o por medio autorizado\n"
-               +"\t\t\t\t\t\t\t\t\t\t\t\tpor la inmobiliaria, dentro de los "+diasPlazo+" primeros días de cada mensualidad, si lo\n "
-               +"\t\t\t\t\t\t\t\t\t\t\t\thiciera fuera de este plazo y la arrendadora lo aceptare, ello se considerará como\n "
-               +"\t\t\t\t\t\t\t\t\t\t\t\tuna mera tolerancia para con el  arrendatario, pero en forma alguna, una alteración\n"
-               +"\t\t\t\t\t\t\t\t\t\t\t\tde los términos de este contrato.\n\n"
+               +"\t\t\t\t\t\t\t\t\t\t\t\tSEGUNDA. PRECIO.  El precio del arrendamiento es de "+cifra+" PESOS\n"
+               +"\t\t\t\t\t\t\t\t\t\t\t\tCOLOMBIANOS ($ "+contrato.getValor()+" ) mensuales, que el arrendatario pagará por\n"
+               +"\t\t\t\t\t\t\t\t\t\t\t\tperiodos anticipados en las oficinas de la entidad arrendadora, en esta  ciudad,\n"
+               +"\t\t\t\t\t\t\t\t\t\t\t\to por medio autorizado por la inmobiliaria, dentro de los "+diasPlazo+" primeros días de\n "
+               +"\t\t\t\t\t\t\t\t\t\t\t\tcada mensualidad, si lo hiciera fuera de este plazo y la arrendadora lo aceptare,\n "
+               +"\t\t\t\t\t\t\t\t\t\t\t\tello se considerará como una mera tolerancia para con el  arrendatario, pero en\n"
+               +"\t\t\t\t\t\t\t\t\t\t\t\tforma alguna, una alteración de los términos de este contrato.\n\n"
                
                +"\t\t\t\t\t\t\t\t\t\t\t\tTERCERA. INCREMENTO DEL PRECIO. Al vencimiento del término\n"
                +"\t\t\t\t\t\t\t\t\t\t\t\tseñalado en este contrato, EL ARRENDADOR podrá modificar el precio o renta, en la\n "
