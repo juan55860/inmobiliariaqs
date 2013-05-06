@@ -23,14 +23,14 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @web http://jc-mouse.blogspot.com/
  * @author Mouse
  */
-public class javapdf {
+public class CtrlContratoPDF {
 
     String rutaDestino;
     String textoVenta;
     String textoArrendamiento;
     String nombrePdf;
 
-    public javapdf(){
+    public CtrlContratoPDF(){
     }
 
      public void crearContrato(String a, String b, String c, String d, String e, int nombre, modelo.Contrato contrato, String cantidadMeses, String fechaIni, String cifra,String diasPlazo){
@@ -110,8 +110,8 @@ public class javapdf {
     /* abre la ventana de dialogo GUARDAR*/
     public void Colocar_Destino(){
        
-       this.rutaDestino = "C:\\Users\\usuario\\Documents\\NetBeansProjects\\appInmobiliaria\\web\\Administrador\\pdf\\";
-         
+      this.rutaDestino = "C:\\Users\\usuario\\Documents\\NetBeansProjects\\appInmobiliaria\\web\\Administrador\\pdf\\";
+      
     }
 
     private void Colocar_Texto(modelo.Contrato contrato ,String fechaEscritura,String numEscritura,String numNotaria, String ciuNotaria,String diaNueEsc,String mesNueEsc,String anoNueEsc,String numNotarNue,String ciuNueEsc,String ciuFirma,String diaFirma,String mesFirma,String anoFirma, String cantVenta, String hora, String nombreNotaria) {
@@ -234,7 +234,7 @@ public class javapdf {
                +"\t\t\t\t\t\t\t\t\t\t\t\tsalvo el deterioro proveniente del tiempo y uso legítimos.\n\n"
                
                +"\t\t\t\t\t\t\t\t\t\t\t\tQUINTA.- MEJORAS: EL ARRENDATARIO consiente desde ya en la realización de\n"
-               +"\t\t\t\t\t\t\t\t\t\t\t\t obras de instalación y adecuación que se estipularon como mejoras y tendrá\n"
+               +"\t\t\t\t\t\t\t\t\t\t\t\tobras de instalación y adecuación que se estipularon como mejoras y tendrá\n"
                +"\t\t\t\t\t\t\t\t\t\t\t\tademás a su cargo las reparaciones locativas necesarias para tal fin y a \n"
                +"\t\t\t\t\t\t\t\t\t\t\t\tlas que se refiere la ley y sólo podrá realizar obras distintas a las\n "
                +"\t\t\t\t\t\t\t\t\t\t\t\taquí previstas con el consentimiento escrito del ARRENDADOR.\n\n"
@@ -245,7 +245,7 @@ public class javapdf {
                +"\t\t\t\t\t\t\t\t\t\t\t\tpor las empresas que los presten.\n\n"
                
                
-               +"\t\t\t\t\t\t\t\t\t\t\t\tSEXTA.- OBLIGACIONES DE LAS PARTES:\n\n"
+               +"\t\t\t\t\t\t\t\t\t\t\t\tSEPTIMA.- OBLIGACIONES DE LAS PARTES:\n\n"
                
                +"\t\t\t\t\t\t\t\t\t\t\t\tDEL ARRENDADOR:\n"
                
@@ -262,12 +262,11 @@ public class javapdf {
                +"\t\t\t\t\t\t\t\t\t\t\t\t2. Velará por la conservación del predio y cuidará que no se usurpe ninguna de\n"
                +"\t\t\t\t\t\t\t\t\t\t\t\tsus partes.\n"
                +"\t\t\t\t\t\t\t\t\t\t\t\t3. Pagará al ARRENDADOR en el lugar y fecha convenidos en la cláusula segunda de\n "
-               +"\t\t\t\t\t\t\t\t\t\t\t\teste\n"
-               +"\t\t\t\t\t\t\t\t\t\t\t\tcontrato, el precio del arrendamiento.\n"
+               +"\t\t\t\t\t\t\t\t\t\t\t\teste contrato, el precio del arrendamiento.\n"
                +"\t\t\t\t\t\t\t\t\t\t\t\t4. Restituirá el predio a la terminación del contrato, en el estado en que le fue entregado\n"
                +"\t\t\t\t\t\t\t\t\t\t\t\ty poniéndolo a disposición del ARRENDADOR.\n\n"
                
-               +"\t\t\t\t\t\t\t\t\t\t\t\tSEPTIMA.- TERMINACIÓN DEL CONTRATO: Son causales de terminación unilateral del\n"
+               +"\t\t\t\t\t\t\t\t\t\t\t\tOCTAVA.- TERMINACIÓN DEL CONTRATO: Son causales de terminación unilateral del\n"
                +"\t\t\t\t\t\t\t\t\t\t\t\tcontrato, entre otras:\n\n"
                
                +"\t\t\t\t\t\t\t\t\t\t\t\tPOR PARTE DEL ARRENDADOR:\n"
@@ -288,12 +287,12 @@ public class javapdf {
                +"\t\t\t\t\t\t\t\t\t\t\t\tPARÁGRAFO: No obstante, las partes en cualquier tiempo y de común acuerdo podrán\n"
                + "\t\t\t\t\t\t\t\t\t\t\t\tdar por terminado el presente contrato.\n\n\n"
                
-               +"\t\t\t\t\t\t\t\t\t\t\t\tOCTAVA.- PRÓRROGA: DE ACUERDO A COMO LO ESTABLEZCAN LAS PARTES.\n\n"
-               +"\t\t\t\t\t\t\t\t\t\t\t\tNOVENA.- MORA: DE ACUERDO A COMO LO ESTABLEZCAN LAS PARTES.\n\n"
-               +"\t\t\t\t\t\t\t\t\t\t\t\tDECIMA.- CLÁUSULA PENAL: DE ACUERDO A COMO LO ESTABLEZCAN LAS\n"
-               +"\t\t\t\t\t\t\t\t\t\t\t\tPARTES.\n\n"
+               +"\t\t\t\t\t\t\t\t\t\t\t\tNOVENAA.- PRÓRROGA: DE ACUERDO A COMO LO ESTABLEZCAN LAS PARTES.\n\n"
+               +"\t\t\t\t\t\t\t\t\t\t\t\tDECIMA.- MORA: DE ACUERDO A COMO LO ESTABLEZCAN LAS PARTES.\n\n"
+               +"\t\t\t\t\t\t\t\t\t\t\t\tDECIMO PRIMERA.- CLÁUSULA PENAL: DE ACUERDO A COMO LO ESTABLEZCAN\n"
+               +"\t\t\t\t\t\t\t\t\t\t\t\tLAS PARTES.\n\n"
                
-               +"\t\t\t\t\t\t\t\t\t\t\t\tDÉCIMO NOVENA: CONSTANCIA DE RECIBO. EL ARRENDATARIO y ARRENDADOR\n"
+               +"\t\t\t\t\t\t\t\t\t\t\t\tDÉCIMO SEGUNDA: CONSTANCIA DE RECIBO. EL ARRENDATARIO y ARRENDADOR\n"
                +"\t\t\t\t\t\t\t\t\t\t\t\thacen constar expresamente que a la firma del presente contrato se nos\n "
                +"\t\t\t\t\t\t\t\t\t\t\t\thizo entrega a cada uno de un ejemplar original del respectivo contrato\n "
                +"\t\t\t\t\t\t\t\t\t\t\t\tde arrendamiento debidamente firmado.\n "
