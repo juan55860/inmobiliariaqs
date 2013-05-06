@@ -16,9 +16,9 @@ import static org.junit.Assert.*;
  *
  * @author usuario
  */
-public class javapdfTest {
+public class CtrlContratoPDFTest {
     
-    public javapdfTest() {
+    public CtrlContratoPDFTest() {
     }
     
     @BeforeClass
@@ -38,7 +38,7 @@ public class javapdfTest {
     }
 
     /**
-     * Test of crearContrato method, of class javapdf.
+     * Test of crearContrato method, of class CtrlContratoPDF.
      */
     @Test
     public void testCrearContrato() {
@@ -54,14 +54,14 @@ public class javapdfTest {
         String fechaIni = "";
         String cifra = "";
         String diasPlazo = "";
-        javapdf instance = new javapdf();
+        CtrlContratoPDF instance = new CtrlContratoPDF();
         instance.crearContrato(a, b, c, d, e, nombre, contrato, cantidadMeses, fechaIni, cifra, diasPlazo);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of crear method, of class javapdf.
+     * Test of crear method, of class CtrlContratoPDF.
      */
     @Test
     public void testCrear() {
@@ -89,14 +89,14 @@ public class javapdfTest {
         String cantVenta = "";
         String hora = "";
         String nombreNotaria = "";
-        javapdf instance = new javapdf();
+        CtrlContratoPDF instance = new CtrlContratoPDF();
         instance.crear(a, b, c, d, e, nombre, contrato, fechaEscritura, numEscritura, numNotaria, ciuNotaria, diaNueEsc, mesNueEsc, anoNueEsc, numNotarNue, ciuNueEsc, ciuFirma, diaFirma, mesFirma, anoFirma, cantVenta, hora, nombreNotaria);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of crear_PDF method, of class javapdf.
+     * Test of crear_PDF method, of class CtrlContratoPDF.
      */
     @Test
     public void testCrear_PDF() {
@@ -123,14 +123,14 @@ public class javapdfTest {
         String cantVenta = "";
         String hora = "";
         String nombreNotaria = "";
-        javapdf instance = new javapdf();
+        CtrlContratoPDF instance = new CtrlContratoPDF();
         instance.crear_PDF(t, a, s, k, c, contrato, fechaEscritura, numEscritura, numNotaria, ciuNotaria, diaNueEsc, mesNueEsc, anoNueEsc, numNotarNue, ciuNueEsc, ciuFirma, diaFirma, mesFirma, anoFirma, cantVenta, hora, nombreNotaria);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of crear_PDF2 method, of class javapdf.
+     * Test of crear_PDF2 method, of class CtrlContratoPDF.
      */
     @Test
     public void testCrear_PDF2() {
@@ -145,19 +145,19 @@ public class javapdfTest {
         String fechaIni = "";
         String cifra = "";
         String diasPlazo = "";
-        javapdf instance = new javapdf();
+        CtrlContratoPDF instance = new CtrlContratoPDF();
         instance.crear_PDF2(t, a, s, k, c, contrato, cantidadMeses, fechaIni, cifra, diasPlazo);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of Colocar_Destino method, of class javapdf.
+     * Test of Colocar_Destino method, of class CtrlContratoPDF.
      */
     @Test
     public void testColocar_Destino() {
         System.out.println("Colocar_Destino");
-        javapdf instance = new javapdf();
+        CtrlContratoPDF instance = new CtrlContratoPDF();
         instance.Colocar_Destino();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

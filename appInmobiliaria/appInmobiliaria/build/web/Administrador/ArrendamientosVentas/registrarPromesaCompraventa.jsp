@@ -120,7 +120,7 @@ String nombreNotaria = request.getParameter("nombreNotaria");
               }
        }
 
-    controladores.javapdf pdf = new controladores.javapdf();
+    controladores.CtrlContratoPDF pdf = new controladores.CtrlContratoPDF();
     pdf.crear("a", "b", "c", "d","venta",codigoContrato,contrato,fechaEscritura, numEscritura,numNotaria, ciuNotaria, diaNueEsc, mesNueEsc, anoNueEsc, numNotarNue, ciuNueEsc, ciuFirma,diaFirma, mesFirma, anoFirma, cantVenta, hora, nombreNotaria);
 
         %>

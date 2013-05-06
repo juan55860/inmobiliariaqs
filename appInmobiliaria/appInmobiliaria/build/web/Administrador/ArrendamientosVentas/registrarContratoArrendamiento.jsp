@@ -107,7 +107,7 @@ String s = df.format(now);
            
            
 
-    controladores.javapdf pdf = new controladores.javapdf();
+    controladores.CtrlContratoPDF pdf = new controladores.CtrlContratoPDF();
     pdf.crearContrato("a", "b", "c", "d","arrendamiento", codigoContrato, contrato, cantidadMeses, fechaIni, cifra, diasPlazo);
    
 

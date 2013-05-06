@@ -16,7 +16,7 @@ import org.junit.runners.Suite;
  * @author usuario
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({controladores.javapdfTest.class, controladores.ctrlIngresarInmuebleTest.class})
+@Suite.SuiteClasses({controladores.CtrlContratoPDFTest.class, controladores.ctrlIngresarInmuebleTest.class})
 public class ControladoresSuite {
 
     @BeforeClass
