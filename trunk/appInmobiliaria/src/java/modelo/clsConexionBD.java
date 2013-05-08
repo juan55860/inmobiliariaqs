@@ -164,7 +164,7 @@ public class clsConexionBD {
             String sql = "Select * from " + tabla.toString();
             st = getCon().createStatement();
             resC = st.executeQuery(sql);
-            sb.append("<select name=\"" + resC.getMetaData().getColumnName(2) + "\" id=\"" + resC.getMetaData().getColumnName(2) + "\"");
+            sb.append("<select name=\"" + resC.getMetaData().getColumnName(2) + "\" id=\"" + resC.getMetaData().getColumnName(2) + "\">");
             while (resC.next()) {
                 sb.append("<option value=\"" + resC.getString(1) + "\">" + resC.getString(col) + " </option>");
             }
