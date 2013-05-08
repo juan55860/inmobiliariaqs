@@ -224,28 +224,28 @@
             </ul>
             
             
-            <div style="background: rgb(39,39,39); border:transparent;" id="tabs-1" >
+            <div id="tabs-1" >
 
 
-                <div style="background: #333; border:transparent;" id="container" class="ltr">
+                <div id="container" class="ltr">
 
 
 
 
 
-                    <header style="border: transparent" id="header" class="info">
-                        <h2><font color="white">Completa los datos del formulario:</font></h2>
+                    <header id="header" class="info">
+                        <h2>Completa los datos del formulario:</h2>
                         <div></div>
                     </header>
 
                     <form id="form55" action="registrarPromesaCompraventa.jsp" target="iframe1" onload="this">
                         
                         <fieldset>
-                        <h3><span style="color: #2e6e9e;" > <p align="center"><font color="white">Datos Vendedor:</font></span></p></h3> 
+                        <h3><span style="color: #2e6e9e;" > <p align="center">Datos Vendedor:</span></p></h3> 
                         <table align="left" border="0" >
-                            <td  width="255"> <font color="white" width="210">Codigo Vendedor:</font></td>
+                            <td  width="255"> <font color="black" width="210">Codigo Vendedor:</font></td>
                         <td>
-                            <input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px " type="text" name="codVendedor" value="" required /></td>
+                            <input type="text" name="codVendedor" value="" required /></td>
 
                         </table>
                         </fieldset>
@@ -253,10 +253,10 @@
                         
                         
                         <fieldset>
-                        <h3><span style="color: #2e6e9e;" > <p align="center"><font color="white">Datos Comprador:</font></span></p></h3> 
+                        <h3><span style="color: #2e6e9e;" > <p align="center">Datos Comprador:</span></p></h3> 
                         <table align=?center? border="0" >
-                           <td  width="255"> <font color="white"  width="210">Codigo Comprador:</font></td>
-                        <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px " type="text" name="codComprador" value="" onsubmit="this.value=''" required /></td>
+                           <td  width="255"> <font color="black"  width="210">Codigo Comprador:</font></td>
+                        <td><input type="text" name="codComprador" value="" onsubmit="this.value=''" required /></td>
                         
                         
                         </table></fieldset>
@@ -267,92 +267,92 @@
 
 
                         <fieldset>
-                        <h3><span style="color: #2e6e9e;" > <p align="center"><font color="white">Datos Inmueble:</font></span></p></h3> 
+                        <h3><span style="color: #2e6e9e;" > <p align="center">Datos Inmueble:</span></p></h3> 
                        <table align=?center? border="0" >
-                           <td width="255"><font color="white">Codigo Inmueble:</font></td>
+                           <td width="255"><font color="black">Codigo Inmueble:</font></td>
                            <td>
-                               <input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px " type="text" name="codInmueble" value="" required /></td>
+                               <input type="text" name="codInmueble" value="" required /></td>
 
                         </td>
                         <tr>
 
 
-                        <td width="210"><font color="white">Fecha Creacion Escritura Publica:</font> </td>
-                        <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px " type="text" name="fechaEscritura" value="" required /></td>
+                        <td width="210"><font color="black">Fecha Creacion Escritura Publica:</font> </td>
+                        <td><input type="text" name="fechaEscritura" value="" required /></td>
                         <tr>
-                        <td width="255"><font color="white">Numero Escritura Publica:</font></td>
-                        <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px " type="text" name="numEscritura" value="" required /></td>
+                        <td width="255"><font color="black">Numero Escritura Publica:</font></td>
+                        <td><input type="text" name="numEscritura" value="" required /></td>
                         <tr>
-                        <td width="210"><font color="white">Numero Notaria:</font></td>
-                        <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px " type="text" name="numNotaria" value="" required /></td>
+                        <td width="210"><font color="black">Numero Notaria:</font></td>
+                        <td><input type="text" name="numNotaria" value="" required /></td>
                         <tr>
-                        <td width="210"><font color="white">Ciudad:</font></td>
-                        <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px "  type="text" name="ciuNotaria" value="" required /></td>
+                        <td width="210"><font color="black">Ciudad:</font></td>
+                        <td><input type="text" name="ciuNotaria" value="" required /></td>
                         
                        </table></fieldset>
                         <br><br>
                         
                         <fieldset>
-                        <h3><span style="color: #2e6e9e;" > <p align="center"><font color="white">Valor Venta Inmueble:</font></span></p></h3> 
+                        <h3><span style="color: #2e6e9e;" > <p align="center">Valor Venta Inmueble:</span></p></h3> 
                         <table align=?center? border="0" >
-                        <td width="255"><font color="white">cantidad venta:</font></td>
-                        <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px " type="text" name="cantVenta" value="" required /></td>
+                        <td width="255"><font color="black">cantidad venta:</font></td>
+                        <td><input type="text" name="cantVenta" value="" required /></td>
                         <tr>
-                        <td width="255"><font color="white">cifra:</font></td>
-                        <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px " type="text" name="cifVenta" value="" required /></td>
+                        <td width="255"><font color="black">cifra:</font></td>
+                        <td><input type="text" name="cifVenta" value="" required /></td>
                         
                         </table></fieldset>
                         <br><br>
                         
                         <fieldset>
-                        <h3><span style="color: #2e6e9e;" > <p align="center"><font color="white">Porcentaje Ganancia Inmobiliaria:</font></span></p></h3>
+                        <h3><span style="color: #2e6e9e;" > <p align="center">Porcentaje Ganancia Inmobiliaria:</span></p></h3>
                         <table align=?center? border="0" >
-                           <td width="255"><font color="white">Porcentaje Ganado:</font></td>
-                            <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px " type="text" name="porcGanado" value="" required /></td>
+                           <td width="255"><font color="black">Porcentaje Ganado:</font></td>
+                            <td><input type="text" name="porcGanado" value="" required /></td>
                         
                         </table></fieldset>
                         <br><br>
                         
                         <fieldset>
-                        <h3><span style="color: #2e6e9e;" > <p align="center"><font color="white">Datos Creacion Nueva Escritura:</font></span></p></h3>
+                        <h3><span style="color: #2e6e9e;" > <p align="center">Datos Creacion Nueva Escritura:</span></p></h3>
                         <table align=?center? border="0" >
-                            <td width="255"><font color="white">Dia:</font></td>
-                            <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px " type="text" name="diaNueEsc" value="" required /></td>
+                            <td width="255"><font color="black">Dia:</font></td>
+                            <td><input type="text" name="diaNueEsc" value="" required /></td>
                             <tr>
-                            <td width="255"><font color="white">Mes:</font></td>
-                            <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px " type="text" name="mesNueEsc" value="" required /></td>
+                            <td width="255"><font color="black">Mes:</font></td>
+                            <td><input type="text" name="mesNueEsc" value="" required /></td>
                             <tr>
-                            <td width="255"><font color="white">Año:</font</td>
-                            <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px " type="text" name="anoNueEsc" value="" required /></td>
+                            <td width="255"><font color="black">Año:</font</td>
+                            <td><input type="text" name="anoNueEsc" value="" required /></td>
                             <tr>
-                            <td width="255"><font color="white">Hora:</font></td>
-                            <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px " type="text" name="hora" value="" required /></td>
+                            <td width="255"><font color="black">Hora:</font></td>
+                            <td><input type="text" name="hora" value="" required /></td>
                             <tr>
-                            <td width="255"><font color="white">Numero Notaria:</font></td>
-                            <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px " type="text" name="nombreNotaria" value="" required /></td>                       
+                            <td width="255"><font color="black">Numero Notaria:</font></td>
+                            <td><input type="text" name="nombreNotaria" value="" required /></td>                       
                             <tr>
-                            <td width="255"><font color="white">Ciudad:</font></td>
-                            <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px " type="text" name="ciuNueEsc" value="" required /></td>
+                            <td width="255"><font color="black">Ciudad:</font></td>
+                            <td><input type="text" name="ciuNueEsc" value="" required /></td>
                         </table></fieldset>
                         <br><br>
                         
                         
                             
                         <fieldset>
-                            <h3><span style="color: #2e6e9e;" > <p align="center"><font color="white">Datos Constancia Documento:</font></span></p></h3>
+                            <h3><span style="color: #2e6e9e;" > <p align="center">Datos Constancia Documento:</span></p></h3>
                             
                             <table align=?center? border="0" >
-                        <td width="255"><font color="white">Ciudad Firma Documento:</font></td>
-                        <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px " type="text" name="ciuFirma" value="" required /></td>
+                        <td width="255"><font color="black">Ciudad Firma Documento:</font></td>
+                        <td><input type="text" name="ciuFirma" value="" required /></td>
                         <tr>
-                        <td width="255"><font color="white">Dia firma Documento:</font></td>
-                        <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px " type="text" name="diaFirma" value="" required /></td>
+                        <td width="255"><font color="black">Dia firma Documento:</font></td>
+                        <td><input type="text" name="diaFirma" value="" required /></td>
                         <tr>
-                        <td width="255"><font color="white">mes Firma Documento:</font></td>
-                        <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px " type="text" name="mesFirma" value="" required /></td>
+                        <td width="255"><font color="black">mes Firma Documento:</font></td>
+                        <td><input type="text" name="mesFirma" value="" required /></td>
                         <tr>
-                        <td width="255"><font color="white">año Firma Documento:</font></td>
-                        <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px" type="text" name="anoFirma" value="" required /></td>
+                        <td width="255"><font color="black">año Firma Documento:</font></td>
+                        <td><input type="text" name="anoFirma" value="" required /></td>
                         </table></fieldset>
                         <br><br>
                         
@@ -370,27 +370,27 @@
             
             
    <!--tab2-->         
-            <div style="background: rgb(39,39,39); border:transparent;"  id="tabs-2">
+            <div id="tabs-2">
 
-                <div style="background: #333; border:transparent;" id="container" class="ltr">
-
-
+                <div id="container" class="ltr">
 
 
 
-                    <header style="border: transparent" id="header" class="info">
-                        <h2><font color="white">Completa los datos del formulario:</font></h2>
+
+
+                    <header id="header" class="info">
+                        <h2><font color="black">Completa los datos del formulario:</font></h2>
                         <div></div>
                     </header>
 
                     <form id="form56"  action="registrarContratoArrendamiento.jsp" target="iframe2" >
                         
                         <fieldset>
-                        <h3><span style="color: #2e6e9e;" > <p align="center"><font color="white">Datos Arrendador:</font></span></p></h3> 
+                        <h3><span style="color: #2e6e9e;" > <p align="center">Datos Arrendador:</span></p></h3> 
                         
                          <table align="left" border="0" >
-                             <td width="255"><font color="white">Codigo Arrendador:</font></td>
-                             <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px "  type="text" name="codArrendador" value="" required /></td>
+                             <td width="255"><font color="black">Codigo Arrendador:</font></td>
+                             <td><input type="text" name="codArrendador" value="" required /></td>
 
                         
                          </table>
@@ -399,19 +399,19 @@
                         
                         <fieldset>
                              
-                        <h3><span style="color: #2e6e9e;" > <p align="center"><font color="white">Datos Arrendatario:</font></span></p></h3> 
+                        <h3><span style="color: #2e6e9e;" > <p align="center">Datos Arrendatario:</span></p></h3> 
                         <table align="left" border="0" >
-                        <td width="255"><label for="Salas" id="combo"><font color="white">Nombre Comprador:</label></td>
-                        <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px "  type="text" name="codArrendatario" value="" required /></td>
+                        <td width="255"><label for="Salas" id="combo"><font color="black">Nombre Comprador:</label></td>
+                        <td><input type="text" name="codArrendatario" value="" required /></td>
                              </table>
                         </fieldset>
                         <br><br>
                         
                         <fieldset>
-                        <h3><span style="color: #2e6e9e;" > <p align="center"><font color="white">Datos Inmueble:</font></span></p></h3> 
+                        <h3><span style="color: #2e6e9e;" > <p align="center">Datos Inmueble:</span></p></h3> 
                          <table align="left" border="0" >
-                        <td width="255"><label for="Salas" id="combo"><font color="white">Codigo Inmueble:</label></td>
-                        <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px "  type="text" name="codInmueble" value="" required /></td>
+                        <td width="255"><label for="Salas" id="combo"><font color="black">Codigo Inmueble:</label></td>
+                        <td><input type="text" name="codInmueble" value="" required /></td>
 
 
                         
@@ -420,55 +420,55 @@
                         <br><br>
                         
                         <fieldset>
-                        <h3><span style="color: #2e6e9e;" > <p align="center"><font color="white">Duracion Contrato:</font></span></p></h3> 
+                        <h3><span style="color: #2e6e9e;" > <p align="center">Duracion Contrato:</span></p></h3> 
                          <table align="left" border="0" >
-                        <td width="255"><font color="white">cantidad de Meses:</font></td>
-                        <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px "  type="text" name="cantidadMeses" value="" required /></td>
+                        <td width="255"><font color="black">cantidad de Meses:</font></td>
+                        <td><input ype="text" name="cantidadMeses" value="" required /></td>
                         <tr>
-                        <td width="255"><font color="white">fecha inicio:</font></td>
-                        <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px " type="text" name="fechaIni" value="" required /></td>
+                        <td width="255"><font color="black">fecha inicio:</font></td>
+                        <td><input type="text" name="fechaIni" value="" required /></td>
                          </table>
                         </fieldset>
                         <br><br>
                         
                         <fieldset>
-                        <h3><span style="color: #2e6e9e;" > <p align="center"><font color="white">Precio Arrendamiento:</font></span></p></h3>
+                        <h3><span style="color: #2e6e9e;" > <p align="center">Precio Arrendamiento:</span></p></h3>
                          <table align="left" border="0" >
-                        <td width="255"><font color="white">Cantidad Arrendamiento:</font></td>
-                        <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px "  type="text" name="cantArrendamiento" value="" required /></td>
+                        <td width="255"><font color="black">Cantidad Arrendamiento:</font></td>
+                        <td><input type="text" name="cantArrendamiento" value="" required /></td>
                         <tr>
-                        <td width="255"><font color="white">Cifra:</font></td>
-                        <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px " type="text" name="cifra" value="" required /></td>
+                        <td width="255"><font color="black">Cifra:</font></td>
+                        <td><input type="text" name="cifra" value="" required /></td>
                         <tr>
-                        <td width="255"><font color="white">Dias plazo:</font></td>
-                        <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px "  type="text" name="diasPlazo" value="" required /></td>
+                        <td width="255"><font color="black">Dias plazo:</font></td>
+                        <td><input type="text" name="diasPlazo" value="" required /></td>
                          </table>
                         </fieldset>
                         <br><br>
                         
                         <fieldset>
-                        <h3><span style="color: #2e6e9e;" > <p align="center"><font color="white">Porcentaje Ganancia Inmobiliaria:</font></span></p></h3>
+                        <h3><span style="color: #2e6e9e;" > <p align="center">Porcentaje Ganancia Inmobiliaria:</span></p></h3>
                          <table align="left" border="0" >
-                             <td width="255"><font color="white">Porcentaje Ganado:</font></td>
-                             <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px " type="text" name="porcGanado" value="" required /></td>
+                             <td width="255"><font color="black">Porcentaje Ganado:</font></td>
+                             <td><input type="text" name="porcGanado" value="" required /></td>
                          </table>
                         </fieldset>
                         <br><br>
                         
                         <fieldset>
-                        <h3><span style="color: #2e6e9e;" > <p align="center"><font color="white">Datos Constancia Documento:</font></span></p></h3>
+                        <h3><span style="color: #2e6e9e;" > <p align="center">Datos Constancia Documento:</span></p></h3>
                          <table align="left" border="0" >
-                        <td width="255"><font color="white">Ciudad Firma Documento:</font></td>
-                        <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px "  type="text" name="ciuFirma" value="" required /></td>
+                        <td width="255"><font color="black">Ciudad Firma Documento:</font></td>
+                        <td><input type="text" name="ciuFirma" value="" required /></td>
                         <tr>
-                        <td width="255"><font color="white">Dia firma Documento:</font></td>
-                        <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px "  type="text" name="diaFirma" value="" required /></td>
+                        <td width="255"><font color="black">Dia firma Documento:</font></td>
+                        <td><input type="text" name="diaFirma" value="" required /></td>
                         <tr>
-                        <td width="255"><font color="white">mes Firma Documento:</font></td>
-                        <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px "  type="text" name="mesFirma" value="" required /></td>
+                        <td width="255"><font color="black">mes Firma Documento:</font></td>
+                        <td><input type="text" name="mesFirma" value="" required /></td>
                         <tr>
-                        <td width="255"><font color="white">año Firma Documento:</font></td>
-                        <td><input style="background-color:rgb(19,19,19); color: rgb(83,83,83); border:transparent ;font:14px "  type="text" name="anoFirma" value="" required  /></td>
+                        <td width="255"><font color="black">año Firma Documento:</font></td>
+                        <td><input type="text" name="anoFirma" value="" required  /></td>
                         </table>
                         </fieldset>
                         <br><br>
@@ -485,7 +485,7 @@
    
    
    
-            <div style="background: rgb(39,39,39); border:transparent;" id="tabs-3">
+            <div id="tabs-3">
 
                 <center>
                     <table id="list9"></table>
@@ -502,7 +502,7 @@
                 </center>
             </div>
 
-            <div style="background: rgb(39,39,39); border:transparent;" id="tabs-4">
+            <div id="tabs-4">
 
                 <center>
                     <table id="list99"></table>
