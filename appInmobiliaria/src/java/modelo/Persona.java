@@ -11,7 +11,7 @@ public class Persona {
     private String nombre;
     private String apellido;
     private String direccion;
-    private int telefono;
+    private String telefono;
     private String correo;
     private String contrasena;
     private String rol;
@@ -24,7 +24,7 @@ public class Persona {
     }
     
 
-    public Persona(int identificacion, String tipoIdentificacion, String nombre, String apellido, String direccion, int telefono, String correo, String contrasena, String rol) {
+    public Persona(int identificacion, String tipoIdentificacion, String nombre, String apellido, String direccion, String telefono, String correo, String contrasena, String rol) {
         this.identificacion = identificacion;
         this.tipoIdentificacion = tipoIdentificacion;
         this.nombre = nombre;
@@ -109,14 +109,14 @@ public class Persona {
     /**
      * @return the telefono
      */
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
     /**
      * @param telefono the telefono to set
      */
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 

@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Registrar Cliente</title>
+        <title>Registrar Clientes</title>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" media="screen" href="../../sitio/css/reset.css">
         <link rel="stylesheet" type="text/css" media="screen" href="../../sitio/css/style.css">
@@ -54,6 +54,16 @@
                 width:802px;
                 height:677px;
                 z-index:1;
+
+            }
+            #apDiv2 {
+                position:absolute;
+                left:362px;
+                top:493px;
+                width:721px;
+                height:535px;
+                z-index:1;
+                font: 20px Arial,Helvetica,sans-serif; color:rgb(83,83,83)
             }
         </style>
 
@@ -90,10 +100,101 @@
                     }
                 });
             });
+            
+            function alfanumerico(campo, id){
+                var charpos = campo.value.search("[^A-Za-z0-9., ]");
+                if((campo.value.length > 0) && (charpos >= 0)) {
+                    strError = "El campo "+id+" solo acepta letras de A a la Z y digitos";
+                    alert(strError + "\n [Posición del caracter erróneo: " + eval(charpos+1)+"]");
+                    campo.focus();
+                    return false;
+                } else {//if
+                    return true;
+                }
+            }
+
+            function letras (campo, id) {
+                var charpos = campo.value.search("[^A-Za-z ]");
+                if(campo.value.length > 0 &&  charpos >= 0) {
+                    strError = "El campo " + id +" solo permite letras ";
+                    alert(strError + "\n [Posicion del caracter erróneo: " + eval(charpos+1)+"]");
+                    campo.focus();
+                    return false;
+                } else {//if
+                    return true;
+                }
+            }
+
+            function numerico(campo, id) {
+                var charpos = campo.value.search("[^0-9]");
+                if (campo.value.length > 0 &&  charpos >= 0)  {
+                    strError = "El campo "+id+" solo acepta digitos ";
+                    alert(strError + "\n [El caracter erróneo esta en la posicion: " + eval(charpos+1)+"]");
+                    campo.focus();
+                    return false;
+                } else {
+                    return true;
+                }
+            }
         </script>
 
     </head>
     <body>
+        <div id="apDiv2">
+            <form enctype="multipart/form-data" name="form1" action="prcRegistrarCliente.jsp" >
+                <p>
+                <center>
+                    <table>    
+                        <tr><td><strong>Identificacion:</strong></td>
+                            <td><input type="text" value="" required="" name="ide" id="ide" onblur="numerico(ide, 'ide')"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tipo de Identificacion:</strong></td>
+                            <td><select name="tipoId" id="tipoId"  style="border:transparent; background-color: rgb(19, 19, 19);font: 14px Arial,Helvetica,sans-serif; color:rgb(83,83,83); 
+                                        height: 28px; " >
+                                    <option value = "cedula">Cedula</option>
+                                    <option value = "nit">NIT</option>
+                                </select></td>
+                        </tr>
+                        <tr><td><strong>Nombre:</strong></td>
+                            <td><input type="text" id="nombre" name="nombre" required onblur="letras(nombre, 'nombre')"></td>
+                        </tr>
+                        <tr><td><strong>Apellido:</strong></td>
+                            <td><input type="text" id="apellido" name="apellido"  required onblur="letras(apellido, 'apellido')"></td>
+                        </tr>
+                        <p>&nbsp;</p>
+                        <p>
+                        <tr><td><strong>Direccion:</strong></td>
+                            <td><input type="text" value="" required name="direccion" id="direccion" onblur="alfanumerico(direccion, 'direccion')"></td>
+                        </tr>    
+                        <tr><td><strong>Teléfono:</strong></td>
+                            <td><input type="text" value="" required name="telefono" id="telefono" onblur="numerico(telefono, 'telefono')"></td>
+                        </tr>    
+                        <tr><td><strong>Email:</strong></td>
+                            <td><input type="email" id="email" name="email" placeholder="quienfue@hotmail.com" required></td>
+                        </tr>
+                        <tr><td><strong>Contraseña:</strong></td>
+                            <td><input type="text" required value="" id="contrasena" name="contrasena" onblur="numerico(contrasena, 'contrasena')"></td>
+                        </tr>
+                        <tr><td><strong>Rol: </strong></td>
+                            <td><select name="rol" id="rol"  style="border:transparent; background-color: rgb(19, 19, 19);font: 14px Arial,Helvetica,sans-serif; color:rgb(83,83,83); 
+                                        height: 28px; " >
+                                    <option value="administrador">Administrador</option>
+                                    <option value="arrendador">Arrendador</option>
+                                    <option value="arrendatario">Arrendatario</option>
+                                </select></td> 
+                        </tr>
+                        <p></p>
+                        <tr><td><input type="submit" name="enviar" id="enviar" value="Enviar"></td>
+                            <td><input type="reset" name="borrar" id="borrar" value="Borrar campos"></td>
+                        </tr>
+                        <p>
+                    </table>
+                </center>       
+                <p>&nbsp; </p>
+                <p>&nbsp; </p>
+            </form>
+        </div>
         <header>
             <div>
                 <h1><a href="../../index.jsp"><img src="../../sitio/images/logo.jpg" alt=""></a></h1>
@@ -107,7 +208,8 @@
                     <div class="slider">
                         <ul class="items">
                             <li><img src="../../sitio/images/slider-1-small.jpg" alt="" /></li>
-                            <li><img src="../../sitio/images/slider-2-small.jpg" alt="" /></li>
+                            <li>k</li>
+                            <li><img src="../../sitio/images/slider-3-small.jpg" alt="" /></li>
                         </ul>
                         <p>&nbsp;</p>
                     </div>	
@@ -116,83 +218,24 @@
                 <nav>
                     <ul class="menu">
                         <li><a href="../ArrendamientosVentas/frmArrendamientosVentas.jsp">Financiera</a></li>
-                        <li><a href="../GestionarPrioridadInmueble/grdSeries.jsp">Prioridad</a></li>
-                            <li><a href="../ingresarInmuebles/frmRegistrarInmueble.jsp">Inmuebles</a></li>
-                            <li><a class="current" href="../IngresarClientes/frmRegistrarCliente.jsp" >Clientes</a></li> 
-                            <li><a href="../Administrador.jsp">Archivos</a></li>
+                        <li><a href="../GestionarPrioridadInmueble/grdSeries.jsp" >Prioridad</a></li>
+                        <li><a href="frmRegistrarInmueble.jsp" >Inmuebles</a></li>
+                        <li><a class="current" href="../IngresarClientes/frmRegistrarCliente.jsp" >Clientes</a></li> 
+                        <li><a href="../Administrador.jsp">Archivos</a></li>
 
                     </ul>
                 </nav>
             </div>
         </header>  
-        <div class="main">
-            <!--==============================header=================================-->
 
-            <!--==============================content================================-->
-            <section id="content"><div class="ic"></div>
-                <div class="container_12">	
-                    <div class="grid_4">
-                        <h2 class="top-1 p3">Registrar Clientes</h2>
-                        <form id="form" method="post" action="frmIngresarInmueble.jsp" >
-                            <fieldset>
-                                <p>
-                                    <label><strong>Nombre:</strong>
-                                        <input type="text" id="nombre" name="nombre"  required> </label>
-                                    <label><strong>Apellido:</strong>
-                                        <input type="text" id="apellido" name="apellido"  required>
-                                    </label>
+        <!--==============================header=================================-->
 
-                                    <label>Tipo de Identificacion: </label>
-                                    <select name="tipoID" id="tipoId"  style="border:transparent; background-color: rgb(19, 19, 19);font: 14px Arial,Helvetica,sans-serif; color:rgb(83,83,83); 
-                                            height: 28px; " >
-                                        <option value="1">Cedula</option>
-                                        <option value="2">NIT</option>
-                                    </select>  
-                                </p>
-                                <p>&nbsp;</p>
-                                <p>
-                                    <label><strong>Identificacion:</strong>
-                                        <input type="text" value="" required name="id" id="id">
-                                    </label>
-                                    <label><strong>Direccion:</strong>
-                                        <input type="text" value="" required name="dir" id="dir">
-                                    </label>
-                                    <label><strong>Teléfono:</strong>
-                                        <input type="text" value="" required name="tel" id="tel">
-                                    </label>
-                                    <label><strong>Correo:</strong>
-                                        <input type="text" id="email" name="email" placeholder="asturver@hotmail.es" required="required" >
-                                    </label>
-                                    <label><strong>Contraseña:</strong>
-                                        <input type="text" value="" id="contras" name="contras">
-                                    </label>
-                                    <label>Rol: </label>
-                                    <select name="rol" id="rol"  style="border:transparent; background-color: rgb(19, 19, 19);font: 14px Arial,Helvetica,sans-serif; color:rgb(83,83,83); 
-                                            height: 28px; " >
-                                        <option value="1">Arrendador</option>
-                                        <option value="2">Arrendatario</option>
-                                    </select> 
-                                </p>
-                                <p>
-
-                                </p>
-                                <div class="btns"><a href="contacts.html" class="button">Clear</a><a href="#" class="button" onClick="document.getElementById('form').submit()">Send</a></div>
-
-                                <p>
-
-                                <p>&nbsp; </p>
-                                <p>&nbsp; </p>
-
-                            </fieldset> 
-
-                        </form> 
-                    </div>
-
-                    <div class="clear"></div>
-                </div>  
-            </section> 
-        </div>    
+        <!--==============================content================================-->
 
 
+
+        <script>
+            Cufon.now();
+        </script>  
     </body>
 </html>
