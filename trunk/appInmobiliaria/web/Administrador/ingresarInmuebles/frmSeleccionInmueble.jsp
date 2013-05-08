@@ -116,7 +116,7 @@
                     <div class="grid_4">
                         <div class="left-1">
                             <h2 class="top-1 p3">Categorias</h2>
-                            <form id="form-1" class="form-1 bot-1" action="frmRegistrarInmueble.jsp">
+                            <form id="form-1" class="form-1 bot-1"action="frmRegistrarInmueble.jsp">
                                 <div class="select-1">
                                     <label>Seleccione una Opcion</label>
                                     <select name="categoria" >

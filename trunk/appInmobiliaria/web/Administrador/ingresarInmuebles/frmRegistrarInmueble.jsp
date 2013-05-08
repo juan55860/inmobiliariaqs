@@ -113,6 +113,8 @@
 
                                         <%=tipo.cargarComboCategoria(request.getParameter("categoria"))%>
                                     </div>
+                                    
+                                    
                                     <div>
                                         <label>Extensión</label>
                                         <input required name="extension" id="extension" type="text"/>
