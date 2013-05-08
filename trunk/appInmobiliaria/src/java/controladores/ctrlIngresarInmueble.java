@@ -97,4 +97,81 @@ public class ctrlIngresarInmueble {
         }
         return false;
     }
+
+    public StringBuffer cargarComboCategoria(String categoria) {
+        if (categoria != null) { // Categoria del html
+            StringBuffer sb = new StringBuffer();
+            if (categoria.equals("COMERCIAL")) {
+                sb.append(" <label>Tipo de Inmueble</label>");
+                sb.append("<select name='tipoInmueble' id='tipoInmueble'>");
+                sb.append("<option value='LOCAL'>LOCAL</option>");
+                sb.append("<option value='OFICINA'>OFICINA</option>");
+                sb.append("<option value='CONSULTORIO'>CONSULTORIO</option>");
+                sb.append("<option value='BODEGA'>BODEGA</option>");
+                sb.append("<option value='PARQUEADERO'>PARQUEADERO</option>");
+                sb.append("</select>");
+                StringBuffer bf = (conexion.cmbGenera("barrios", 2));
+                sb.append("<div> <label>Barrio</label>");
+                sb.append(bf);
+                sb.append("</div>");
+                sb.append("<div> <label>Numero de Baños</label>");
+                sb.append("<input required id='numbanios' name='numbanios' type='number'></input>");
+                sb.append("</div>");
+                sb.append("<div> <label>Numero de Pisos</label>");
+                sb.append("<input required id='numpisos' name='numpisos' type='number'></input>");
+                sb.append("</div>");
+            } else if (categoria.equals("RESIDENCIAL")) {
+                sb.append(" <label>Tipo de Inmueble</label>");
+                sb.append("<select name='tipoInmueble' id='tipoInmueble'>");
+                sb.append("<option value='CASA'>CASA</option>");
+                sb.append("<option value='APARTAMENTO'>APARTAMENTO</option>");
+                sb.append("<option value='ESTUDIO'>ESTUDIO</option>");
+                sb.append("</select>");
+                StringBuffer bf = (conexion.cmbGenera("barrios", 2));
+                sb.append("<div> <label>Barrio</label>");
+                sb.append(bf);
+                sb.append("</div>");
+                sb.append("<div> <label>Numero de Baños</label>");
+                sb.append("<input required id='numbanios' name='numbanios' type='number'></input>");
+                sb.append("</div>");
+                sb.append("<div> <label>Numero de Pisos</label>");
+                sb.append("<input required id='numpisos' name='numpisos' type='number'></input>");
+                sb.append("</div>");
+                sb.append("<div class='select-1'> <label>Tiene Parqueadero?</label>");
+                sb.append("<select name='parq' id='parq'>");
+                sb.append("<option value='true'>SI</option>");
+                sb.append("<option value='false'>NO</option>");
+
+                sb.append("</select>");
+                sb.append("</div>");
+            } else if (categoria.equals("EDIFICIOS")) {
+                sb.append("<div> <label>Numero de parqueaderos</label>");
+                sb.append("<input required id='numparq' name='numparq' type='number'></input>");
+                sb.append("</div>");
+                sb.append("<div> <label>Numero de Pisos</label>");
+                sb.append("<input required id='numpisos' name='numpisos' type='number'></input>");
+                sb.append("</div>");
+            } else if (categoria.equals("RURAL")) {
+                sb.append(" <label>Tipo de Inmueble</label>");
+                sb.append("<select name='tipoInmueble' id='tipoInmueble'>");
+                sb.append("<option value='FINCA'>FINCA</option>");
+                sb.append("<option value='CASACAMPESTRE'>CASACAMPESTRE</option>");
+                sb.append("<option value='CABAÑA'>CABAÑA</option>");
+                sb.append("</select>");
+                sb.append("<div> <label>Numero de baños</label>");
+                sb.append("<input required id='numbanios' name='numbanios' type='number'></input>");
+                sb.append("</div>");
+                sb.append("<div> <label>Numero de Pisos</label>");
+                sb.append("<input required id='numpisos' name='numpisos' type='number'></input>");
+                sb.append("</div>");
+                sb.append("<div> <label>Numero de Piscinas</label>");
+                sb.append("<input required id='numpiscinas' name='numpiscinas' type='number'></input>");
+                sb.append("</div>");
+
+            }
+            return sb;
+        } else {
+            return null;
+        }
+    }
 }
