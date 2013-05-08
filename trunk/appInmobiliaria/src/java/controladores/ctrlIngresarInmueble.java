@@ -101,6 +101,9 @@ public class ctrlIngresarInmueble {
     public StringBuffer cargarComboCategoria(String categoria) {
         if (categoria != null) { // Categoria del html
             StringBuffer sb = new StringBuffer();
+            sb.append("<label>Descripcion</label>");
+            sb.append("<textarea id='descripcion' name='descripcion'  cols='38' rows='8' style='color:#ffffff; background: #131313; font-family: Arial, Helvetica, sans-serif;\n"
+                    + "font-size: 14px;' type='text'></textarea>");
             if (categoria.equals("COMERCIAL")) {
                 sb.append(" <label>Tipo de Inmueble</label>");
                 sb.append("<select name='tipoInmueble' id='tipoInmueble'>");
@@ -167,6 +170,10 @@ public class ctrlIngresarInmueble {
                 sb.append("<div> <label>Numero de Piscinas</label>");
                 sb.append("<input required id='numpiscinas' name='numpiscinas' type='number'></input>");
                 sb.append("</div>");
+            } else if (categoria.equals("LOTES")) {
+                sb.append("<label>Tipo</label>");
+                sb.append("<textarea id='tipo' name='tipo'  cols='38' rows='8' style='color:#ffffff; background: #131313; font-family: Arial, Helvetica, sans-serif;\n"
+                        + "font-size: 14px;' type='text'></textarea>");
 
             }
             return sb;
