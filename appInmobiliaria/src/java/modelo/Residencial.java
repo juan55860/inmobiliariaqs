@@ -118,7 +118,7 @@ public class Residencial extends InmuebleV2 {
     /**
      * @return the parqueadero
      */
-    public boolean isParqueadero() {
+    public boolean getParqueadero() {
         return parqueadero;
     }
 
