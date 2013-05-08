@@ -12,7 +12,6 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 public class clsConexionBD {
 
     ResultSet res = null;
@@ -30,7 +29,6 @@ public class clsConexionBD {
     public Connection getCon() {
         return con;
     }
-    
 
     public int conectar() {
         try {
@@ -47,84 +45,71 @@ public class clsConexionBD {
         }
         return 1;
     }
-    public SQLException insertar(String sql){
-        try{
-            st=getCon().createStatement();
+
+    public SQLException insertar(String sql) {
+        try {
+            st = getCon().createStatement();
             st.execute(sql);
             st.close();
             return null;
-         }
-        catch(SQLException e){
-	    return e;
+        } catch (SQLException e) {
+            return e;
         }
-     }
+    }
 
-     public ResultSet consultar(String sql){
-         try{
-            st=getCon().createStatement();
-            res= st.executeQuery(sql);
-         }
-        catch(SQLException e){
+    public ResultSet consultar(String sql) {
+        try {
+            st = getCon().createStatement();
+            res = st.executeQuery(sql);
+        } catch (SQLException e) {
             return null;
         }
-         return res;
-     }
+        return res;
+    }
 
-    public int verificar(String sql){
-        try{
-            st=getCon().createStatement();
-            res= st.executeQuery(sql);
-            if (res.next())
+    public int verificar(String sql) {
+        try {
+            st = getCon().createStatement();
+            res = st.executeQuery(sql);
+            if (res.next()) {
                 return 1;
+            }
             st.close();
-        }
-        catch(SQLException e){
+        } catch (SQLException e) {
             System.out.println(e);
         }
         return -1;
     }
 
-    public int actualizar(String sql){
-        try{
-            st=getCon().createStatement();
+    public int actualizar(String sql) {
+        try {
+            st = getCon().createStatement();
             st.executeUpdate(sql);
             st.close();
             return 1;
-         }
-        catch(SQLException e){
+        } catch (SQLException e) {
             System.out.println(e);
         }
         return -1;
     }
-    
-    
-    
-    
-  
-    
 
-   
-
-     public ResultSet listarDB (String sql){
-        try{
-            st=getCon().createStatement(); // Se conecta a postgres
-            res= st.executeQuery(sql); // Ejecuta el SQL
-            if (res.next())
-
+    public ResultSet listarDB(String sql) {
+        try {
+            st = getCon().createStatement(); // Se conecta a postgres
+            res = st.executeQuery(sql); // Ejecuta el SQL
+            if (res.next()) {
                 return res;
+            }
             st.close();
-        }
-        catch(SQLException e){
+        } catch (SQLException e) {
             System.out.println(e);
         }
         return null;
     }
 
-  
-    
-    public String getJSON(String sql, int columnas){
-        String jsonResult="";
-        int col=columnas;
+    public String getJSON(String sql, int columnas) {
+        String jsonResult = "";
+        int col = columnas;
         try {
             modelo.JQGridJSONModel json = new modelo.JQGridJSONModel();
             java.util.List<modelo.JQGridRow> rows = new java.util.ArrayList<modelo.JQGridRow>();
@@ -138,8 +123,8 @@ public class clsConexionBD {
                 row = new modelo.JQGridRow();
                 //row.setId(Integer.parseInt(res.getString(0)));
                 row.setId(y);
-                col=1;
-                while (col<=columnas){
+                col = 1;
+                while (col <= columnas) {
                     cells.add(res.getString(col));
                     col++;
                 }
@@ -149,7 +134,7 @@ public class clsConexionBD {
             }
             json.setPage("1");
             json.setRecords(y);
-            json.setTotal("+"+(y<=10?1:2)+"");
+            json.setTotal("+" + (y <= 10 ? 1 : 2) + "");
             json.setRows(rows);
             flexjson.JSONSerializer serializer = new flexjson.JSONSerializer();
             jsonResult = serializer.exclude("*.class").deepSerialize(json);
@@ -158,45 +143,38 @@ public class clsConexionBD {
             Logger.getLogger(clsConexionBD.class.getName()).log(Level.SEVERE, null, ex);
         }
         return jsonResult;
-     }
+    }
 
-  
+    public String crearContrato(modelo.Contrato contrato) {
 
-  
-    
-    
-    public String crearContrato(modelo.Contrato contrato){
-    
-        
-         String sql="INSERT INTO contratos VALUES ('"+contrato.getCodigo()+"', '"+contrato.getCodArrendador()+"', '"+contrato.getCodArrendatario()+"', '"+contrato.getDescripcion()+"', '"+contrato.getFecha()+"', '"+contrato.getCodInmueble()+"', '"+contrato.getValor()+"', '"+contrato.getComision()+"', '"+contrato.getDuracion()+"')";
-       
-            if (insertar(sql)==null){
-                return "1";
+
+        String sql = "INSERT INTO contratos VALUES ('" + contrato.getCodigo() + "', '" + contrato.getCodArrendador() + "', '" + contrato.getCodArrendatario() + "', '" + contrato.getDescripcion() + "', '" + contrato.getFecha() + "', '" + contrato.getCodInmueble() + "', '" + contrato.getValor() + "', '" + contrato.getComision() + "', '" + contrato.getDuracion() + "')";
+
+        if (insertar(sql) == null) {
+            return "1";
         }
         return "-1";
-        
+
     }
-      public StringBuffer cmbGenera(String tabla, int col)
-    {
+
+    public StringBuffer cmbGenera(String tabla, int col) {
         StringBuffer sb = new StringBuffer();
-        try{
-            ResultSet resC=null;
-            String sql="Select * from "+tabla.toString();
-            st=getCon().createStatement();
-            resC= st.executeQuery(sql);
-            sb.append("<select name=\""+resC.getMetaData().getColumnName(2)+"\" id=\""+resC.getMetaData().getColumnName(2)+"\"");
-            while (resC.next()){
+        try {
+            ResultSet resC = null;
+            String sql = "Select * from " + tabla.toString();
+            st = getCon().createStatement();
+            resC = st.executeQuery(sql);
+            sb.append("<select name=\"" + resC.getMetaData().getColumnName(2) + "\" id=\"" + resC.getMetaData().getColumnName(2) + "\"");
+            while (resC.next()) {
                 sb.append("<option value=\"" + resC.getString(1) + "\">" + resC.getString(col) + " </option>");
             }
             sb.append("</select>");
-        }
-        catch(SQLException e){
-           sb.append(e.toString());
-           return sb;
+        } catch (SQLException e) {
+            sb.append(e.toString());
+            return sb;
         }
         return sb;
     }
-         
 
     public String getJSONCols(String sql, String cuales) {
         String jsonResult = "";
@@ -232,5 +210,4 @@ public class clsConexionBD {
         }
         return jsonResult;
     }
-    
 }
