@@ -32,8 +32,8 @@ public class ctrlIngresarLote {
         String res = "No inserto";
         if (verificarPersona(lote.getCodPropietario()) == true) {
             String sql = "INSERT INTO lotes(precio,direccion,estrato,cod_propietario,prioridad,area,descripcion,estado,tipo)"
-                    + "VALUES('" + lote.getPrecio() + "'," + lote.getDireccion() + ",'" + lote.getEstrato() + "'," + lote.getCodPropietario() + ",'" + lote.getPrioridad()
-                    + "','" + lote.getArea() + "'," + lote.getDescripcion() + "," + lote.getEstado() + "," + lote.getTipo() + ");";
+                    + "VALUES(" +lote.getPrecio() + ",'" + lote.getDireccion() + "', '" + lote.getEstrato() + "'," + lote.getCodPropietario() + "," + lote.getPrioridad()
+                    + "," + lote.getArea() + ",'" + lote.getDescripcion() + "', '" + lote.getEstado() + "', '" + lote.getTipo() + "');";
             if (conexion.actualizar(sql) == 1) {
                 res = "";
             }
