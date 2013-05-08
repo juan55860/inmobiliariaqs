@@ -105,7 +105,7 @@
     </head>
     <body>
         <div id="apDiv2">
-            <form action="prcRegistrarInmueble.jsp" enctype="multipart/form-data"  name="form1">
+            <form action="prcRegistrarInmueble.jsp" enctype="multipart/form-data"  name="form">
                 <p align="center"><strong>Registrar Inmueble</strong>
                 </p>
                 <p>
