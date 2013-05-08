@@ -48,6 +48,7 @@
 
         <style type="text/css">
             #apDiv1 {
+                background-color:white;
                 position:absolute;
                 left:191px;
                 top:476px;
