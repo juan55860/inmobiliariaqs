@@ -1,15 +1,15 @@
 /* Global properties ======================================================== */
 html, body {width:100%; padding:0; margin:0;}
 body {
-	color:#939393;
+	color:#000000;
 	min-width:1264px;
-	background:#131313;
+	background:#000000;
 	font-family: Verdana, Geneva, sans-serif;
 	font-size: 16px;
 	line-height: 25px;
 }
 .ic {border:0;float:right;background:#fff;color:#f00;width:50%;line-height:10px;font-size:10px;margin:-220% 0 0 0;overflow:hidden;padding:0}
-.main {width:100%; background:#272727;}
+.main {width:100%; background:white;}
 /***********************************************************************/
 a {text-decoration:none; cursor:pointer;}
 a:hover {text-decoration:none;}
@@ -20,8 +20,8 @@ a.link:hover {text-decoration:underline;}
 .color-1 { color:#fff;}
 a.color-1:hover {text-decoration:underline;}
 .font-3 {font-size:17px; line-height:33px; color:#292929;}
-h2 { font-size:36px; line-height:45px; color:#fff; font-weight:normal; letter-spacing:-1px;}
-h3 { font-size:24px; line-height:30px; color:#fff; font-weight:normal; }
+h2 { font-size:36px; line-height:45px; color:#000000; font-weight:normal; letter-spacing:-1px;}
+h3 { font-size:24px; line-height:30px; color:#000000; font-weight:normal; }
 ul {margin:0; padding:0;list-style-image:none;}
 ul.list-1 li {padding:0px 0 0px 11px; line-height:25px; background:url(../images/marker.gif) 0 10px no-repeat;}
 ul.list-1 li a { font-size:14px; color:#fff; line-height:25px;}
@@ -65,7 +65,7 @@ header>div {width:1264px; margin:0 auto; position:relative; }
 
 h1 {position:absolute; left:132px; top:0px; display:inline-block; z-index:100;}
 
-.social-icons {overflow:hidden; text-align:right; padding:17px 162px 13px 0 }
+.social-icons { overflow:hidden; text-align:right; padding:17px 162px 13px 0 }
 .social-icons span {display:inline-block; font-size:24px; line-height:28px; color:#fff; margin:-1px 20px 0 0; letter-spacing:-1px;}
 .social-icons a {display:inline-block; width:23px; height:23px; float:right;}
 .icon-1 {background:url(../images/icon-1.png) 0 0 no-repeat;}
@@ -104,7 +104,7 @@ ul.menu li:hover , ul.menu li.current {background:#2098f5;}
 .block-2>a {float:left; margin-right:20px; display:inline-block;}
 
 /****************************footer************************/
-footer { width:100%; position:relative; overflow:hidden; text-align:center; padding:32px 0 45px 0; background:#131313;}
+footer { width:100%; position:relative; overflow:hidden; text-align:center; padding:32px 0 45px 0; background:#FFFFFF;}
 footer p, footer a {color:#939393;}
 footer a:hover {text-decoration:underline;}
 
