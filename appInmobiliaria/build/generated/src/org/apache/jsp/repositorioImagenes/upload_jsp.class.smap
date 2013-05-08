@@ -1,0 +1,14 @@
+SMAP
+upload_jsp.java
+JSP
+*S JSP
+*F
++ 0 upload.jsp
+repositorioImagenes/upload.jsp
+*L
+5,5:63
+10,16:13
+25:67
+27,43:69
+69:112
+*E
