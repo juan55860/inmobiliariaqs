@@ -4,14 +4,14 @@
  */
 package controladores;
 
-import modelo.prioridad;
+import modelo.Prioridad;
 
 
 /**
  *
  * @author CarlaZuluaga
  */
-public class clsDAOInmueble extends prioridad {
+public class clsDAOInmueble extends Prioridad {
     
     modelo.clsConexionBD ConexionBD = new modelo.clsConexionBD();
     
