@@ -1,17 +1,16 @@
 <%-- 
-    Document   : prcFotos
-    Created on : 9/05/2013, 02:46:35 AM
+    Document   : prcIngresarEdificio
+    Created on : 9/05/2013, 08:32:03 AM
     Author     : usuario
 --%>
 
-<%@page import="java.util.LinkedList"%>
-<%@page import="java.io.File"%>
-<%@page import="org.apache.commons.fileupload.FileItem"%>
-<%@page import="java.util.List"%>
-<%@page import="org.apache.commons.fileupload.servlet.ServletFileUpload"%>
-<%@page import="org.apache.commons.fileupload.disk.DiskFileItemFactory"%>
-<%@page import="org.apache.commons.fileupload.FileItemFactory"%>
-<%@page import="org.apache.commons.fileupload.FileItemFactory"%>
+<%@page import="modelo.Edificio"%>
+<%@page import="controladores.ctrlIngresarEdificio"%>
+<%@page import="modelo.clsConexionBD"%>
+<%@page import="modelo.Comercial"%>
+<%@page import="controladores.ctrlIngresarComercial"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
     <head><script>
         function redireccionar() {
@@ -120,41 +119,47 @@
             </div>
         </header>
         <%
-            /*FileItemFactory es una interfaz para crear FileItem*/
-            FileItemFactory file_factory = new DiskFileItemFactory();
-            /*ServletFileUpload esta clase convierte los input file a FileItem*/
-            ServletFileUpload servlet_up = new ServletFileUpload(file_factory);
-            /*sacando los FileItem del ServletFileUpload en una lista */
-            List items = servlet_up.parseRequest(request);
-            LinkedList<String> fotos = new LinkedList();
-            String value = "";
-            controladores.ctrlIngresarFoto ctrlFoto = new controladores.ctrlIngresarFoto();
-            for (int i = 0; i < items.size(); i++) {
-                /*FileItem representa un archivo en memoria que puede ser pasado al disco duro*/
-                FileItem item = (FileItem) items.get(i);
-                /*item.isFormField() false=input file; true=text field*/
-                if (!item.isFormField()) {
-                    /*cual sera la ruta al archivo en el servidor*/
-                    File archivo_server = new File("C:/Users/usuario/Documents/DOCUMENTOS DE LA U/pryInmobiliaria/appInmobiliaria/web/fotos/" + item.getName());
-                    /*y lo escribimos en el servido*/
-                    fotos.add("fotos/" + archivo_server.getName());
-                    item.write(archivo_server);
+            int codPropietario = Integer.parseInt(request.getParameter("ide"));
+            String precio = request.getParameter("precio");
+            String direccion = request.getParameter("direccion");
+            int area = Integer.parseInt(request.getParameter("area"));
+            String estado = request.getParameter("estado");
+            String descripcion = request.getParameter("descripcion");
 
-                } else {
-                    if (item.getFieldName().equals("idinm")) {
-                        value = item.getString();
-                    }
-                }
-            }
-            if (!value.equals("")) {
-                for (int j = 0; j < fotos.size(); j++) {
-                    ctrlFoto.ingresarFotoenTabla(fotos.get(j), value);
-                }
-        %>
+                int numParqueaderos = Integer.parseInt(request.getParameter("numparq"));
+                int numPisos = Integer.parseInt(request.getParameter("numpisos"));
+                ctrlIngresarEdificio ctrlEdificio = new ctrlIngresarEdificio();
+                Edificio edificio = new Edificio(numPisos, numParqueaderos);
+                edificio.setCodPropietario(codPropietario);
+                edificio.setPrecio(precio);
+                edificio.setDireccion(direccion);
+                edificio.setArea(area);
+                edificio.setEstado(estado);
+                edificio.setDescripcion(descripcion);
+                String res = ctrlEdificio.insertar(edificio);
+                if (res.equals("")) {%>
         <script>
-            window.location.href = "frmSeleccionInmueble.jsp";
+            alert("se inserto el inmueble Edificio");
+
         </script>
-        <% }
-        %>
+        <% clsConexionBD cons = new clsConexionBD(); %>
+        <form action="prcFotos.jsp" enctype="MULTIPART/FORM-DATA" method="post">
+            <label><strong>Fotos</strong></label></br>
+            <input required type="file" name="foto1" id="foto1"/></br>
+            <input required type="file" name="foto2" id="foto2"/></br>
+            <input required type="file" name="foto3" id="foto3"/></br>
+            <input required type="file" name="foto4" id="foto4"/></br>
+            <input required type="file" name="foto5" id="foto5"/></br>
+            <input type="hidden" name="idinm" id="idinm" value="<%=cons.consultarClaveBarrio()%>"/></br>    <%// Id del inmueble%>
+            <input type="submit" name="btn1" id ="btn1"/></br>
+        </form>
+
+        <%} else {%>
+        <script>
+            alert("No inserto");
+            redireccionar();
+        </script>
+        <%}
+            %>
     </body>
 </html>
