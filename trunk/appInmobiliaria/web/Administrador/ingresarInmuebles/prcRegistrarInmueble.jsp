@@ -13,7 +13,7 @@
 <html>
     <head><script>
         function redireccionar() {
-            window.location.href = "../Administrador.jsp";
+            window.location.href = "frmSeleccionInmueble.jsp";
         }
 
         </script>
@@ -142,16 +142,13 @@ body {
                                         if(res.equals("")){ %>
                                         <script>
                                             alert("se inserto el comercial");
+                                            redireccionar();
                                         </script>
                                         <%} else {%>
                                             <script>
                                                 alert("No inserto");
+                                                redireccionar();
                                             </script>
                                         <%}}%>
-    
-        
-
-
-
     </body>
 </html>
