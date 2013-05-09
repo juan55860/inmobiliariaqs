@@ -16,7 +16,9 @@ public class ctrlIngresarPersona extends Persona {
     clsConexionBD conexion;
 
     public ctrlIngresarPersona() {
+        
         conexion = new clsConexionBD();
+        
     }
 
     public boolean verificar(int key) {
@@ -36,7 +38,7 @@ public class ctrlIngresarPersona extends Persona {
 
     public String insertar(int id) {
         if (verificar(id) == false) {
-            String sql = "INSERT INTO personas VALUES ('" + id + "', '" + getTipoIdentificacion() + "', '" + getNombre() + "', '" + getApellido()
+            String sql = "INSERT INTO personas VALUES (" + id + ", '" + getTipoIdentificacion() + "', '" + getNombre() + "', '" + getApellido()
                     + "', '" + getDireccion() + "', '" + getTelefono() + "', '" + getCorreo() + "', '" + getContrasena() + "', '" + getRol() + "')";
             if (conexion.actualizar(sql) == 1) {
                 return "";
