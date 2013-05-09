@@ -147,7 +147,7 @@ public class ctrlIngresarInmueble {
 
                 sb.append("</select>");
                 sb.append("</div>");
-            } else if (categoria.equals("EDIFICIOS")) {
+            } else if (categoria.equals("EDIFICIO")) {
                 sb.append("<div> <label>Numero de parqueaderos</label>");
                 sb.append("<input required id='numparq' name='numparq' type='number'></input>");
                 sb.append("</div>");
@@ -170,7 +170,7 @@ public class ctrlIngresarInmueble {
                 sb.append("<div> <label>Numero de Piscinas</label>");
                 sb.append("<input required id='numpiscinas' name='numpiscinas' type='number'></input>");
                 sb.append("</div>");
-            } else if (categoria.equals("LOTES")) {
+            } else if (categoria.equals("LOTE")) {
                 sb.append("<label>Tipo</label>");
                 sb.append("<textarea id='tipo' name='tipo'  cols='38' rows='8' style='color:#ffffff; background: #131313; font-family: Arial, Helvetica, sans-serif;\n"
                         + "font-size: 14px;' type='text'></textarea>");
@@ -181,4 +181,21 @@ public class ctrlIngresarInmueble {
             return null;
         }
     }
+    
+    public String direccionarJsp(String cat){
+        String jsp = "";
+        cat = cat.toLowerCase();
+        switch(cat){
+            case "edificio":
+                jsp = "prcIngresarEdificio.jsp";
+                break;
+            case "comercial":
+                jsp = "prcIngresarComercial.jsp";
+                break;    
+            default: jsp = "frmSeleccionInmueble.jsp";
+                break;
+        }
+        return jsp;
+    }
+    
 }
