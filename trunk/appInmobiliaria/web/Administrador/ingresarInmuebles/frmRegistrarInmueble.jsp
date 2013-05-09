@@ -10,7 +10,7 @@
 
 <html>
     <head>
-        <title>Home Inmobiliaria</title>
+        <title>Registrar Inmueble</title>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" media="screen" href="../../sitio/css/reset.css">
         <link rel="stylesheet" type="text/css" media="screen" href="../../sitio/css/style.css">
