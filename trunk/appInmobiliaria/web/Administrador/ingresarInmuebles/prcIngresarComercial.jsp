@@ -126,8 +126,7 @@
             String estado = request.getParameter("estado");
             String descripcion = request.getParameter("descripcion");
 
-            if (request.getParameter("cat").equalsIgnoreCase("comercial")) {
-                String tipoInmueble = request.getParameter("tipoInmueble");
+            String tipoInmueble = request.getParameter("tipoInmueble");
                 String barrio = request.getParameter("nombre");
                 int banos = Integer.parseInt(request.getParameter("numbanios"));
                 int numeroPisos = Integer.parseInt(request.getParameter("numpisos"));
@@ -163,6 +162,6 @@
             redireccionar();
         </script>
         <%}
-            }%>
+            %>
     </body>
 </html>

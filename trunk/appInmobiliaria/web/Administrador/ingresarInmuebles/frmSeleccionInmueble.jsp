@@ -122,9 +122,9 @@
                                     <select name="categoria" >
                                         <option value="COMERCIAL">COMERCIAL</option>
                                         <option value="RESIDENCIAL">RESIDENCIAL</option>
-                                        <option value="EDIFICIOS">EDIFICIOS</option>
+                                        <option value="EDIFICIO">EDIFICIOS</option>
                                         <option value="RURAL">RURAL</option>
-                                        <option value="LOTES">LOTES</option>
+                                        <option value="LOTE">LOTES</option>
                                     </select>   
                                 </div>
                                 <a onClick="document.getElementById('form-1').submit()" class="button">Ingresar</a>

@@ -92,10 +92,13 @@
                     <div class="grid_8">
                         <div class="grid_4">
                             <div class="left-1">
-
+                                
+                                <%!ctrlIngresarInmueble inmueble = new ctrlIngresarInmueble();
+                                %>
+                                <%String jsp = inmueble.direccionarJsp(request.getParameter("categoria"));%>
+                                
                                 <h2 class="top-1 p3"> <%= request.getParameter("categoria")%> </h2>
-
-                                <form name="form1" id="form-1"  class="form-1 bot-1"  action="prcRegistrarInmueble.jsp">
+                                <form name="form1" id="form-1"  class="form-1 bot-1"  action = <%=jsp%>>
                                     <input type="hidden" id="cat" name="cat" value=<%= request.getParameter("categoria")%>>
                                     <div>
                                         <label>Identificación propietario</label>
