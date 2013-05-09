@@ -81,6 +81,16 @@ public class clsConexionBD {
         return -1;
     }
 
+    public StringBuffer consultarClaveBarrio() throws SQLException {
+        String query = "SELECT  'inm'||nextval('sec_inmuebles')-1 as prueba";
+        StringBuffer sb = new StringBuffer();
+        ResultSet rs = consultar(query);
+        if (rs.next()) {
+            sb.append(rs.getString("prueba"));
+        }
+        return sb;
+    }
+
     public int actualizar(String sql) {
         try {
             st = getCon().createStatement();

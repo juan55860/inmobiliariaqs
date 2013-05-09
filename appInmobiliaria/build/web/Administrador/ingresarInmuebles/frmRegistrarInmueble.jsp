@@ -94,8 +94,8 @@
                             <div class="left-1">
 
                                 <h2 class="top-1 p3"> <%= request.getParameter("categoria")%> </h2>
-                               
-                                <form name="form1" id="form-1"  class="form-1 bot-1" action="prcRegistrarInmueble.jsp">
+
+                                <form name="form1" id="form-1"  class="form-1 bot-1"  action="prcRegistrarInmueble.jsp">
                                     <input type="hidden" id="cat" name="cat" value=<%= request.getParameter("categoria")%>>
                                     <div>
                                         <label>Identificación propietario</label>
@@ -112,30 +112,26 @@
                                     </div>
                                     <div class="select-1">
 
-                                       
+
                                         <%ctrlIngresarInmueble tipo = new ctrlIngresarInmueble();%>
 
                                         <%=tipo.cargarComboCategoria(request.getParameter("categoria"))%>
                                     </div>
-                                    
-                                    
+
+
                                     <div>
                                         <label>Extensión</label>
                                         <input required name="area" id="area" type="text"/>
                                     </div>
                                     <div class="select-1">
-                                    <label>Estado</label>
-                                    <select name="estado" id="estado">
-                                        <option value="ARRENDAMIENTO">ARRENDAMNIENTO</option>
-                                        <option value="VENTA">VENTA</option>
-                                     
-                                    </select>   
-                                </div>
-                                    <div>
-                                        <label>
-                                            Foto
-                                        </label>
+                                        <label>Estado</label>
+                                        <select name="estado" id="estado">
+                                            <option value="ARRENDAMIENTO">ARRENDAMNIENTO</option>
+                                            <option value="VENTA">VENTA</option>
+
+                                        </select>   
                                     </div>
+                                   
 
                                     <div>
 
