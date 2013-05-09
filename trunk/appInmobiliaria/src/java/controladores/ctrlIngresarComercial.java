@@ -28,9 +28,9 @@ public class ctrlIngresarComercial {
         return res;
     }
     
-    public boolean verificarBarrio(int key) {
+    public boolean verificarBarrio(String key) {
         boolean res = false;
-        String sql = "SELECT * FROM barrios where codigo = " + key + ";";
+        String sql = "SELECT * FROM barrios where nombre = '" + key + "';";
         if (conexion.verificar(sql) == 1) {
             res = true;
         }
@@ -39,11 +39,11 @@ public class ctrlIngresarComercial {
     
     public String insertar(Comercial comercial) {
         String res = "No inserto";
-         if (verificarBarrio(comercial.getCodigoBarrio()) == true && verificarPersona(comercial.getCodPropietario()) == true) {
-            String sql = "INSERT INTO comerciales(precio, direccion, estrato, cod_propietario, prioridad, area, descripcion, estado, tipo, num_bannos, num_pisos, cod_barrio)"
-                    + "VALUES('"+ comercial.getPrecio() + "'," + comercial.getDireccion() + ",'" + comercial.getEstrato() + "',"
-                    + comercial.getCodPropietario() + ",'" + comercial.getPrioridad() + "','" + comercial.getArea() + "'," + comercial.getDescripcion()
-                    + "," + comercial.getEstado() + "," + comercial.getTipo() + "," + comercial.getBanos() + "," + comercial.getNumeroPisos() + "," + comercial.getCodigoBarrio() + ");";
+         if (verificarPersona(comercial.getCodPropietario()) == true) {
+            String sql = "INSERT INTO comerciales(precio, direccion, cod_propietario, area, descripcion, estado, tipo, num_bannos, num_pisos, cod_barrio)"
+                    + "VALUES('"+ comercial.getPrecio() + "','" + comercial.getDireccion() + "'," 
+                    + comercial.getCodPropietario() + "," + comercial.getArea() + ",'" + comercial.getDescripcion()
+                    + "','" + comercial.getEstado() + "','" + comercial.getTipo() + "'," + comercial.getBanos() + "," + comercial.getNumeroPisos() + ",'" + comercial.getBarrio() + "');";
             if (conexion.actualizar(sql) == 1) {
                 res = "";
             }

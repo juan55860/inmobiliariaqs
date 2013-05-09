@@ -17,17 +17,17 @@
         }
 
         </script>
-        
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <style type="text/css">
-    body,td,th {
-	color: #000;
-}
-body {
-	background-color: #666;
-}
-    </style>
-    <link rel="stylesheet" type="text/css" media="screen" href="../../sitio/css/reset.css">
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <style type="text/css">
+            body,td,th {
+                color: #000;
+            }
+            body {
+                background-color: #666;
+            }
+        </style>
+        <link rel="stylesheet" type="text/css" media="screen" href="../../sitio/css/reset.css">
         <link rel="stylesheet" type="text/css" media="screen" href="../../sitio/css/style.css">
         <link rel="stylesheet" type="text/css" media="screen" href="../../sitio/css/grid_12.css">
         <link rel="stylesheet" type="text/css" media="screen" href="../../sitio/css/slider-2.css">
@@ -85,7 +85,7 @@ body {
             }
         </style>
     </head>
-<body><header>
+    <body><header>
             <div>
                 <h1><a href="../../index.jsp"><img src="../../sitio/images/logo.jpg" alt=""></a></h1>
                 <div class="social-icons">
@@ -122,8 +122,8 @@ body {
             Lote lote = new Lote();
             lote.setArea(123);
             lote.setCodPropietario(1234);
-            lote.setCodigo(0000);
-            lote.setCodigoInmueble(0000);
+            //lote.setCodigo(0000);
+            //lote.setCodigoInmueble(0000);
             lote.setDescripcion("patio cocina");
             lote.setDireccion("calle 4627");
             lote.setEstado("venta");
@@ -131,12 +131,12 @@ body {
             lote.setPrecio("1900000");
             lote.setPrioridad(1);
             lote.setTipo("cultivo");
-            
+
             String x = ctrlLote.insertar(lote);
             if (x.equals("")) {%>
-            <script> alert('Se registro el lote');
-                redireccionar();
-            </script>
+        <script> alert('Se registro el lote');
+            redireccionar();
+        </script>
         <% }%>
 
 

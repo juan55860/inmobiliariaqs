@@ -3,6 +3,8 @@
     Created on : 8/05/2013, 01:42:36 AM
     Author     : usuario
 --%>
+<%@page import="modelo.Comercial"%>
+<%@page import="controladores.ctrlIngresarComercial"%>
 <%@page import="controladores.ctrlIngresarInmueble"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -92,19 +94,21 @@
                             <div class="left-1">
 
                                 <h2 class="top-1 p3"> <%= request.getParameter("categoria")%> </h2>
-                                <form name="form1" id="form-1"  class="form-1 bot-1" action="frmRegistrarInmueble.jsp">
+                               
+                                <form name="form1" id="form-1"  class="form-1 bot-1" action="prcRegistrarInmueble.jsp">
+                                    <input type="hidden" id="cat" name="cat" value=<%= request.getParameter("categoria")%>>
                                     <div>
                                         <label>Identificación propietario</label>
-                                        <input required id="nombre"  type="number" />
+                                        <input required id="ide"  name="ide" type="number" />
                                     </div>
 
                                     <div>
                                         <label>Precio</label>
-                                        <input required id="nombre"  type="number" />
+                                        <input required id="precio" name="precio" type="number" />
                                     </div>
                                     <div>
                                         <label>Dirección</label>
-                                        <input required id="nombre"  type="text"/>
+                                        <input required id="direccion" name="direccion" type="text"/>
                                     </div>
                                     <div class="select-1">
 
@@ -117,11 +121,11 @@
                                     
                                     <div>
                                         <label>Extensión</label>
-                                        <input required name="extension" id="extension" type="text"/>
+                                        <input required name="area" id="area" type="text"/>
                                     </div>
                                     <div class="select-1">
                                     <label>Estado</label>
-                                    <select name="categoria" >
+                                    <select name="estado" id="estado">
                                         <option value="ARRENDAMIENTO">ARRENDAMNIENTO</option>
                                         <option value="VENTA">VENTA</option>
                                      

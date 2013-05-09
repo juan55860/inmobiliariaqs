@@ -41,9 +41,9 @@ public class ctrlIngresarResidencial {
         String res = "No inserto";
          if (verificarBarrio(residencial.getCodigoBarrio()) == true && verificarPersona(residencial.getCodPropietario()) == true) {
             String sql = "INSERT INTO residenciales(precio,direccion,estrato,cod_propietario,prioridad,area,descripcion,estado,tipo,num_bannos,num_habitaciones,num_pisos,parqueadero,cod_barrio)"
-                    + "VALUES('"+ residencial.getPrecio() + "'," + residencial.getDireccion() + ",'" + residencial.getEstrato() + "',"
-                    + residencial.getCodPropietario() + ",'" + residencial.getPrioridad() + "','" + residencial.getArea() + "'," + residencial.getDescripcion()
-                    + "," + residencial.getEstado() + "," + residencial.getTipo() + "," + residencial.getBanos() + "," + residencial.getHabitaciones() + "," + residencial.getNumeroPisos() + "," + residencial.getParqueadero() + "," + residencial.getCodigoBarrio() + ");";
+                    + "VALUES('"+ residencial.getPrecio() + "','" + residencial.getDireccion() + "','" + residencial.getEstrato() + "',"
+                    + residencial.getCodPropietario() + "," + residencial.getPrioridad() + "," + residencial.getArea() + ",'" + residencial.getDescripcion()
+                    + "','" + residencial.getEstado() + "','" + residencial.getTipo() + "'," + residencial.getBanos() + "," + residencial.getHabitaciones() + "," + residencial.getNumeroPisos() + "," + residencial.getParqueadero() + "," + residencial.getCodigoBarrio() + ");";
             if (conexion.actualizar(sql) == 1) {
                 res = "";
             }
