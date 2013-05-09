@@ -623,6 +623,15 @@
             
         </footer>
 
+        <footer>
+            <img src="../../sitio/images/LogoQS.JPG" width="120" height="90">
+            <p>© 2013 Quality Solutions</p>
+        </footer>
+        
+        <script>
+            Cufon.now();
+        </script>
+        
     </body>
 
 
