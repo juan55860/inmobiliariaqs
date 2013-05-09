@@ -73,7 +73,7 @@
                             <li><a href="#">Vender</a></li>
                             <li><a href="#">Comprar</a></li>
                             <li><a href="#">Alquiler</a></li>
-                            <li><a href="#">Iniciar Sesion</a></li>
+                            <li><a href="Login/login.jsp">Iniciar Sesion</a></li>
                         </ul>
                     </nav>
                 </div>

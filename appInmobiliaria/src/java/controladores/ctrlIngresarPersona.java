@@ -26,6 +26,13 @@ public class ctrlIngresarPersona extends Persona {
         }
         return false;
     }
+    public boolean login(String name, String password) {
+        String sql = "SELECT * FROM personas where contrasenna='" + password + "'and nombre='"+name+"';";
+        if (conexion.verificar(sql) == 1) {
+            return true;
+        }
+        return false;
+    }
 
     public String insertar(int id) {
         if (verificar(id) == false) {
