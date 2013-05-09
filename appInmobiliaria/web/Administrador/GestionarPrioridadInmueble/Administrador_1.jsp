@@ -11,21 +11,6 @@
         <title>Administrador Home</title>
         <meta charset="utf-8">
         
-        <link rel="stylesheet" type="text/css" media="screen" href="css/jquery-ui-1.8.1.custom.css" />
-        <link rel="stylesheet" type="text/css" media="screen" href="css/ui.jqgrid.css" />
-        <link rel="stylesheet" type="text/css" media="screen" href="css/ui.multiselect.css" />
-        <script src="js/jqGrid/jquery.js" type="text/javascript"></script>
-        <script src="js/jqGrid/jquery-ui-1.8.1.custom.min.js" type="text/javascript"></script>
-        <script src="js/jqGrid/jquery.layout.js" type="text/javascript"></script>
-        <script src="js/jqGrid/grid.locale-en.js" type="text/javascript"></script>
-        <script src="js/jqGrid/ui.multiselect.js" type="text/javascript"></script>
-        <script src="js/jqGrid/jquery.jqGrid.min.js" type="text/javascript"></script>
-        <script src="js/jqGrid/jquery.tablednd.js" type="text/javascript"></script>
-        <script src="js/jqGrid/jquery.contextmenu.js" type="text/javascript"></script>
-        <script type="text/javascript">
-            $.jgrid.no_legacy_api = true;
-            $.jgrid.useJSON = true;
-        </script>
         <link rel="stylesheet" type="text/css" media="screen" href="../../sitio/css/reset.css">
         <link rel="stylesheet" type="text/css" media="screen" href="../../sitio/css/style.css">
         <link rel="stylesheet" type="text/css" media="screen" href="../../sitio/css/grid_12.css">
@@ -44,6 +29,22 @@
 
 
 <script src="../../sitio/js/FF-cash.js"></script>
+        <link rel="stylesheet" type="text/css" media="screen" href="css/jquery-ui-1.8.1.custom.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="css/ui.jqgrid.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="css/ui.multiselect.css" />
+        <script src="js/jqGrid/jquery.js" type="text/javascript"></script>
+        <script src="js/jqGrid/jquery-ui-1.8.1.custom.min.js" type="text/javascript"></script>
+        <script src="js/jqGrid/jquery.layout.js" type="text/javascript"></script>
+        <script src="js/jqGrid/grid.locale-en.js" type="text/javascript"></script>
+        <script src="js/jqGrid/ui.multiselect.js" type="text/javascript"></script>
+        <script src="js/jqGrid/jquery.jqGrid.min.js" type="text/javascript"></script>
+        <script src="js/jqGrid/jquery.tablednd.js" type="text/javascript"></script>
+        <script src="js/jqGrid/jquery.contextmenu.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $.jgrid.no_legacy_api = true;
+            $.jgrid.useJSON = true;
+        </script>
+        
         
         <script>
             function evento() {
@@ -53,7 +54,30 @@
         </script>
         <script type="text/javascript">
 
-            jQuery(document).ready(function() {
+
+var s = new String();
+
+
+            $(document).ready(function(){
+
+                grid();
+
+            });
+        
+            $(document).ready(function(){
+
+                grid2();
+
+            });
+            
+            $(document).ready(function(){
+
+                slid();
+
+            });
+            
+            
+            function grid() {
                 jQuery("#toolbar").jqGrid({url: 'getJSONSerie.jsp',
                     datatype: "json",
                     jsonReader: {repeatitems: true,
@@ -149,7 +173,12 @@
 
 
         
-                $('.form-1').jqTransform();
+                
+
+            }
+            
+            function slid(){
+            $('.form-1').jqTransform();
                 $('.slider')._TMS({
                     show: 0,
                     pauseOnHover: true,
@@ -166,8 +195,8 @@
                     waitBannerAnimation: false,
                     progressBar: false
                 })
-
-            });
+            
+            }
 
         </script>
 
@@ -181,22 +210,12 @@ body {
 }
     </style>
 
-        <style type="text/css">
-            #apDiv1 {
-                background-color:white;
-                position:absolute;
-                left:191px;
-                top:476px;
-                width:802px;
-                height:677px;
-                z-index:1;
-            }
-        </style>
+
     </head>
     <body>
      
         
-  <div id="apDiv1"></div>
+
         <div class="main">
             <!--==============================header=================================-->
             <header>
@@ -239,14 +258,24 @@ body {
 
 
   <footer>
-             
+      
+            <fieldset>
+                        
                 <center>  <table id="toolbar"></table></center>
         <div id="ptoolbar" ></div>
+            </fieldset>
+      
   </footer>
+        
+        
+        
+       <footer>
+            <img src="../../sitio/images/LogoQS.JPG" width="120" height="90">
+            <p>© 2013 Quality Solutions</p>
+        </footer>
         
         <script>
             Cufon.now();
-        </script>    
-
+        </script>
     </body>
 </html>
