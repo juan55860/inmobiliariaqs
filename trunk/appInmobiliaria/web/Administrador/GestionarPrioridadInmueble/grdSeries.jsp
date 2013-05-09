@@ -35,17 +35,17 @@
                     height: 255,
                     width: 600,
                     viewrecords: true,
-                    colNames: ['codigo', 'codigotipoinmueble', 'precio', 'barrio', 'direccion', 'codigopropietario', 'prioridad', 'estadocheck', 'longitud', 'numhabitaciones'],
+                    colNames: ['codigo','precio','direccion','estrato','cod_propietario','prioridad', 'area', 'descripcion', 'estado'],
                     colModel: [{name: 'codigo', index: 'codigo', width: 65, editable: true},
-                        {name: 'codigotipoinmueble', index: 'codigotipoinmueble', width: 150, editable: true},
                         {name: 'precio', index: 'precio', width: 150, editable: true},
-                        {name: 'barrio', index: 'barrio', width: 150, editable: true},
                         {name: 'direccion', index: 'direccion', width: 150, editable: true},
-                        {name: 'codigopropietario', index: 'codigopropietario', width: 150, editable: true},
+                        {name: 'estrato', index: 'estrato', width: 150, editable: true},
+                        {name: 'cod_propietario', index: 'cod_propietario', width: 150, editable: true},
                         {name: 'prioridad', index: 'prioridad', width: 150, editable: true},
-                        {name: 'estadocheck', index: 'estadocheck', width: 150, editable: true},
-                        {name: 'longitud', index: 'longitud', width: 150, editable: true},
-                        {name: 'numhabitaciones', index: 'numhabitaciones', width: 150, editable: true}
+                        {name: 'area', index: 'area', width: 150, editable: true},
+                        {name: 'descripcion', index: 'descripcion', width: 150, editable: true},
+                        {name: 'estado', index: 'estado', width: 150, editable: true}
+                        
                     ],
                     rowNum: 50, rowTotal: 2000, rowList: [20, 30, 50],
                     mtype: "GET",
@@ -138,7 +138,8 @@ body {
     </style>
     </head>
 <body>
-        <p align="right"><input  widhtype="submit" value="Regresar a la pagina Principal" onclick="evento();">
+        <p align="right"/>
+        <input type="submit" value="Regresar a la pagina Principal" onclick="evento();">
                 <center>  <table id="toolbar"></table></center>
         <div id="ptoolbar" ></div>
     </body>
