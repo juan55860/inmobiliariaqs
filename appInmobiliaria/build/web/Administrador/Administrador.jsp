@@ -46,27 +46,17 @@
             });
         </script>
 
-        <style type="text/css">
-            #apDiv1 {
-                background-color:white;
-                position:absolute;
-                left:191px;
-                top:476px;
-                width:802px;
-                height:677px;
-                z-index:1;
-            }
-        </style>
+       
     </head>
-    <body>
-        <div id="apDiv1"><iframe name="frdirect" frameborder="0"  height="600" width="1100"></iframe></div>
+    <body style="background-color: white;">
+        
         <div class="main">
             <!--==============================header=================================-->
             <header>
                 <div>
                     <h1><a href="../index.jsp"><img src="../sitio/images/logo.jpg" alt=""></a></h1>
                     <div class="social-icons">
-                        <span>Encuentranos en</span>
+                        <span style="color: black;">Siguenos en</span>
                         <a href="#" class="icon-3"></a>
                         <a href="#" class="icon-2"></a>
                         <a href="#" class="icon-1"></a>
@@ -84,8 +74,8 @@
                     <nav>
                         <ul class="menu">
                             <li><a href="ArrendamientosVentas/frmArrendamientosVentas.jsp">Financiera</a></li>
-                            <li><a href="GestionarPrioridadInmueble/grdSeries.jsp">Prioridad</a></li>
-                            <li><a href="ingresarInmuebles/frmRegistrarInmueble.jsp" >Inmuebles</a></li>
+                            <li><a href="#">Prioridad</a></li>
+                            <li><a href="ingresarInmuebles/frmSeleccionInmueble.jsp">Inmuebles</a></li>
                             <li><a href="IngresarClientes/frmRegistrarCliente.jsp">Clientes</a></li> 
                             <li><a href="SubirArchivos/cargarArchivo.jsp" target="frdirect">Archivos</a></li>
 
@@ -95,9 +85,7 @@
             </header>   
 
         </div>  
-        <script>
-            Cufon.now();
-        </script>    
+
 
     </body>
 </html>
