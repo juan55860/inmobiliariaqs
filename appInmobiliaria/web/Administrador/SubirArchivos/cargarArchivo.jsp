@@ -60,11 +60,47 @@
         </style>
     </head>
     <body style="background-color: white;">
-      
+        <div id="apDiv1"></div>
+        <div class="main">
+            <!--==============================header=================================-->
+            <header>
+                <div>
+                    <h1><a href="../../index.jsp"><img src="../../sitio/images/logo.jpg" alt=""></a></h1>
+                    <div class="social-icons">
+                        <span style="color: black;">Siguenos en</span>
+                        <a href="#" class="icon-3"></a>
+                        <a href="#" class="icon-2"></a>
+                        <a href="#" class="icon-1"></a>
+                    </div>
+                    <div id="slide">		
+                        <div class="slider">
+                            <ul class="items">
+                                <li><img src="../../sitio/images/slider-1-small.jpg" alt="" /></li>
+                                <li><img src="../../sitio/images/slider-2-small.jpg" alt="" /></li>
+                                <li><img src="../../sitio/images/slider-3-small.jpg" alt="" /></li>
+                            </ul>
+                        </div>	
+                        <a href="#" class="prev"></a><a href="#" class="next"></a>
+                    </div>
+                    <nav>
+                        <ul class="menu">
+                            <li><a href="../ArrendamientosVentas/frmArrendamientosVentas.jsp">Financiera</a></li>
+                            <li><a href="../GestionarPrioridadInmueble/grdSeries.jsp">Prioridad</a></li>
+                            <li><a href="../ingresarInmuebles/frmRegistrarInmueble.jsp" >Inmuebles</a></li>
+                            <li><a href="../IngresarClientes/frmRegistrarCliente.jsp">Clientes</a></li> 
+                            <li><a href="../SubirArchivos/cargarArchivo.jsp" target="frdirect">Archivos</a></li>
+
+                        </ul>
+                    </nav>
+                </div>
+            </header>   
+
+        </div>  
+        
+    <center>  
         <div>
              <form action="sube.jsp" enctype="MULTIPART/FORM-DATA" method="post">
             <input type="file" name="Archivo" required /> </br>
-            <input type="text" name="moncho" required /> </br>
             <input type="submit" value="Subir" />
             </br>
              </form></br></br></br></br></br></br></br></div></center>
