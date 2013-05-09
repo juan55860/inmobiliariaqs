@@ -4,6 +4,7 @@
     Author     : Camilo
 --%>
 
+<%@page import="modelo.clsConexionBD"%>
 <%@page import="modelo.Comercial"%>
 <%@page import="controladores.ctrlIngresarComercial"%>
 <%@page import="modelo.Persona"%>
@@ -17,17 +18,17 @@
         }
 
         </script>
-        
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <style type="text/css">
-    body,td,th {
-	color: #000;
-}
-body {
-	background-color: #666;
-}
-    </style>
-    <link rel="stylesheet" type="text/css" media="screen" href="../../sitio/css/reset.css">
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <style type="text/css">
+            body,td,th {
+                color: #000;
+            }
+            body {
+                background-color: #666;
+            }
+        </style>
+        <link rel="stylesheet" type="text/css" media="screen" href="../../sitio/css/reset.css">
         <link rel="stylesheet" type="text/css" media="screen" href="../../sitio/css/style.css">
         <link rel="stylesheet" type="text/css" media="screen" href="../../sitio/css/grid_12.css">
         <link rel="stylesheet" type="text/css" media="screen" href="../../sitio/css/slider-2.css">
@@ -43,25 +44,25 @@ body {
         <script src="../../sitio/js/jquery.jqtransform.js"></script>
         <script src="../../sitio/js/FF-cash.js"></script>
         <script>
-            $(document).ready(function() {
-                $('.form-1').jqTransform();
-                $('.slider')._TMS({
-                    show: 0,
-                    pauseOnHover: true,
-                    prevBu: '.prev',
-                    nextBu: '.next',
-                    playBu: false,
-                    duration: 1000,
-                    preset: 'fade',
-                    pagination: true,
-                    pagNums: false,
-                    slideshow: 7000,
-                    numStatus: false,
-                    banners: false,
-                    waitBannerAnimation: false,
-                    progressBar: false
-                })
-            });
+        $(document).ready(function() {
+            $('.form-1').jqTransform();
+            $('.slider')._TMS({
+                show: 0,
+                pauseOnHover: true,
+                prevBu: '.prev',
+                nextBu: '.next',
+                playBu: false,
+                duration: 1000,
+                preset: 'fade',
+                pagination: true,
+                pagNums: false,
+                slideshow: 7000,
+                numStatus: false,
+                banners: false,
+                waitBannerAnimation: false,
+                progressBar: false
+            })
+        });
         </script>
 
         <style type="text/css">
@@ -85,7 +86,7 @@ body {
             }
         </style>
     </head>
-<body><header>
+    <body style="background-color: white; color: black;"><header>
             <div>
                 <h1><a href="../../index.jsp"><img src="../../sitio/images/logo.jpg" alt=""></a></h1>
                 <div class="social-icons">
@@ -117,38 +118,51 @@ body {
                 </nav>
             </div>
         </header>
-         <%
-                                    int codigoPropietario = Integer.parseInt(request.getParameter("ide"));
-                                    String precio = request.getParameter("precio");
-                                    String direccion = request.getParameter("direccion");
-                                    int area = Integer.parseInt(request.getParameter("area"));
-                                    String estado = request.getParameter("estado");
-                                    String descripcion = request.getParameter("descripcion");
-                                    
-                                    if(request.getParameter("cat").equalsIgnoreCase("comercial")){
-                                        String tipoInmueble = request.getParameter("tipoInmueble");
-                                        String barrio = request.getParameter("nombre");
-                                        int banos = Integer.parseInt(request.getParameter("numbanios"));
-                                        int numeroPisos = Integer.parseInt(request.getParameter("numpisos"));
-                                        ctrlIngresarComercial ctrlComercial = new ctrlIngresarComercial();
-                                        Comercial comercial = new Comercial(tipoInmueble, banos, numeroPisos, barrio);
-                                        comercial.setCodPropietario(codigoPropietario);
-                                        comercial.setPrecio(precio);
-                                        comercial.setDireccion(direccion);
-                                        comercial.setArea(area);
-                                        comercial.setEstado(estado);
-                                        comercial.setDescripcion(descripcion);
-                                        String res = ctrlComercial.insertar(comercial);
-                                        if(res.equals("")){ %>
-                                        <script>
-                                            alert("se inserto el comercial");
-                                            redireccionar();
-                                        </script>
-                                        <%} else {%>
-                                            <script>
-                                                alert("No inserto");
-                                                redireccionar();
-                                            </script>
-                                        <%}}%>
+        <%
+            int codigoPropietario = Integer.parseInt(request.getParameter("ide"));
+            String precio = request.getParameter("precio");
+            String direccion = request.getParameter("direccion");
+            int area = Integer.parseInt(request.getParameter("area"));
+            String estado = request.getParameter("estado");
+            String descripcion = request.getParameter("descripcion");
+
+            if (request.getParameter("cat").equalsIgnoreCase("comercial")) {
+                String tipoInmueble = request.getParameter("tipoInmueble");
+                String barrio = request.getParameter("nombre");
+                int banos = Integer.parseInt(request.getParameter("numbanios"));
+                int numeroPisos = Integer.parseInt(request.getParameter("numpisos"));
+                ctrlIngresarComercial ctrlComercial = new ctrlIngresarComercial();
+                Comercial comercial = new Comercial(tipoInmueble, banos, numeroPisos, barrio);
+                comercial.setCodPropietario(codigoPropietario);
+                comercial.setPrecio(precio);
+                comercial.setDireccion(direccion);
+                comercial.setArea(area);
+                comercial.setEstado(estado);
+                comercial.setDescripcion(descripcion);
+                String res = ctrlComercial.insertar(comercial);
+                if (res.equals("")) {%>
+        <script>
+            alert("se inserto el inmueble Comercial");
+
+        </script>
+        <% clsConexionBD cons = new clsConexionBD(); %>
+        <form action="prcFotos.jsp" enctype="MULTIPART/FORM-DATA" method="post">
+            <label><strong>Fotos</strong></label></br>
+            <input required type="file" name="foto1" id="foto1"/></br>
+            <input required type="file" name="foto2" id="foto2"/></br>
+            <input required type="file" name="foto3" id="foto3"/></br>
+            <input required type="file" name="foto4" id="foto4"/></br>
+            <input required type="file" name="foto5" id="foto5"/></br>
+            <input type="hidden" name="idinm" id="idinm" value="<%=cons.consultarClaveBarrio()%>"/></br>    <%// Id del inmueble%>
+            <input type="submit" name="btn1" id ="btn1"/></br>
+        </form>
+
+        <%} else {%>
+        <script>
+            alert("No inserto");
+            redireccionar();
+        </script>
+        <%}
+            }%>
     </body>
 </html>
