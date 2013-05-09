@@ -14,17 +14,16 @@ public class Comercial extends InmuebleV2 {
     private String tipo; //LOCAL, OFICINA, CONSULTORIO, BODEGA, PARQUEADERO
     private int banos;
     private int numeroPisos;
-    private int codigoBarrio;
+    private String barrio;
 
     public Comercial() {
     }
 
-    public Comercial(int codigoInmueble, String tipo, int banos, int numeroPisos, int codigoBarrio) {
-        this.codigoInmueble = codigoInmueble;
+    public Comercial(String tipo, int banos, int numeroPisos, String barrio) {
         this.tipo = tipo;
         this.banos = banos;
         this.numeroPisos = numeroPisos;
-        this.codigoBarrio = codigoBarrio;
+        this.barrio = barrio;
     }
 
     /**
@@ -86,15 +85,15 @@ public class Comercial extends InmuebleV2 {
     /**
      * @return the codigoBarrio
      */
-    public int getCodigoBarrio() {
-        return codigoBarrio;
+    public String getBarrio() {
+        return barrio;
     }
 
     /**
      * @param codigoBarrio the codigoBarrio to set
      */
-    public void setCodigoBarrio(int codigoBarrio) {
-        this.codigoBarrio = codigoBarrio;
+    public void setBarrio(String barrio) {
+        this.barrio = barrio;
     }
     
     

@@ -4,6 +4,8 @@
     Author     : Camilo
 --%>
 
+<%@page import="modelo.Comercial"%>
+<%@page import="controladores.ctrlIngresarComercial"%>
 <%@page import="modelo.Persona"%>
 <%@page import="modelo.Inmueble"%>
 <%@page import="controladores.ctrlIngresarInmueble"%>
@@ -114,27 +116,40 @@ body {
                     </ul>
                 </nav>
             </div>
-        </header>  
-        <%
-            String precio = request.getParameter("precio");
-            String barrio = request.getParameter("nombre");
-            String direccion = request.getParameter("dir");
-            String tipoInmueble = request.getParameter("tipo");
-            int documentoPropietario = Integer.parseInt(request.getParameter("cedpro"));
-            int longitud = Integer.parseInt(request.getParameter("longitud"));
-            String estado = (request.getParameter("estado"));
-            int banios = Integer.parseInt(request.getParameter("banio"));
-            int habitaciones = Integer.parseInt(request.getParameter("habitaciones"));
-            Persona per = new Persona(documentoPropietario);
-
-            Inmueble inmueble = new Inmueble(precio, barrio, direccion, estado, longitud, tipoInmueble, per, banios, habitaciones);
-            ctrlIngresarInmueble ctrlInmueble = new ctrlIngresarInmueble();
-            int x = ctrlInmueble.insertarInmueblesBD(inmueble);
-            if (x == 1) {%>
-            <script> alert('Se registro el inmueble');
-                redireccionar();
-            </script>
-        <% }%>
+        </header>
+         <%
+                                    int codigoPropietario = Integer.parseInt(request.getParameter("ide"));
+                                    String precio = request.getParameter("precio");
+                                    String direccion = request.getParameter("direccion");
+                                    int area = Integer.parseInt(request.getParameter("area"));
+                                    String estado = request.getParameter("estado");
+                                    String descripcion = request.getParameter("descripcion");
+                                    
+                                    if(request.getParameter("cat").equalsIgnoreCase("comercial")){
+                                        String tipoInmueble = request.getParameter("tipoInmueble");
+                                        String barrio = request.getParameter("nombre");
+                                        int banos = Integer.parseInt(request.getParameter("numbanios"));
+                                        int numeroPisos = Integer.parseInt(request.getParameter("numpisos"));
+                                        ctrlIngresarComercial ctrlComercial = new ctrlIngresarComercial();
+                                        Comercial comercial = new Comercial(tipoInmueble, banos, numeroPisos, barrio);
+                                        comercial.setCodPropietario(codigoPropietario);
+                                        comercial.setPrecio(precio);
+                                        comercial.setDireccion(direccion);
+                                        comercial.setArea(area);
+                                        comercial.setEstado(estado);
+                                        comercial.setDescripcion(descripcion);
+                                        String res = ctrlComercial.insertar(comercial);
+                                        if(res.equals("")){ %>
+                                        <script>
+                                            alert("se inserto el comercial");
+                                        </script>
+                                        <%} else {%>
+                                            <script>
+                                                alert("No inserto");
+                                            </script>
+                                        <%}}%>
+    
+        
 
 
 
