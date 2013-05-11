@@ -51,7 +51,7 @@
             <!--==============================header=================================-->
             <header>
                 <div>
-                    <h1><a href="home.jsp"><img src="../sitio/images/logo.jpg" alt=""></a></h1>
+                    <h1><a href="../home.jsp"><img src="../sitio/images/logo.jpg" alt=""></a></h1>
                     <div class="social-icons">
                         <span style="color: black;">Siguenos en:</span>
                         <a href="#" class="icon-3"></a>
