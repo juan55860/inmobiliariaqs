@@ -89,7 +89,7 @@
     </head>
     <body style="background-color: white; color: black;"><header>
             <div>
-                <h1><a href="../../index.jsp"><img src="../../sitio/images/logo.jpg" alt=""></a></h1>
+                <h1><a href="../../home.jsp"><img src="../../sitio/images/logo.jpg" alt=""></a></h1>
                 <div class="social-icons">
                     <span>Encuentranos en</span>
                     <a href="#" class="icon-3"></a>

@@ -116,7 +116,7 @@ public class CtrlContratoPDF {
 
     public void Colocar_Destino() {
 
-        this.rutaDestino = "C:\\Users\\usuario\\Documents\\NetBeansProjects\\appInmobiliaria\\web\\Administrador\\pdf\\";
+        this.rutaDestino = "C:\\Users\\usuario\\Documents\\NetBeansProjects\\Subversion\\appInmobiliaria\\web\\Administrador\\pdf\\";
 
     }
 

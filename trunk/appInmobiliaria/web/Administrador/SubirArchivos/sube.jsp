@@ -38,4 +38,5 @@
 <script>
 
     window.alert("El documento registrado con éxito");
+    window.location.href = "../Administrador.jsp";
 </script>
