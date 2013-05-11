@@ -54,7 +54,7 @@
             <!--==============================header=================================-->
             <header>
                 <div>
-                    <h1><a href="../index.jsp"><img src="../sitio/images/logo.jpg" alt=""></a></h1>
+                    <h1><a href="../home.jsp"><img src="../sitio/images/logo.jpg" alt=""></a></h1>
                     <div class="social-icons">
                         <span style="color: black;">Siguenos en</span>
                         <a href="#" class="icon-3"></a>
@@ -74,10 +74,10 @@
                     <nav>
                         <ul class="menu">
                             <li><a href="ArrendamientosVentas/frmArrendamientosVentas.jsp">Financiera</a></li>
-                            <li><a href="#">Prioridad</a></li>
+                            <li><a href="GestionarPrioridadInmueble/GestionarPrioridad.jsp">Prioridad</a></li>
                             <li><a href="ingresarInmuebles/frmSeleccionInmueble.jsp">Inmuebles</a></li>
                             <li><a href="IngresarClientes/frmRegistrarCliente.jsp">Clientes</a></li> 
-                            <li><a href="SubirArchivos/cargarArchivo.jsp" target="frdirect">Archivos</a></li>
+                            <li><a href="SubirArchivos/cargarArchivo.jsp">Archivos</a></li>
 
                         </ul>
                     </nav>

@@ -75,10 +75,10 @@
                     <nav>
                         <ul class="menu">
                             <li><a href="../ArrendamientosVentas/frmArrendamientosVentas.jsp">Financiera</a></li>
-                            <li><a href="../GestionarPrioridadInmueble/grdSeries.jsp" >Prioridad</a></li>
-                            <li><a href="frmRegistrarInmueble.jsp" >Inmuebles</a></li>
+                            <li><a href="../GestionarPrioridadInmueble/GestionarPrioridad.jsp" >Prioridad</a></li>
+                            <li><a href="../ingresarInmuebles/frmSeleccionInmueble.jsp" >Inmuebles</a></li>
                             <li><a class="current" href="../IngresarClientes/frmRegistrarCliente.jsp" >Clientes</a></li> 
-                            <li><a href="../Administrador.jsp">Archivos</a></li>
+                            <li><a href="../SubirArchivos/cargarArchivo.jsp">Archivos</a></li>
 
                         </ul>
                     </nav>

@@ -78,9 +78,9 @@
                 
 
                 
-String ruta = "http://localhost:8084/appInmobiliaria/Administrador/pdf/"+q+".pdf";
+String ruta = "http://localhost:8080/appInmobiliaria/Administrador/pdf/"+q+".pdf";
 
-String ruta2 = "http://localhost:8084/appInmobiliaria/Administrador/pdf/a.pdf";
+String ruta2 = "http://localhost:8080/appInmobiliaria/Administrador/pdf/ejemplo.pdf";
 
 response.sendRedirect(ruta);
                 //}
