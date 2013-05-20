@@ -140,6 +140,9 @@ public class ctrlIngresarInmueble {
                 sb.append("<div> <label>Numero de Pisos</label>");
                 sb.append("<input required id='numpisos' name='numpisos' type='number'></input>");
                 sb.append("</div>");
+                sb.append("<div> <label>Numero de habitaciones</label>");
+                sb.append("<input required id='habitaciones' name='habitaciones' type='number'></input>");
+                sb.append("</div>");
                 sb.append("<div class='select-1'> <label>Tiene Parqueadero?</label>");
                 sb.append("<select name='parq' id='parq'>");
                 sb.append("<option value='true'>SI</option>");
@@ -161,6 +164,9 @@ public class ctrlIngresarInmueble {
                 sb.append("<option value='CASACAMPESTRE'>CASACAMPESTRE</option>");
                 sb.append("<option value='CABAÑA'>CABAÑA</option>");
                 sb.append("</select>");
+                sb.append("<div> <label>Numero de habitaciones</label>");
+                sb.append("<input required id='habitaciones' name='habitaciones' type='number'></input>");
+                sb.append("</div>");
                 sb.append("<div> <label>Numero de baños</label>");
                 sb.append("<input required id='numbanios' name='numbanios' type='number'></input>");
                 sb.append("</div>");
@@ -172,30 +178,43 @@ public class ctrlIngresarInmueble {
                 sb.append("</div>");
             } else if (categoria.equals("LOTE")) {
                 sb.append("<label>Tipo</label>");
-                sb.append("<textarea id='tipo' name='tipo'  cols='38' rows='8' style='color:#ffffff; background: #131313; font-family: Arial, Helvetica, sans-serif;\n"
-                        + "font-size: 14px;' type='text'></textarea>");
-
+                sb.append("<select name='tipo' id='tipo'>");
+                sb.append("<option value='construccion'>CONSTRUCCION</option>");
+                sb.append("<option value='cultivo'>CULTIVO</option>");
+                sb.append("<option value='ganaderia'>GANADERIA</option>");
+                sb.append("</select>");
+//                sb.append("<textarea id='tipo' name='tipo'  cols='38' rows='8' style='color:#ffffff; background: #131313; font-family: Arial, Helvetica, sans-serif;\n"
+//                        + "font-size: 14px;' type='text'></textarea>");
             }
             return sb;
         } else {
             return null;
         }
     }
-    
-    public String direccionarJsp(String cat){
+
+    public String direccionarJsp(String cat) {
         String jsp = "";
         cat = cat.toLowerCase();
-        switch(cat){
+        switch (cat) {
             case "edificio":
                 jsp = "prcIngresarEdificio.jsp";
                 break;
             case "comercial":
                 jsp = "prcIngresarComercial.jsp";
-                break;    
-            default: jsp = "frmSeleccionInmueble.jsp";
+                break;
+            case "rural":
+                jsp = "prcIngresarRural.jsp";
+                break;
+            case "residencial":
+                jsp = "prcIngresarResidencial.jsp";
+                break;
+            case "lote":
+                jsp = "prcIngresarLote.jsp";
+                break;
+            default:
+                jsp = "frmSeleccionInmueble.jsp";
                 break;
         }
         return jsp;
     }
-    
 }
