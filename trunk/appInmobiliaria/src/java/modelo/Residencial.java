@@ -15,14 +15,13 @@ public class Residencial extends InmuebleV2 {
     private int habitaciones;
     private int banos;
     private int numeroPisos;
-    private int codigoBarrio;
+    private String codigoBarrio;
     private boolean parqueadero;
 
     public Residencial() {
     }
 
-    public Residencial(int codigoInmueble, String tipo, int habitaciones, int banos, int numeroPisos, int codigoBarrio, boolean parqueadero) {
-        this.codigoInmueble = codigoInmueble;
+    public Residencial(String tipo, int habitaciones, int banos, int numeroPisos, String codigoBarrio, boolean parqueadero) {
         this.tipo = tipo;
         this.habitaciones = habitaciones;
         this.banos = banos;
@@ -104,14 +103,14 @@ public class Residencial extends InmuebleV2 {
     /**
      * @return the codigoBarrio
      */
-    public int getCodigoBarrio() {
+    public String getCodigoBarrio() {
         return codigoBarrio;
     }
 
     /**
      * @param codigoBarrio the codigoBarrio to set
      */
-    public void setCodigoBarrio(int codigoBarrio) {
+    public void setCodigoBarrio(String codigoBarrio) {
         this.codigoBarrio = codigoBarrio;
     }
 

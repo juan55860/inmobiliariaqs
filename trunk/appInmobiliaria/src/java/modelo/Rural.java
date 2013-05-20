@@ -19,8 +19,7 @@ public class Rural extends InmuebleV2 {
     public Rural() {
     }
 
-    public Rural(int codigoInmueble, String tipo, int piscina, int bano, int habitaciones) {
-        this.codigoInmueble = codigoInmueble;
+    public Rural(String tipo, int piscina, int bano, int habitaciones) {
         this.tipo = tipo;
         this.piscina = piscina;
         this.bano = bano;
