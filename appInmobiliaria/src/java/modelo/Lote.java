@@ -16,8 +16,7 @@ public class Lote extends InmuebleV2 {
     public Lote() {
     }
 
-    public Lote(int codigoInmueble, String tipo) {
-        this.codigoInmueble = codigoInmueble;
+    public Lote(String tipo) {
         this.tipo = tipo;
     }
 
