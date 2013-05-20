@@ -104,7 +104,10 @@
                                         <label>Identificación propietario</label>
                                         <input required id="ide"  name="ide" type="number" />
                                     </div>
-
+                                    <div>
+                                        <label>Estrato</label>
+                                        <input required id="estrato" name="estrato" type="number" />
+                                    </div>
                                     <div>
                                         <label>Precio</label>
                                         <input required id="precio" name="precio" type="number" />
