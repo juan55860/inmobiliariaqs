@@ -78,14 +78,10 @@
                             <li><a href="ingresarInmuebles/frmSeleccionInmueble.jsp">Inmuebles</a></li>
                             <li><a href="IngresarClientes/frmRegistrarCliente.jsp">Clientes</a></li> 
                             <li><a href="SubirArchivos/cargarArchivo.jsp">Archivos</a></li>
-
                         </ul>
                     </nav>
                 </div>
             </header>   
-
         </div>  
-
-
     </body>
 </html>
