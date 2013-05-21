@@ -16,9 +16,9 @@ public class ctrlIngresarPersona extends Persona {
     clsConexionBD conexion;
 
     public ctrlIngresarPersona() {
-        
+
         conexion = new clsConexionBD();
-        
+
     }
 
     public boolean verificar(int key) {
@@ -28,8 +28,9 @@ public class ctrlIngresarPersona extends Persona {
         }
         return false;
     }
+
     public boolean login(String name, String password) {
-        String sql = "SELECT * FROM personas where contrasenna='" + password + "'and nombre='"+name+"';";
+        String sql = "SELECT * FROM personas where contrasenna='" + password + "'and nombre='" + name + "';";
         if (conexion.verificar(sql) == 1) {
             return true;
         }
