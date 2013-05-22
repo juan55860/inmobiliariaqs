@@ -4,6 +4,8 @@
     Author     : Camilo
 --%>
 
+<%@page import="java.util.Calendar"%>
+<%@page import="java.util.GregorianCalendar"%>
 <%@page import="controladores.ctrlIngresarPersona"%>
 <%@page import="modelo.Persona"%>
 <%@page import="modelo.Inmueble"%>
@@ -15,17 +17,17 @@
             window.location.href = "frmRegistrarCliente.jsp";
         }
         </script>
-        
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <style type="text/css">
-    body,td,th {
-	color: #000;
-}
-body {
-	background-color: #666;
-}
-    </style>
-    <link rel="stylesheet" type="text/css" media="screen" href="../../sitio/css/reset.css">
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <style type="text/css">
+            body,td,th {
+                color: #000;
+            }
+            body {
+                background-color: #666;
+            }
+        </style>
+        <link rel="stylesheet" type="text/css" media="screen" href="../../sitio/css/reset.css">
         <link rel="stylesheet" type="text/css" media="screen" href="../../sitio/css/style.css">
         <link rel="stylesheet" type="text/css" media="screen" href="../../sitio/css/grid_12.css">
         <link rel="stylesheet" type="text/css" media="screen" href="../../sitio/css/slider-2.css">
@@ -83,7 +85,7 @@ body {
             }
         </style>
     </head>
-<body><header>
+    <body><header>
             <div>
                 <h1><a href="../../index.jsp"><img src="../../sitio/images/logo.jpg" alt=""></a></h1>
                 <div class="social-icons">
@@ -117,14 +119,14 @@ body {
         </header>  
         <%
             ctrlIngresarPersona ctrlPersona = new ctrlIngresarPersona();
-            
-            if(ctrlPersona.esNumero(request.getParameter("ide")) == false || ctrlPersona.esNumero(request.getParameter("telefono")) == false){%>
-            <script>
-                alert("El id y el telefono deben ser campos numericos");
-                redireccionar();
-            </script> 
-            <% } else {
-            int id = Integer.parseInt(request.getParameter("ide"));    
+            Calendar fecha = new GregorianCalendar();
+            if (ctrlPersona.esNumero(request.getParameter("ide")) == false || ctrlPersona.esNumero(request.getParameter("telefono")) == false) {%>
+        <script>
+            alert("El id y el telefono deben ser campos numericos");
+            redireccionar();
+        </script> 
+        <% } else {
+            int id = Integer.parseInt(request.getParameter("ide"));
             String tipoId = request.getParameter("tipoId");
             String nombre = request.getParameter("nombre");
             String apellido = request.getParameter("apellido");
@@ -133,7 +135,7 @@ body {
             String email = request.getParameter("email");
             String contrasena = request.getParameter("contrasena");
             String rol = request.getParameter("rol");
-            
+
             ctrlPersona.setIdentificacion(id);
             ctrlPersona.setTipoIdentificacion(tipoId);
             ctrlPersona.setNombre(nombre);
@@ -143,15 +145,17 @@ body {
             ctrlPersona.setCorreo(email);
             ctrlPersona.setContrasena(contrasena);
             ctrlPersona.setRol(rol);
-            
+            ctrlPersona.setFechaDeRegistro(fecha.getTime());
+
             String res = ctrlPersona.insertar(id);
-            if (res.equals("")) {%>
-            <script> alert('Se registro el cliente');
-                redireccionar();
-            </script>
-            <% } else {%>
-            <script> alert('Problemas para registrar');
-                redireccionar();
-            </script> <%} }%>
+                if (res.equals("")) {%>
+        <script> alert('Se registro el cliente');
+            redireccionar();
+        </script>
+        <% } else {%>
+        <script> alert('Problemas para registrar');
+            redireccionar();
+        </script> <%}
+                }%>
     </body>
 </html>

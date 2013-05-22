@@ -28,25 +28,25 @@
             $(document).ready(function() {
                 $('.form-1').jqTransform();
                 $('.slider')._TMS({
-                        show: 0,
-                        pauseOnHover: true,
-                        prevBu: '.prev',
-                        nextBu: '.next',
-                        playBu: false,
-                        duration: 1000,
-                        preset: 'fade',
-                        pagination: true,
-                        pagNums: false,
-                        slideshow: 7000,
-                        numStatus: false,
-                        banners: false,
-                        waitBannerAnimation: false,
-                        progressBar: false
-                    })
-                });
+                    show: 0,
+                    pauseOnHover: true,
+                    prevBu: '.prev',
+                    nextBu: '.next',
+                    playBu: false,
+                    duration: 1000,
+                    preset: 'fade',
+                    pagination: true,
+                    pagNums: false,
+                    slideshow: 7000,
+                    numStatus: false,
+                    banners: false,
+                    waitBannerAnimation: false,
+                    progressBar: false
+                })
+            });
         </script>
         <script type="text/javascript">
-                function submit()
+            function submit()
         </script>
 
     </head>
@@ -126,11 +126,11 @@
                                     </div>
                                     <div>
                                         <label>Contraseña</label>
-                                        <input type="text" required value="" id="contrasena" name="contrasena" />
+                                        <input type="text" required id="contrasena" name="contrasena" />
                                     </div>
                                     <div class="select-1">
                                         <label>Rol</label>
-                                        <select name="rol" id="rol" >
+                                        <select name="rol" id="rol">
                                             <option value="administrador">Administrador</option>
                                             <option value="arrendador">Arrendador</option>
                                             <option value="arrendatario">Arrendatario</option>
@@ -161,8 +161,7 @@
             <p>© 2013 Quality Solutions</p>
         </footer>	    
         <script>
-                        Cufon.now()
-                ;
+            Cufon.now();
         </script>
 
     </body>
