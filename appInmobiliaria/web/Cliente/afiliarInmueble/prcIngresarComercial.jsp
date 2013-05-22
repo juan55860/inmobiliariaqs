@@ -149,10 +149,9 @@
             String res = ctrlComercial.insertar(comercial);
             if (res.equals("")) {%>
         <script>
-            alert("se inserto el inmueble Comercial");
+            alert("Datos del Comercial correctos");
         </script>
-        <% clsConexionBD cons = new clsConexionBD();
-            String tabla = request.getParameter("tabla");
+        <%  String tabla = request.getParameter("tabla");
             String nombre = request.getParameter("nombreSol");
             String apellido = request.getParameter("apellido");
             int telefono = Integer.parseInt(request.getParameter("telefono"));
@@ -162,25 +161,14 @@
             String resultado = ctrlSolicitud.insertar(solicitud, tabla);
             if (resultado.equals("")) {%>  
         <script>
-            alert("se inserto la solicitud correctamente");
+            alert("Se inserto la solicitud correctamente");
         </script>
         <%} else {%>
         <script>
             alert("NO se inserto la solicitud correctamente");
         </script>
-        <%}%>
-        <form action="prcFotos.jsp" enctype="MULTIPART/FORM-DATA" method="post">
-            <label><strong>Fotos</strong></label></br>
-            <input required type="file" name="foto1" id="foto1"/></br>
-            <input required type="file" name="foto2" id="foto2"/></br>
-            <input required type="file" name="foto3" id="foto3"/></br>
-            <input required type="file" name="foto4" id="foto4"/></br>
-            <input required type="file" name="foto5" id="foto5"/></br>
-            <input type="hidden" name="idinm" id="idinm" value="<%=cons.consultarClaveBarrio()%>"/></br>    <%// Id del inmueble%>
-            <input type="submit" name="btn1" id ="btn1"/></br>
-        </form>
-
-        <%} else {%>
+        <%}
+        } else {%>
         <script>
             alert("No inserto");
             redireccionar();
