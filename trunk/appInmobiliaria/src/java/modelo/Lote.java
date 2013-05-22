@@ -47,6 +47,5 @@ public class Lote extends InmuebleV2 {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-    
-    
+       
 }

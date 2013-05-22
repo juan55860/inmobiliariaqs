@@ -96,6 +96,4 @@ public class Rural extends InmuebleV2 {
         this.habitaciones = habitaciones;
     }
     
-    
-    
 }

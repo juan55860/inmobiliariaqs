@@ -127,7 +127,5 @@ public class Residencial extends InmuebleV2 {
     public void setParqueadero(boolean parqueadero) {
         this.parqueadero = parqueadero;
     }
-    
-    
-    
+       
 }

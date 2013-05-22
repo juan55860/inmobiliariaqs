@@ -96,6 +96,4 @@ public class Comercial extends InmuebleV2 {
         this.barrio = barrio;
     }
     
-    
-    
 }
