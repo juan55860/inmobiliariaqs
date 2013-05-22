@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.Date;
+
 /**
  *
  * @author Camilo
@@ -15,16 +17,16 @@ public class Persona {
     private String correo;
     private String contrasena;
     private String rol;
+    private Date fechaDeRegistro;
 
     public Persona(int identificacion) {
-        this.identificacion=identificacion;
+        this.identificacion = identificacion;
     }
 
     public Persona() {
     }
-    
 
-    public Persona(int identificacion, String tipoIdentificacion, String nombre, String apellido, String direccion, String telefono, String correo, String contrasena, String rol) {
+    public Persona(int identificacion, String tipoIdentificacion, String nombre, String apellido, String direccion, String telefono, String correo, String contrasena, String rol, Date fechaDeRegistro) {
         this.identificacion = identificacion;
         this.tipoIdentificacion = tipoIdentificacion;
         this.nombre = nombre;
@@ -34,6 +36,7 @@ public class Persona {
         this.correo = correo;
         this.contrasena = contrasena;
         this.rol = rol;
+        this.fechaDeRegistro = fechaDeRegistro;
     }
 
     /**
@@ -161,7 +164,18 @@ public class Persona {
     public void setRol(String rol) {
         this.rol = rol;
     }
-    
-    
-    
+
+    /**
+     * @return the fechaDeRegistro
+     */
+    public Date getFechaDeRegistro() {
+        return fechaDeRegistro;
+    }
+
+    /**
+     * @param fechaDeRegistro the fechaDeRegistro to set
+     */
+    public void setFechaDeRegistro(Date fechaDeRegistro) {
+        this.fechaDeRegistro = fechaDeRegistro;
+    }
 }

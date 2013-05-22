@@ -4,6 +4,8 @@
  */
 package modelo;
 
+import java.util.Date;
+
 /**
  *
  * @author usuario
@@ -19,11 +21,12 @@ public class InmuebleV2 {
     private int area;
     private String descripcion;
     private String estado; //ARRENDAMIENTO o VENTA
+    private Date fechaDeRegistro;
 
     public InmuebleV2() {
     }
 
-    public InmuebleV2(int codigo, String precio, String direccion, String estrato, int codPropietario, int prioridad, int area, String descripcion, String estado) {
+    public InmuebleV2(int codigo, String precio, String direccion, String estrato, int codPropietario, int prioridad, int area, String descripcion, String estado, Date fechaDeRegistro) {
         this.codigo = codigo;
         this.precio = precio;
         this.direccion = direccion;
@@ -33,6 +36,7 @@ public class InmuebleV2 {
         this.area = area;
         this.descripcion = descripcion;
         this.estado = estado;
+        this.fechaDeRegistro = fechaDeRegistro;
     }
 
     /**
@@ -160,6 +164,19 @@ public class InmuebleV2 {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    
+
+    /**
+     * @return the fechaDeRegistro
+     */
+    public Date getFechaDeRegistro() {
+        return fechaDeRegistro;
+    }
+
+    /**
+     * @param fechaDeRegistro the fechaDeRegistro to set
+     */
+    public void setFechaDeRegistro(Date fechaDeRegistro) {
+        this.fechaDeRegistro = fechaDeRegistro;
+    }
     
 }
