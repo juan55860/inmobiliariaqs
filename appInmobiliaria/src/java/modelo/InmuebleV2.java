@@ -22,11 +22,12 @@ public class InmuebleV2 {
     private String descripcion;
     private String estado; //ARRENDAMIENTO o VENTA
     private Date fechaDeRegistro;
+    private boolean validacion;
 
     public InmuebleV2() {
     }
 
-    public InmuebleV2(int codigo, String precio, String direccion, String estrato, int codPropietario, int prioridad, int area, String descripcion, String estado, Date fechaDeRegistro) {
+    public InmuebleV2(int codigo, String precio, String direccion, String estrato, int codPropietario, int prioridad, int area, String descripcion, String estado, Date fechaDeRegistro, boolean validacion) {
         this.codigo = codigo;
         this.precio = precio;
         this.direccion = direccion;
@@ -37,6 +38,7 @@ public class InmuebleV2 {
         this.descripcion = descripcion;
         this.estado = estado;
         this.fechaDeRegistro = fechaDeRegistro;
+        this.validacion = validacion;
     }
 
     /**
@@ -177,6 +179,20 @@ public class InmuebleV2 {
      */
     public void setFechaDeRegistro(Date fechaDeRegistro) {
         this.fechaDeRegistro = fechaDeRegistro;
+    }
+
+    /**
+     * @return the validacion
+     */
+    public boolean isValidacion() {
+        return validacion;
+    }
+
+    /**
+     * @param validacion the validacion to set
+     */
+    public void setValidacion(boolean validacion) {
+        this.validacion = validacion;
     }
     
 }

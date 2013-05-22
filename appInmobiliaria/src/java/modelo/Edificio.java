@@ -49,6 +49,4 @@ public class Edificio extends InmuebleV2 {
         this.numParqueaderos = numParqueaderos;
     }
     
-    
-    
 }
