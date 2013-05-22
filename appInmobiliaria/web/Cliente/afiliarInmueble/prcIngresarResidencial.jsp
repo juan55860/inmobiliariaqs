@@ -127,7 +127,8 @@
             int area = Integer.parseInt(request.getParameter("area"));
             String estado = request.getParameter("estado");
             String descripcion = request.getParameter("descripcion");
-
+            String estrato = request.getParameter("estrato");
+            
             String tipoInmueble = request.getParameter("tipoInmueble");
                 String barrio = request.getParameter("nombre");
                 int banos = Integer.parseInt(request.getParameter("numbanios"));
@@ -142,6 +143,7 @@
                 residencial.setArea(area);
                 residencial.setEstado(estado);
                 residencial.setDescripcion(descripcion);
+                residencial.setEstrato(estrato);
                 String res = ctrlResidencial.insertar(residencial);
                 if (res.equals("")) {%>
         <script>

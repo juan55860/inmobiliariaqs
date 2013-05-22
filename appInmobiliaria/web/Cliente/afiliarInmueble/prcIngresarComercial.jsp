@@ -4,6 +4,8 @@
     Author     : Camilo
 --%>
 
+<%@page import="java.util.GregorianCalendar"%>
+<%@page import="java.util.Calendar"%>
 <%@page import="modelo.clsConexionBD"%>
 <%@page import="modelo.Comercial"%>
 <%@page import="controladores.ctrlIngresarComercial"%>
@@ -125,7 +127,9 @@
             int area = Integer.parseInt(request.getParameter("area"));
             String estado = request.getParameter("estado");
             String descripcion = request.getParameter("descripcion");
-
+            Calendar fecha = new GregorianCalendar();
+            String estrato = request.getParameter("estrato");
+            
             String tipoInmueble = request.getParameter("tipoInmueble");
                 String barrio = request.getParameter("nombre");
                 int banos = Integer.parseInt(request.getParameter("numbanios"));
@@ -138,6 +142,8 @@
                 comercial.setArea(area);
                 comercial.setEstado(estado);
                 comercial.setDescripcion(descripcion);
+                comercial.setEstrato(estrato);
+                comercial.setFechaDeRegistro(fecha.getTime());
                 String res = ctrlComercial.insertar(comercial);
                 if (res.equals("")) {%>
         <script>

@@ -10,7 +10,7 @@
 
 <html>
     <head>
-        <title>Registrar Inmueble</title>
+        <title>Afiliar Inmueble 2</title>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" media="screen" href="../../sitio/css/reset.css">
         <link rel="stylesheet" type="text/css" media="screen" href="../../sitio/css/style.css">
@@ -76,12 +76,7 @@
                     </div>
                     <nav>
                         <ul class="menu">
-                            <li><a href="../ArrendamientosVentas/frmArrendamientosVentas.jsp">Financiera</a></li>
-                            <li><a href="../GestionarPrioridadInmueble/GestionarPrioridad.jsp" >Prioridad</a></li>
-                            <li><a href="frmSeleccionInmueble.jsp" >Inmuebles</a></li>
-                            <li><a class="current" href="../IngresarClientes/frmRegistrarCliente.jsp" >Clientes</a></li> 
-                            <li><a href="../SubirArchivos/cargarArchivo.jsp">Archivos</a></li>
-
+                            <li><a href="../../home.jsp">Inicio</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -93,11 +88,11 @@
                         <div class="grid_4">
                             <div class="left-1">
                                 
-                                <%!ctrlIngresarInmueble inmueble = new ctrlIngresarInmueble();
-                                %>
+                                <%!ctrlIngresarInmueble inmueble = new ctrlIngresarInmueble();%>
+                                
                                 <%String jsp = inmueble.direccionarJsp(request.getParameter("categoria"));%>
                                 
-                                <h2 class="top-1 p3"> <%= request.getParameter("categoria")%> </h2>
+                                <h2 class="top-1 p3">AFILIAR <%= request.getParameter("categoria")%> </h2>
                                 <form name="form1" id="form-1"  class="form-1 bot-1"  action = <%=jsp%>>
                                     <input type="hidden" id="cat" name="cat" value=<%= request.getParameter("categoria")%>>
                                     <div>
