@@ -125,6 +125,7 @@
             int area = Integer.parseInt(request.getParameter("area"));
             String estado = request.getParameter("estado");
             String descripcion = request.getParameter("descripcion");
+            String estrato = request.getParameter("estrato");
 
                 int numParqueaderos = Integer.parseInt(request.getParameter("numparq"));
                 int numPisos = Integer.parseInt(request.getParameter("numpisos"));
@@ -136,6 +137,7 @@
                 edificio.setArea(area);
                 edificio.setEstado(estado);
                 edificio.setDescripcion(descripcion);
+                edificio.setEstrato(estrato);
                 String res = ctrlEdificio.insertar(edificio);
                 if (res.equals("")) {%>
         <script>

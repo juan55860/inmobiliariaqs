@@ -46,25 +46,25 @@
         <script src="../../sitio/js/jquery.jqtransform.js"></script>
         <script src="../../sitio/js/FF-cash.js"></script>
         <script>
-        $(document).ready(function() {
-            $('.form-1').jqTransform();
-            $('.slider')._TMS({
-                show: 0,
-                pauseOnHover: true,
-                prevBu: '.prev',
-                nextBu: '.next',
-                playBu: false,
-                duration: 1000,
-                preset: 'fade',
-                pagination: true,
-                pagNums: false,
-                slideshow: 7000,
-                numStatus: false,
-                banners: false,
-                waitBannerAnimation: false,
-                progressBar: false
-            })
-        });
+            $(document).ready(function() {
+                $('.form-1').jqTransform();
+                $('.slider')._TMS({
+                    show: 0,
+                    pauseOnHover: true,
+                    prevBu: '.prev',
+                    nextBu: '.next',
+                    playBu: false,
+                    duration: 1000,
+                    preset: 'fade',
+                    pagination: true,
+                    pagNums: false,
+                    slideshow: 7000,
+                    numStatus: false,
+                    banners: false,
+                    waitBannerAnimation: false,
+                    progressBar: false
+                })
+            });
         </script>
 
         <style type="text/css">
@@ -128,24 +128,24 @@
             String estado = request.getParameter("estado");
             String descripcion = request.getParameter("descripcion");
             String estrato = request.getParameter("estrato");
-                
-                String tipo = request.getParameter("tipo");
-                ctrlIngresarLote ctrlLote = new ctrlIngresarLote();
-                Lote lote = new Lote(tipo);
-                lote.setCodPropietario(codigoPropietario);
-                lote.setPrecio(precio);
-                lote.setDireccion(direccion);
-                lote.setArea(area);
-                lote.setEstado(estado);
-                lote.setEstrato(estrato);
-                lote.setDescripcion(descripcion);
-                String res = ctrlLote.insertar(lote);
-                if (res.equals("")) {%>
+
+            String tipo = request.getParameter("tipo");
+            ctrlIngresarLote ctrlLote = new ctrlIngresarLote();
+            Lote lote = new Lote(tipo);
+            lote.setCodPropietario(codigoPropietario);
+            lote.setPrecio(precio);
+            lote.setDireccion(direccion);
+            lote.setArea(area);
+            lote.setEstado(estado);
+            lote.setEstrato(estrato);
+            lote.setDescripcion(descripcion);
+            String res = ctrlLote.insertar(lote);
+            if (res.equals("")) {%>
         <script>
             alert("Se inserto el inmueble Lote");
 
         </script>
-        <% clsConexionBD cons = new clsConexionBD(); %>
+        <% clsConexionBD cons = new clsConexionBD();%>
         <form action="prcFotos.jsp" enctype="MULTIPART/FORM-DATA" method="post">
             <label><strong>Fotos</strong></label></br>
             <input required type="file" name="foto1" id="foto1"/></br>
@@ -163,6 +163,6 @@
             redireccionar();
         </script>
         <%}
-            %>
+        %>
     </body>
 </html>
