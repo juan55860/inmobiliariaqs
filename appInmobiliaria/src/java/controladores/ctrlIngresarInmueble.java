@@ -17,8 +17,14 @@ public class ctrlIngresarInmueble {
 
     modelo.clsConexionBD conexion = new modelo.clsConexionBD();
     private Inmueble inmueble;
+    private String tabla;
 
+    public String getTabla() {
+        return tabla;
+    }
+    
     public ctrlIngresarInmueble() {
+        tabla = "";
     }
 
     public ctrlIngresarInmueble(Inmueble inmueble) {
@@ -198,21 +204,27 @@ public class ctrlIngresarInmueble {
         switch (cat) {
             case "edificio":
                 jsp = "prcIngresarEdificio.jsp";
+                tabla = "edificios";
                 break;
             case "comercial":
                 jsp = "prcIngresarComercial.jsp";
+                tabla = "comerciales";
                 break;
             case "rural":
                 jsp = "prcIngresarRural.jsp";
+                tabla = "rurales";
                 break;
             case "residencial":
                 jsp = "prcIngresarResidencial.jsp";
+                tabla = "residenciales";
                 break;
             case "lote":
                 jsp = "prcIngresarLote.jsp";
+                tabla = "lotes";
                 break;
             default:
                 jsp = "frmSeleccionInmueble.jsp";
+                tabla = "inmuebles";
                 break;
         }
         return jsp;
