@@ -31,9 +31,9 @@ public class ctrlIngresarEdificio {
     public String insertar(Edificio edificio) {
         String res = "No inserto";
         if (verificarPersona(edificio.getCodPropietario()) == true) {
-            String sql = "INSERT INTO edificios(precio,direccion, estrato, cod_propietario,area,descripcion,estado,num_pisos,num_parqueaderos)"
+            String sql = "INSERT INTO edificios(precio,direccion, estrato, cod_propietario,area,descripcion,estado, fecha_registro, num_pisos,num_parqueaderos)"
                     + "VALUES('" + edificio.getPrecio() + "','" + edificio.getDireccion() + "','" + edificio.getEstrato() + "'," + edificio.getCodPropietario() + ","
-                    +edificio.getArea() + ",'" + edificio.getDescripcion() + "','" + edificio.getEstado() + "'," + edificio.getNumPisos() + "," + edificio.getNumParqueaderos() + ");";
+                    +edificio.getArea() + ",'" + edificio.getDescripcion() + "','" + edificio.getEstado() + "','" + edificio.getFechaDeRegistro() + "'," + edificio.getNumPisos() + "," + edificio.getNumParqueaderos() + ");";
             if (conexion.actualizar(sql) == 1) {
                 res = "";
             }
