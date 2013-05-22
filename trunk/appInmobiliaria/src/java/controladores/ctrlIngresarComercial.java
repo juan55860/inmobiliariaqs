@@ -40,16 +40,15 @@ public class ctrlIngresarComercial {
     public String insertar(Comercial comercial) {
         String res = "No inserto";
          if (verificarPersona(comercial.getCodPropietario()) == true) {
-            String sql = "INSERT INTO comerciales(precio, direccion, cod_propietario, area, descripcion, estado, tipo, num_bannos, num_pisos, cod_barrio)"
-                    + "VALUES('"+ comercial.getPrecio() + "','" + comercial.getDireccion() + "'," 
-                    + comercial.getCodPropietario() + "," + comercial.getArea() + ",'" + comercial.getDescripcion()
-                    + "','" + comercial.getEstado() + "','" + comercial.getTipo() + "'," + comercial.getBanos() + "," + comercial.getNumeroPisos() + ",'" + comercial.getBarrio() + "');";
+            String sql = "INSERT INTO comerciales(precio, direccion, estrato, cod_propietario, area, descripcion, estado, tipo, num_bannos, num_pisos, cod_barrio)"
+                    + "VALUES('"+ comercial.getPrecio() + "','" + comercial.getDireccion() + "','" + comercial.getEstrato() + "'," + comercial.getCodPropietario() 
+                    + "," + comercial.getArea() + ",'" + comercial.getDescripcion() + "','" + comercial.getEstado() + "','" + comercial.getTipo()
+                    + "'," + comercial.getBanos() + "," + comercial.getNumeroPisos() + ",'" + comercial.getBarrio() + "');";
             if (conexion.actualizar(sql) == 1) {
                 res = "";
             }
         }
         return res;
     }
-
-    
+   
 }
