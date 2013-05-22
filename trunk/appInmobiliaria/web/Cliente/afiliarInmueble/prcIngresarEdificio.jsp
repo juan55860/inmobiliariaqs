@@ -4,6 +4,10 @@
     Author     : usuario
 --%>
 
+<%@page import="java.util.GregorianCalendar"%>
+<%@page import="java.util.Calendar"%>
+<%@page import="modelo.Solicitud"%>
+<%@page import="controladores.ctrlIngresarSolicitud"%>
 <%@page import="modelo.Edificio"%>
 <%@page import="controladores.ctrlIngresarEdificio"%>
 <%@page import="modelo.clsConexionBD"%>
@@ -44,25 +48,25 @@
         <script src="../../sitio/js/jquery.jqtransform.js"></script>
         <script src="../../sitio/js/FF-cash.js"></script>
         <script>
-        $(document).ready(function() {
-            $('.form-1').jqTransform();
-            $('.slider')._TMS({
-                show: 0,
-                pauseOnHover: true,
-                prevBu: '.prev',
-                nextBu: '.next',
-                playBu: false,
-                duration: 1000,
-                preset: 'fade',
-                pagination: true,
-                pagNums: false,
-                slideshow: 7000,
-                numStatus: false,
-                banners: false,
-                waitBannerAnimation: false,
-                progressBar: false
-            })
-        });
+            $(document).ready(function() {
+                $('.form-1').jqTransform();
+                $('.slider')._TMS({
+                    show: 0,
+                    pauseOnHover: true,
+                    prevBu: '.prev',
+                    nextBu: '.next',
+                    playBu: false,
+                    duration: 1000,
+                    preset: 'fade',
+                    pagination: true,
+                    pagNums: false,
+                    slideshow: 7000,
+                    numStatus: false,
+                    banners: false,
+                    waitBannerAnimation: false,
+                    progressBar: false
+                })
+            });
         </script>
 
         <style type="text/css">
@@ -126,42 +130,48 @@
             String estado = request.getParameter("estado");
             String descripcion = request.getParameter("descripcion");
             String estrato = request.getParameter("estrato");
+            Calendar fecha = new GregorianCalendar();
 
-                int numParqueaderos = Integer.parseInt(request.getParameter("numparq"));
-                int numPisos = Integer.parseInt(request.getParameter("numpisos"));
-                ctrlIngresarEdificio ctrlEdificio = new ctrlIngresarEdificio();
-                Edificio edificio = new Edificio(numPisos, numParqueaderos);
-                edificio.setCodPropietario(codPropietario);
-                edificio.setPrecio(precio);
-                edificio.setDireccion(direccion);
-                edificio.setArea(area);
-                edificio.setEstado(estado);
-                edificio.setDescripcion(descripcion);
-                edificio.setEstrato(estrato);
-                String res = ctrlEdificio.insertar(edificio);
-                if (res.equals("")) {%>
+            int numParqueaderos = Integer.parseInt(request.getParameter("numparq"));
+            int numPisos = Integer.parseInt(request.getParameter("numpisos"));
+            ctrlIngresarEdificio ctrlEdificio = new ctrlIngresarEdificio();
+            Edificio edificio = new Edificio(numPisos, numParqueaderos);
+            edificio.setCodPropietario(codPropietario);
+            edificio.setPrecio(precio);
+            edificio.setDireccion(direccion);
+            edificio.setArea(area);
+            edificio.setEstado(estado);
+            edificio.setDescripcion(descripcion);
+            edificio.setEstrato(estrato);
+            edificio.setFechaDeRegistro(fecha.getTime());
+            String res = ctrlEdificio.insertar(edificio);
+            if (res.equals("")) {%>
         <script>
-            alert("se inserto el inmueble Edificio");
-
+            alert("Datos del Edificio correctos");
         </script>
-        <% clsConexionBD cons = new clsConexionBD(); %>
-        <form action="prcFotos.jsp" enctype="MULTIPART/FORM-DATA" method="post">
-            <label><strong>Fotos</strong></label></br>
-            <input required type="file" name="foto1" id="foto1"/></br>
-            <input required type="file" name="foto2" id="foto2"/></br>
-            <input required type="file" name="foto3" id="foto3"/></br>
-            <input required type="file" name="foto4" id="foto4"/></br>
-            <input required type="file" name="foto5" id="foto5"/></br>
-            <input type="hidden" name="idinm" id="idinm" value="<%=cons.consultarClaveBarrio()%>"/></br>    <%// Id del inmueble%>
-            <input type="submit" name="btn1" id ="btn1"/></br>
-        </form>
-
+        <%  String tabla = request.getParameter("tabla");
+            String nombre = request.getParameter("nombreSol");
+            String apellido = request.getParameter("apellido");
+            int telefono = Integer.parseInt(request.getParameter("telefono"));
+            String correo = request.getParameter("email");
+            ctrlIngresarSolicitud ctrlSolicitud = new ctrlIngresarSolicitud();
+            Solicitud solicitud = new Solicitud(nombre, apellido, telefono, correo);
+            String resultado = ctrlSolicitud.insertar(solicitud, tabla);
+            if (resultado.equals("")) {%>  
+        <script>
+            alert("Se inserto la solicitud correctamente");
+        </script>
         <%} else {%>
+        <script>
+            alert("NO se inserto la solicitud correctamente");
+        </script>
+        <%}
+        } else {%>
         <script>
             alert("No inserto");
             redireccionar();
         </script>
         <%}
-            %>
+        %>
     </body>
 </html>
