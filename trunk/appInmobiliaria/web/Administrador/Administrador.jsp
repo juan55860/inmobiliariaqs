@@ -46,10 +46,10 @@
             });
         </script>
 
-       
+
     </head>
     <body style="background-color: white;">
-        
+
         <div class="main">
             <!--==============================header=================================-->
             <header>
@@ -73,6 +73,7 @@
                     </div>
                     <nav>
                         <ul class="menu">
+                            <li><a href="../home.jsp">Inicio</a></li>
                             <li><a href="ArrendamientosVentas/frmArrendamientosVentas.jsp">Financiera</a></li>
                             <li><a href="GestionarPrioridadInmueble/GestionarPrioridad.jsp">Prioridad</a></li>
                             <li><a href="ingresarInmuebles/frmSeleccionInmueble.jsp">Inmuebles</a></li>
