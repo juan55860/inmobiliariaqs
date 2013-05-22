@@ -95,6 +95,23 @@
                                 <h2 class="top-1 p3">AFILIAR <%= request.getParameter("categoria")%> </h2>
                                 <form name="form1" id="form-1"  class="form-1 bot-1"  action = <%=jsp%>>
                                     <input type="hidden" id="cat" name="cat" value=<%= request.getParameter("categoria")%>>
+                                    <input type="hidden" id="tabla" name="tabla" value = <%= inmueble.getTabla()%>>
+                                    <div>
+                                        <label>Nombre del solicitante</label>
+                                        <input required id="nombreSol"  name="nombreSol" type="text" />
+                                    </div>
+                                    <div>
+                                        <label>Apellido del solicitante</label>
+                                        <input required id="apellido"  name="apellido" type="text" />
+                                    </div>
+                                    <div>
+                                        <label>Telefono del solicitante</label>
+                                        <input required id="telefono"  name="telefono" type="number" />
+                                    </div>
+                                    <div>
+                                        <label>Email del solicitante</label>
+                                        <input required id="email"  name="email" type="email" />
+                                    </div>
                                     <div>
                                         <label>Identificación propietario</label>
                                         <input required id="ide"  name="ide" type="number" />

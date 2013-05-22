@@ -4,6 +4,8 @@
     Author     : Camilo
 --%>
 
+<%@page import="modelo.Solicitud"%>
+<%@page import="controladores.ctrlIngresarSolicitud"%>
 <%@page import="java.util.GregorianCalendar"%>
 <%@page import="java.util.Calendar"%>
 <%@page import="modelo.clsConexionBD"%>
@@ -46,25 +48,25 @@
         <script src="../../sitio/js/jquery.jqtransform.js"></script>
         <script src="../../sitio/js/FF-cash.js"></script>
         <script>
-        $(document).ready(function() {
-            $('.form-1').jqTransform();
-            $('.slider')._TMS({
-                show: 0,
-                pauseOnHover: true,
-                prevBu: '.prev',
-                nextBu: '.next',
-                playBu: false,
-                duration: 1000,
-                preset: 'fade',
-                pagination: true,
-                pagNums: false,
-                slideshow: 7000,
-                numStatus: false,
-                banners: false,
-                waitBannerAnimation: false,
-                progressBar: false
-            })
-        });
+            $(document).ready(function() {
+                $('.form-1').jqTransform();
+                $('.slider')._TMS({
+                    show: 0,
+                    pauseOnHover: true,
+                    prevBu: '.prev',
+                    nextBu: '.next',
+                    playBu: false,
+                    duration: 1000,
+                    preset: 'fade',
+                    pagination: true,
+                    pagNums: false,
+                    slideshow: 7000,
+                    numStatus: false,
+                    banners: false,
+                    waitBannerAnimation: false,
+                    progressBar: false
+                })
+            });
         </script>
 
         <style type="text/css">
@@ -129,28 +131,44 @@
             String descripcion = request.getParameter("descripcion");
             Calendar fecha = new GregorianCalendar();
             String estrato = request.getParameter("estrato");
-            
+
             String tipoInmueble = request.getParameter("tipoInmueble");
-                String barrio = request.getParameter("nombre");
-                int banos = Integer.parseInt(request.getParameter("numbanios"));
-                int numeroPisos = Integer.parseInt(request.getParameter("numpisos"));
-                ctrlIngresarComercial ctrlComercial = new ctrlIngresarComercial();
-                Comercial comercial = new Comercial(tipoInmueble, banos, numeroPisos, barrio);
-                comercial.setCodPropietario(codigoPropietario);
-                comercial.setPrecio(precio);
-                comercial.setDireccion(direccion);
-                comercial.setArea(area);
-                comercial.setEstado(estado);
-                comercial.setDescripcion(descripcion);
-                comercial.setEstrato(estrato);
-                comercial.setFechaDeRegistro(fecha.getTime());
-                String res = ctrlComercial.insertar(comercial);
-                if (res.equals("")) {%>
+            String barrio = request.getParameter("nombre");
+            int banos = Integer.parseInt(request.getParameter("numbanios"));
+            int numeroPisos = Integer.parseInt(request.getParameter("numpisos"));
+            ctrlIngresarComercial ctrlComercial = new ctrlIngresarComercial();
+            Comercial comercial = new Comercial(tipoInmueble, banos, numeroPisos, barrio);
+            comercial.setCodPropietario(codigoPropietario);
+            comercial.setPrecio(precio);
+            comercial.setDireccion(direccion);
+            comercial.setArea(area);
+            comercial.setEstado(estado);
+            comercial.setDescripcion(descripcion);
+            comercial.setEstrato(estrato);
+            comercial.setFechaDeRegistro(fecha.getTime());
+            String res = ctrlComercial.insertar(comercial);
+            if (res.equals("")) {%>
         <script>
             alert("se inserto el inmueble Comercial");
-
         </script>
-        <% clsConexionBD cons = new clsConexionBD(); %>
+        <% clsConexionBD cons = new clsConexionBD();
+            String tabla = request.getParameter("tabla");
+            String nombre = request.getParameter("nombreSol");
+            String apellido = request.getParameter("apellido");
+            int telefono = Integer.parseInt(request.getParameter("telefono"));
+            String correo = request.getParameter("email");
+            ctrlIngresarSolicitud ctrlSolicitud = new ctrlIngresarSolicitud();
+            Solicitud solicitud = new Solicitud(nombre, apellido, telefono, correo);
+            String resultado = ctrlSolicitud.insertar(solicitud, tabla);
+            if (resultado.equals("")) {%>  
+        <script>
+            alert("se inserto la solicitud correctamente");
+        </script>
+        <%} else {%>
+        <script>
+            alert("NO se inserto la solicitud correctamente");
+        </script>
+        <%}%>
         <form action="prcFotos.jsp" enctype="MULTIPART/FORM-DATA" method="post">
             <label><strong>Fotos</strong></label></br>
             <input required type="file" name="foto1" id="foto1"/></br>
@@ -168,6 +186,6 @@
             redireccionar();
         </script>
         <%}
-            %>
+        %>
     </body>
 </html>
