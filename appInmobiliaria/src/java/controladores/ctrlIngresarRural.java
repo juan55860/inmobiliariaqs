@@ -31,9 +31,9 @@ public class ctrlIngresarRural {
     public String insertar(Rural rural) {
         String res = "No inserto";
         if (verificarPersona(rural.getCodPropietario()) == true) {
-            String sql = "INSERT INTO rurales(precio,direccion,estrato,cod_propietario,area,descripcion,estado,fecha_registro,tipo,num_bannos,num_habitaciones,num_piscinas)"
-                    + "VALUES('" + rural.getPrecio() + "','" + rural.getDireccion() + "','" + rural.getEstrato() + "'," + rural.getCodPropietario() + ","
-                    + rural.getArea() + ",'" + rural.getDescripcion() + "','" + rural.getEstado() + "','" + rural.getFechaDeRegistro() + "','" + rural.getTipo() + "'," + rural.getBano() + "," + rural.getHabitaciones() + "," + rural.getPiscina() + ");";
+            String sql = "INSERT INTO rurales(precio,direccion,estrato,cod_propietario,area,descripcion,estado,fecha_registro,tipo,num_bannos,num_habitaciones,num_piscinas, validacion)"
+                    + "VALUES('" + rural.getPrecio() + "','" + rural.getDireccion() + "','" + rural.getEstrato() + "'," + rural.getCodPropietario() + "," + rural.getArea() + ",'" + rural.getDescripcion()
+                    + "','" + rural.getEstado() + "','" + rural.getFechaDeRegistro() + "','" + rural.getTipo() + "'," + rural.getBano() + "," + rural.getHabitaciones() + "," + rural.getPiscina() + ",'" + rural.getValidacion() + "');";
             if (conexion.actualizar(sql) == 1) {
                 res = "";
             }
