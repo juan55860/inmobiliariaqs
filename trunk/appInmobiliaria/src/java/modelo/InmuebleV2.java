@@ -184,7 +184,7 @@ public class InmuebleV2 {
     /**
      * @return the validacion
      */
-    public boolean isValidacion() {
+    public boolean getValidacion() {
         return validacion;
     }
 
