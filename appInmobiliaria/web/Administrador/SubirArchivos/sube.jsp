@@ -24,9 +24,9 @@
         FileItem item = (FileItem) items.get(i);
         /*item.isFormField() false=input file; true=text field*/
         if (!item.isFormField()) {
-            
+
             /*cual sera la ruta al archivo en el servidor*/
-            File archivo_server = new File("C:/Users/Usuario/Documents/NetBeansProjects/Subversion/appInmobiliaria/web/Administrador/SubirArchivos/documentos/" + item.getName());
+            File archivo_server = new File("C:/Users/usuario/Desktop/" + item.getName());
             /*y lo escribimos en el servido*/
             item.write(archivo_server);
 
