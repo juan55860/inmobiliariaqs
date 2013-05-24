@@ -146,6 +146,7 @@
             comercial.setDescripcion(descripcion);
             comercial.setEstrato(estrato);
             comercial.setFechaDeRegistro(fecha.getTime());
+            comercial.setValidacion(false);
             String res = ctrlComercial.insertar(comercial);
             if (res.equals("")) {%>
         <script>
@@ -162,18 +163,17 @@
             if (resultado.equals("")) {%>  
         <script>
             alert("Se inserto la solicitud correctamente");
+            redireccionar();
         </script>
         <%} else {%>
         <script>
             alert("NO se inserto la solicitud correctamente");
         </script>
-        <%}
-        } else {%>
+        <%}} else {%>
         <script>
             alert("No inserto");
             redireccionar();
         </script>
-        <%}
-        %>
+        <%}%>
     </body>
 </html>
