@@ -4,6 +4,10 @@
     Author     : Camilo
 --%>
 
+<%@page import="java.util.GregorianCalendar"%>
+<%@page import="java.util.Calendar"%>
+<%@page import="modelo.Solicitud"%>
+<%@page import="controladores.ctrlIngresarSolicitud"%>
 <%@page import="modelo.Residencial"%>
 <%@page import="controladores.ctrlIngresarResidencial"%>
 <%@page import="modelo.clsConexionBD"%>
@@ -128,6 +132,7 @@
             String estado = request.getParameter("estado");
             String descripcion = request.getParameter("descripcion");
             String estrato = request.getParameter("estrato");
+            Calendar fecha = new GregorianCalendar();
             
             String tipoInmueble = request.getParameter("tipoInmueble");
                 String barrio = request.getParameter("nombre");
@@ -144,30 +149,35 @@
                 residencial.setEstado(estado);
                 residencial.setDescripcion(descripcion);
                 residencial.setEstrato(estrato);
+                residencial.setFechaDeRegistro(fecha.getTime());
+                residencial.setValidacion(false);
                 String res = ctrlResidencial.insertar(residencial);
                 if (res.equals("")) {%>
         <script>
-            alert("Se inserto el inmueble Residencial");
-
+            alert("Datos del inmueble Residencial correctos");
         </script>
-        <% clsConexionBD cons = new clsConexionBD(); %>
-        <form action="prcFotos.jsp" enctype="MULTIPART/FORM-DATA" method="post">
-            <label><strong>Fotos</strong></label></br>
-            <input required type="file" name="foto1" id="foto1"/></br>
-            <input required type="file" name="foto2" id="foto2"/></br>
-            <input required type="file" name="foto3" id="foto3"/></br>
-            <input required type="file" name="foto4" id="foto4"/></br>
-            <input required type="file" name="foto5" id="foto5"/></br>
-            <input type="hidden" name="idinm" id="idinm" value="<%=cons.consultarClaveBarrio()%>"/></br>    <%// Id del inmueble%>
-            <input type="submit" name="btn1" id ="btn1"/></br>
-        </form>
-
+        <%  String tabla = request.getParameter("tabla");
+            String nombre = request.getParameter("nombreSol");
+            String apellido = request.getParameter("apellido");
+            int telefono = Integer.parseInt(request.getParameter("telefono"));
+            String correo = request.getParameter("email");
+            ctrlIngresarSolicitud ctrlSolicitud = new ctrlIngresarSolicitud();
+            Solicitud solicitud = new Solicitud(nombre, apellido, telefono, correo);
+            String resultado = ctrlSolicitud.insertar(solicitud, tabla);
+            if (resultado.equals("")) {%>  
+        <script>
+            alert("Se inserto la solicitud correctamente");
+            redireccionar();
+        </script>
         <%} else {%>
+        <script>
+            alert("NO se inserto la solicitud correctamente");
+        </script>
+        <%}} else {%>
         <script>
             alert("No inserto");
             redireccionar();
         </script>
-        <%}
-            %>
+        <%}%>
     </body>
 </html>

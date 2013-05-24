@@ -117,7 +117,6 @@
                         <li><a href="#" target="frdirect">Inmuebles</a></li>
                         <li><a class="current" href="../IngresarClientes/frmRegistrarCliente.jsp" >Clientes</a></li> 
                         <li><a href="../Administrador.jsp">Archivos</a></li>
-
                     </ul>
                 </nav>
             </div>
@@ -144,6 +143,7 @@
             edificio.setDescripcion(descripcion);
             edificio.setEstrato(estrato);
             edificio.setFechaDeRegistro(fecha.getTime());
+            edificio.setValidacion(false);
             String res = ctrlEdificio.insertar(edificio);
             if (res.equals("")) {%>
         <script>
@@ -160,18 +160,17 @@
             if (resultado.equals("")) {%>  
         <script>
             alert("Se inserto la solicitud correctamente");
+            redireccionar();
         </script>
         <%} else {%>
         <script>
             alert("NO se inserto la solicitud correctamente");
         </script>
-        <%}
-        } else {%>
+        <%}} else {%>
         <script>
             alert("No inserto");
             redireccionar();
         </script>
-        <%}
-        %>
+        <%}%>
     </body>
 </html>
