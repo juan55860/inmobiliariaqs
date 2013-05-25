@@ -151,6 +151,7 @@
                 residencial.setEstrato(estrato);
                 residencial.setFechaDeRegistro(fecha.getTime());
                 residencial.setValidacion(false);
+                residencial.setPrioridad(1);
                 String res = ctrlResidencial.insertar(residencial);
                 if (res.equals("")) {%>
         <script>

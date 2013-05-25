@@ -145,6 +145,7 @@
             lote.setDescripcion(descripcion);
             lote.setFechaDeRegistro(fecha.getTime());
             lote.setValidacion(false);
+            lote.setPrioridad(1);
             String res = ctrlLote.insertar(lote);
             if (res.equals("")) {%>
         <script>

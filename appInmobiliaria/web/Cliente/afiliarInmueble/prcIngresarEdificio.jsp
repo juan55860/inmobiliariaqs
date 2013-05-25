@@ -144,6 +144,7 @@
             edificio.setEstrato(estrato);
             edificio.setFechaDeRegistro(fecha.getTime());
             edificio.setValidacion(false);
+            edificio.setPrioridad(1);
             String res = ctrlEdificio.insertar(edificio);
             if (res.equals("")) {%>
         <script>
