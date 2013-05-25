@@ -129,6 +129,7 @@
             String descripcion = request.getParameter("descripcion");
             Calendar fecha = new GregorianCalendar();
             String estrato = request.getParameter("estrato");
+            int prioridad = Integer.parseInt(request.getParameter("prioridad"));
             
             String tipoInmueble = request.getParameter("tipoInmueble");
                 String barrio = request.getParameter("nombre");
@@ -144,6 +145,7 @@
                 comercial.setDescripcion(descripcion);
                 comercial.setEstrato(estrato);
                 comercial.setFechaDeRegistro(fecha.getTime());
+                comercial.setPrioridad(prioridad);
                 String res = ctrlComercial.insertar(comercial);
                 if (res.equals("")) {%>
         <script>

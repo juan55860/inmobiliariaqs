@@ -4,6 +4,8 @@
     Author     : usuario
 --%>
 
+<%@page import="java.util.GregorianCalendar"%>
+<%@page import="java.util.Calendar"%>
 <%@page import="modelo.Edificio"%>
 <%@page import="controladores.ctrlIngresarEdificio"%>
 <%@page import="modelo.clsConexionBD"%>
@@ -126,6 +128,8 @@
             String estado = request.getParameter("estado");
             String descripcion = request.getParameter("descripcion");
             String estrato = request.getParameter("estrato");
+            int prioridad = Integer.parseInt(request.getParameter("prioridad"));
+            Calendar fecha = new GregorianCalendar();
 
                 int numParqueaderos = Integer.parseInt(request.getParameter("numparq"));
                 int numPisos = Integer.parseInt(request.getParameter("numpisos"));
@@ -138,6 +142,8 @@
                 edificio.setEstado(estado);
                 edificio.setDescripcion(descripcion);
                 edificio.setEstrato(estrato);
+                edificio.setPrioridad(prioridad);
+                edificio.setFechaDeRegistro(fecha.getTime());
                 String res = ctrlEdificio.insertar(edificio);
                 if (res.equals("")) {%>
         <script>

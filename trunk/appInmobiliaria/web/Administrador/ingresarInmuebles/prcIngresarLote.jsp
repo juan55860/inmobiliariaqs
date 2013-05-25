@@ -4,6 +4,8 @@
     Author     : Camilo
 --%>
 
+<%@page import="java.util.GregorianCalendar"%>
+<%@page import="java.util.Calendar"%>
 <%@page import="modelo.Lote"%>
 <%@page import="controladores.ctrlIngresarLote"%>
 <%@page import="modelo.clsConexionBD"%>
@@ -128,6 +130,8 @@
             String estado = request.getParameter("estado");
             String descripcion = request.getParameter("descripcion");
             String estrato = request.getParameter("estrato");
+            int prioridad = Integer.parseInt(request.getParameter("prioridad"));
+            Calendar fecha = new GregorianCalendar();
 
             String tipo = request.getParameter("tipo");
             ctrlIngresarLote ctrlLote = new ctrlIngresarLote();
@@ -139,6 +143,8 @@
             lote.setEstado(estado);
             lote.setEstrato(estrato);
             lote.setDescripcion(descripcion);
+            lote.setPrioridad(prioridad);
+            lote.setFechaDeRegistro(fecha.getTime());
             String res = ctrlLote.insertar(lote);
             if (res.equals("")) {%>
         <script>

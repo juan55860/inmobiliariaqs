@@ -4,6 +4,8 @@
     Author     : Camilo
 --%>
 
+<%@page import="java.util.GregorianCalendar"%>
+<%@page import="java.util.Calendar"%>
 <%@page import="modelo.Residencial"%>
 <%@page import="controladores.ctrlIngresarResidencial"%>
 <%@page import="modelo.clsConexionBD"%>
@@ -128,6 +130,8 @@
             String estado = request.getParameter("estado");
             String descripcion = request.getParameter("descripcion");
             String estrato = request.getParameter("estrato");
+            int prioridad = Integer.parseInt(request.getParameter("prioridad"));
+            Calendar fecha = new GregorianCalendar();
             
             String tipoInmueble = request.getParameter("tipoInmueble");
                 String barrio = request.getParameter("nombre");
@@ -144,6 +148,8 @@
                 residencial.setEstado(estado);
                 residencial.setDescripcion(descripcion);
                 residencial.setEstrato(estrato);
+                residencial.setPrioridad(prioridad);
+                residencial.setFechaDeRegistro(fecha.getTime());
                 String res = ctrlResidencial.insertar(residencial);
                 if (res.equals("")) {%>
         <script>
