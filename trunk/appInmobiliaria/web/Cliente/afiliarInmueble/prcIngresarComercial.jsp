@@ -147,6 +147,7 @@
             comercial.setEstrato(estrato);
             comercial.setFechaDeRegistro(fecha.getTime());
             comercial.setValidacion(false);
+            comercial.setPrioridad(1);
             String res = ctrlComercial.insertar(comercial);
             if (res.equals("")) {%>
         <script>

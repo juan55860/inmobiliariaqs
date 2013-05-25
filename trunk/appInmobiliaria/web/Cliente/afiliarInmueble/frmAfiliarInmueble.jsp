@@ -144,7 +144,7 @@
                                     <div class="select-1">
                                         <label>Estado</label>
                                         <select name="estado" id="estado">
-                                            <option value="ARRENDAMIENTO">ARRENDAMNIENTO</option>
+                                            <option value="ARRENDAMIENTO">ARRENDAMIENTO</option>
                                             <option value="VENTA">VENTA</option>
 
                                         </select>   

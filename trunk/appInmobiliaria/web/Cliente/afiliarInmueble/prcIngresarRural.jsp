@@ -147,6 +147,7 @@
                 rural.setDescripcion(descripcion);
                 rural.setFechaDeRegistro(fecha.getTime());
                 rural.setValidacion(false);
+                rural.setPrioridad(1);
                 String res = ctrlRural.insertar(rural);
                 if (res.equals("")) {%>
         <script>
