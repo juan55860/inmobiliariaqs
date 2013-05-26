@@ -76,9 +76,10 @@
                         <ul class="menu">
                             <li><a href="../ArrendamientosVentas/frmArrendamientosVentas.jsp">Financiera</a></li>
                             <li><a href="../GestionarPrioridadInmueble/GestionarPrioridad.jsp" >Prioridad</a></li>
-                            <li><a href="frmSeleccionInmueble.jsp" >Inmuebles</a></li>
+                            <li><a href="../ingresarInmuebles/frmSeleccionInmueble.jsp" >Inmuebles</a></li>
                             <li><a class="current" href="../IngresarClientes/frmRegistrarCliente.jsp" >Clientes</a></li> 
                             <li><a href="../SubirArchivos/cargarArchivo.jsp">Archivos</a></li>
+                            <li><a href="#">Reportes</a></li>
 
                         </ul>
                     </nav>
