@@ -17,6 +17,8 @@
         <%
             boolean res = new ctrlIngresarPersona().login(b.getNombre(), b.getContrasena());
             if (res) {
+                session.setAttribute("theName", b.getNombre());
+                session.setAttribute("thePass", b.getContrasena());
         %>
         <script>
             window.top.location.href = "../Administrador/Administrador.jsp";
