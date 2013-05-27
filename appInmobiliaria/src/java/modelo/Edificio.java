@@ -12,13 +12,15 @@ public class Edificio extends InmuebleV2 {
     
     private int numPisos;
     private int numParqueaderos;
+    private String codigoBarrio;
 
     public Edificio() {
     }
 
-    public Edificio(int numPisos, int numParqueaderos) {
+    public Edificio(int numPisos, int numParqueaderos, String codigoBarrio) {
         this.numPisos = numPisos;
         this.numParqueaderos = numParqueaderos;
+        this.codigoBarrio = codigoBarrio;
     }
 
     /**
@@ -47,6 +49,20 @@ public class Edificio extends InmuebleV2 {
      */
     public void setNumParqueaderos(int numParqueaderos) {
         this.numParqueaderos = numParqueaderos;
+    }
+
+    /**
+     * @return the codigoBarrio
+     */
+    public String getCodigoBarrio() {
+        return codigoBarrio;
+    }
+
+    /**
+     * @param codigoBarrio the codigoBarrio to set
+     */
+    public void setCodigoBarrio(String codigoBarrio) {
+        this.codigoBarrio = codigoBarrio;
     }
     
 }
