@@ -135,7 +135,7 @@
                                 <div class="clear"></div>
                             </form>
 
-
+                            <iframe width="400" height="500" name="des1" id="des1" src="noticias.jsp"> </iframe>
                         </div>
                     </div>
                     <div class="clear"></div>
