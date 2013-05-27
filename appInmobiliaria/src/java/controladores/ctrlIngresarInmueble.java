@@ -22,7 +22,7 @@ public class ctrlIngresarInmueble {
     public String getTabla() {
         return tabla;
     }
-    
+
     public ctrlIngresarInmueble() {
         tabla = "";
     }
