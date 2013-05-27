@@ -23,6 +23,10 @@ public class ctrlIngresarInmueble {
         return tabla;
     }
 
+    public void setTabla(String tabla) {
+        this.tabla = tabla;
+    }
+    
     public ctrlIngresarInmueble() {
         tabla = "";
     }
@@ -157,6 +161,10 @@ public class ctrlIngresarInmueble {
                 sb.append("</select>");
                 sb.append("</div>");
             } else if (categoria.equals("EDIFICIO")) {
+                StringBuffer bf = (conexion.cmbGenera("barrios", 2));
+                sb.append("<div> <label>Barrio</label>");
+                sb.append(bf);
+                sb.append("</div>");
                 sb.append("<div> <label>Numero de parqueaderos</label>");
                 sb.append("<input required id='numparq' name='numparq' type='number'></input>");
                 sb.append("</div>");

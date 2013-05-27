@@ -129,12 +129,13 @@
             String estado = request.getParameter("estado");
             String descripcion = request.getParameter("descripcion");
             String estrato = request.getParameter("estrato");
+            String codigoBarrio = request.getParameter("nombre");
             Calendar fecha = new GregorianCalendar();
 
             int numParqueaderos = Integer.parseInt(request.getParameter("numparq"));
             int numPisos = Integer.parseInt(request.getParameter("numpisos"));
             ctrlIngresarEdificio ctrlEdificio = new ctrlIngresarEdificio();
-            Edificio edificio = new Edificio(numPisos, numParqueaderos);
+            Edificio edificio = new Edificio(numPisos, numParqueaderos, codigoBarrio);
             edificio.setCodPropietario(codPropietario);
             edificio.setPrecio(precio);
             edificio.setDireccion(direccion);
