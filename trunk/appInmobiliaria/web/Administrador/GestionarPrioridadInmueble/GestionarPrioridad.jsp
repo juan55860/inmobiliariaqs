@@ -244,7 +244,7 @@ body {
                             <li><a href="../ingresarInmuebles/frmSeleccionInmueble.jsp" >Inmuebles</a></li>
                             <li><a class="current" href="../IngresarClientes/frmRegistrarCliente.jsp" >Clientes</a></li> 
                             <li><a href="../SubirArchivos/cargarArchivo.jsp">Archivos</a></li>
-                            <li><a href="#">Reportes</a></li>
+                            <li><a href="../Reportes/frmReportes.jsp">Reportes</a></li>
 
                         </ul>
                     </nav>
