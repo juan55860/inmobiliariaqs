@@ -42,8 +42,8 @@ public class ctrlSolicitudesInmuebles {
         }
         return false;
     }
-    
-       public boolean eliminarInmueblesResidencial(LinkedList<String> ids) {
+
+    public boolean eliminarInmueblesResidencial(LinkedList<String> ids) {
         if (ids != null) {
             String query;
             for (int i = 0; i < ids.size(); i++) {
@@ -54,8 +54,8 @@ public class ctrlSolicitudesInmuebles {
         }
         return false;
     }
-       
-        public boolean validarInmuebleResidencial(LinkedList<String> ids) {
+
+    public boolean validarInmuebleResidencial(LinkedList<String> ids) {
         if (ids != null) {
             String query;
             for (int i = 0; i < ids.size(); i++) {
@@ -66,8 +66,8 @@ public class ctrlSolicitudesInmuebles {
         }
         return false;
     }
-        
-        public boolean eliminarInmueblesEdificios(LinkedList<String> ids) {
+
+    public boolean eliminarInmueblesEdificios(LinkedList<String> ids) {
         if (ids != null) {
             String query;
             for (int i = 0; i < ids.size(); i++) {
@@ -84,6 +84,29 @@ public class ctrlSolicitudesInmuebles {
             String query;
             for (int i = 0; i < ids.size(); i++) {
                 query = "UPDATE edificios set validacion = 'TRUE' WHERE codigo ='" + ids.get(i) + "';";
+                conexion.actualizar(query);
+            }
+            return true;
+        }
+        return false;
+    }
+    public boolean eliminarInmueblesRurales(LinkedList<String> ids) {
+        if (ids != null) {
+            String query;
+            for (int i = 0; i < ids.size(); i++) {
+                query = "DELETE FROM rurales WHERE codigo ='" + ids.get(i) + "';";
+                conexion.actualizar(query);
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public boolean validarInmuebleRurales(LinkedList<String> ids) {
+        if (ids != null) {
+            String query;
+            for (int i = 0; i < ids.size(); i++) {
+                query = "UPDATE rurales set validacion = 'TRUE' WHERE codigo ='" + ids.get(i) + "';";
                 conexion.actualizar(query);
             }
             return true;
