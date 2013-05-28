@@ -113,4 +113,27 @@ public class ctrlSolicitudesInmuebles {
         }
         return false;
     }
+    public boolean eliminarInmueblesLotes(LinkedList<String> ids) {
+        if (ids != null) {
+            String query;
+            for (int i = 0; i < ids.size(); i++) {
+                query = "DELETE FROM lotes WHERE codigo ='" + ids.get(i) + "';";
+                conexion.actualizar(query);
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public boolean validarInmueblesLotes(LinkedList<String> ids) {
+        if (ids != null) {
+            String query;
+            for (int i = 0; i < ids.size(); i++) {
+                query = "UPDATE lotes set validacion = 'TRUE' WHERE codigo ='" + ids.get(i) + "';";
+                conexion.actualizar(query);
+            }
+            return true;
+        }
+        return false;
+    }
 }

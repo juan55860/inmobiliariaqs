@@ -1,7 +1,9 @@
 <%-- 
-
+    Document   : prcBorrarComercial
+    Created on : 28/05/2013, 11:12:09 AM
     Author     : Camilo
 --%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
@@ -54,7 +56,7 @@
             .Estilo1 {color: #FF0000}
         </style>
     </head>
-    <body><pre><strong>Inmuebles Validados</strong>
+    <body><pre><strong>Inmuebles Borrados</strong>
 
             <%
                 String h = request.getParameter("MDLG");
@@ -68,8 +70,9 @@
                 }
                 if (lista != null) {
                     controladores.ctrlSolicitudesInmuebles sol = new controladores.ctrlSolicitudesInmuebles();
-                    boolean b= sol.validarInmuebleRurales(lista);            
+                    boolean b= sol.eliminarInmueblesLotes(lista);             
                 }
+
             %>
 
                       

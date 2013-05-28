@@ -68,7 +68,7 @@
                 }
                 if (lista != null) {
                     controladores.ctrlSolicitudesInmuebles sol = new controladores.ctrlSolicitudesInmuebles();
-                    boolean b= sol.validarInmuebleRurales(lista);            
+                    boolean b= sol.validarInmueblesLotes(lista);            
                 }
             %>
 
