@@ -83,9 +83,21 @@
                 grid2();
 
             });
-                  $(document).ready(function() {
+            $(document).ready(function() {
 
                 grid3();
+
+            });
+
+            $(document).ready(function() {
+
+                grid4();
+
+            });
+
+            $(document).ready(function() {
+
+                grid5();
 
             });
 
@@ -128,7 +140,7 @@
                     url: 'Comercial/rCargarComercial.jsp',
                     datatype: "json",
                     mtype: 'GET',
-                    colNames: ['Codigo', 'Precio', 'Direccion', 'Estrato', 'Propietario', 'Prioridad', 'Area', 'Descripcion', 'Estado','Registro','Validacion','tipo','Baños','Pisos','Barrio'],
+                    colNames: ['Codigo', 'Precio', 'Direccion', 'Estrato', 'Propietario', 'Prioridad', 'Area', 'Descripcion', 'Estado', 'Registro', 'Validacion', 'tipo', 'Baños', 'Pisos', 'Barrio'],
                     colModel: [
                         {name: 'codigo', index: 'codigo', width: 70, sortable: false, align: "center"},
                         {name: 'precio', index: 'precio', width: 130, align: "center"},
@@ -145,7 +157,7 @@
                         {name: 'num_bannos', index: 'num_bannos', width: 50, align: "center"},
                         {name: 'num_pisos', index: 'num_pisos', width: 50, align: "center"},
                         {name: 'cod_barrio', index: 'cod_barrio', width: 50, align: "center"}
-                        
+
                     ],
                     rowNum: 10,
                     rowList: [10, 20, 30],
@@ -181,7 +193,7 @@
                     url: 'Residencial/rCargarResidencial.jsp',
                     datatype: "json",
                     mtype: 'GET',
-                    colNames: ['Codigo', 'Precio', 'Direccion', 'Estrato', 'Propietario', 'Prioridad', 'Area', 'Descripcion', 'Estado','Registro','Validacion','tipo','Baños','Habitaciones','Pisos','Parqueadero','Barrio'],
+                    colNames: ['Codigo', 'Precio', 'Direccion', 'Estrato', 'Propietario', 'Prioridad', 'Area', 'Descripcion', 'Estado', 'Registro', 'Validacion', 'tipo', 'Baños', 'Habitaciones', 'Pisos', 'Parqueadero', 'Barrio'],
                     colModel: [
                         {name: 'codigo', index: 'codigo', width: 70, sortable: false, align: "center"},
                         {name: 'precio', index: 'precio', width: 130, align: "center"},
@@ -196,11 +208,11 @@
                         {name: 'validacion', index: 'validacion', width: 70, align: "center"},
                         {name: 'tipo', index: 'tipo', width: 55, align: "center"},
                         {name: 'num_bannos', index: 'num_bannos', width: 50, align: "center"},
-                         {name: 'num_habitaciones', index: 'num_habitaciones', width: 50, align: "center"},
+                        {name: 'num_habitaciones', index: 'num_habitaciones', width: 50, align: "center"},
                         {name: 'num_pisos', index: 'num_pisos', width: 50, align: "center"},
                         {name: 'parqueadero', index: 'parqueadero', width: 80, align: "center"},
                         {name: 'cod_barrio', index: 'cod_barrio', width: 50, align: "center"}
-                        
+
                     ],
                     rowNum: 10,
                     rowList: [10, 20, 30],
@@ -223,8 +235,8 @@
                     jQuery("#list99").jqGrid('setSelection', "16");
                 });
             }
-            
-                function grid3() {
+
+            function grid3() {
                 var t = new String();
                 var f = new String();
                 t = 'tipo'; //document.getElementById('id_tipo_hab').value;
@@ -235,7 +247,7 @@
                     url: 'Edificios/rCargarEdificios.jsp',
                     datatype: "json",
                     mtype: 'GET',
-                    colNames: ['Codigo', 'Precio', 'Direccion', 'Estrato', 'Propietario', 'Prioridad', 'Area', 'Descripcion', 'Estado','Registro','Validacion','Pisos','Parqueaderos','Barrio'],
+                    colNames: ['Codigo', 'Precio', 'Direccion', 'Estrato', 'Propietario', 'Prioridad', 'Area', 'Descripcion', 'Estado', 'Registro', 'Validacion', 'Pisos', 'Parqueaderos', 'Barrio'],
                     colModel: [
                         {name: 'codigo', index: 'codigo', width: 70, sortable: false, align: "center"},
                         {name: 'precio', index: 'precio', width: 130, align: "center"},
@@ -251,7 +263,7 @@
                         {name: 'num_pisos', index: 'num_pisos', width: 55, align: "center"},
                         {name: 'num_parqueaderos', index: 'num_parqueaderos', width: 80, align: "center"},
                         {name: 'cod_barrio', index: 'cod_barrio', width: 50, align: "center"}
-                        
+
                     ],
                     rowNum: 10,
                     rowList: [10, 20, 30],
@@ -275,6 +287,59 @@
                 });
             }
 
+            function grid4() {
+                var t = new String();
+                var f = new String();
+                t = 'tipo'; //document.getElementById('id_tipo_hab').value;
+                f = '';//$('#widgetField').get(0).innerHTML;
+                //alert(t);alert(f);
+                jQuery("#list9999").empty();
+                jQuery("#list9999").jqGrid({
+                    url: 'Rural/rCargarRural.jsp',
+                    datatype: "json",
+                    mtype: 'GET',
+                    colNames: ['Codigo', 'Precio', 'Direccion', 'Estrato', 'Propietario', 'Prioridad', 'Area', 'Descripcion', 'Estado', 'Registro', 'Validacion', 'Tipo', 'Baños', 'Habitaciones', 'Piscinas'],
+                    colModel: [
+                        {name: 'codigo', index: 'codigo', width: 70, sortable: false, align: "center"},
+                        {name: 'precio', index: 'precio', width: 130, align: "center"},
+                        {name: 'direccion', index: 'direccion', width: 150, align: "center"},
+                        {name: 'estrato', index: 'estrato', width: 60, align: "center"},
+                        {name: 'cod_propietario', index: 'cod_propietario', width: 90, align: "center"},
+                        {name: 'prioridad', index: 'prioridad', width: 60, align: "center"},
+                        {name: 'area', index: 'area', width: 60, align: "center"},
+                        {name: 'descripcion', index: 'descripcion', width: 100, align: "center"},
+                        {name: 'estado', index: 'estado', width: 70, align: "center"},
+                        {name: 'fecha_registro', index: 'fecha_registro', width: 80, align: "center"},
+                        {name: 'validacion', index: 'validacion', width: 70, align: "center"},
+                        {name: 'tipo', index: 'tipo', width: 55, align: "center"},
+                        {name: 'num_bannos', index: 'num_bannos', width: 60, align: "center"},
+                        {name: 'num_habitaciones', index: 'num_habitaciones', width: 90, align: "center"},
+                        {name: 'num_piscinas', index: 'num_piscinas', width: 50, align: "center"}
+
+
+                    ],
+                    rowNum: 10,
+                    rowList: [10, 20, 30],
+                    pager: '#pager9999',
+                    sortname: 'codigo',
+                    recordpos: 'left',
+                    viewrecords: true,
+                    sortorder: "desc",
+                    multiselect: true,
+                    caption: "Seleccione "});
+
+                jQuery("#list9999").jqGrid('navGrid', '#pager9999', {add: false, del: false, edit: false, position: 'right'});
+
+                jQuery("#m1").click(function() {
+                    s = jQuery("#list9999").jqGrid('getGridParam', 'selarrrow');
+                    alert(s);
+                });
+
+                jQuery("#m1s").click(function() {
+                    jQuery("#list9999").jqGrid('setSelection', "14");
+                });
+            }
+
 
             function mostrarH() {
                 var itemsSeleccionadas = new String();
@@ -292,8 +357,8 @@
             }
 
 
-            
-             function mostrarH1() {
+
+            function mostrarH1() {
                 var itemsSeleccionadas = new String();
                 itemsSeleccionadas = jQuery("#list9").jqGrid('getGridParam', 'selarrrow');
                 var habSel = new String();
@@ -306,7 +371,7 @@
 
             }
 
-             function borrarH1() {
+            function borrarH1() {
                 var itemsSeleccionadas = new String();
                 itemsSeleccionadas = jQuery("#list9").jqGrid('getGridParam', 'selarrrow');
                 var habSel = new String();
@@ -318,8 +383,8 @@
                 document.getElementById('frameDel').src = 'Comercial/prcBorrarComercial.jsp?MDLG=' + habSel;
 
             }
-            
-             function mostrarH11() {
+
+            function mostrarH11() {
                 var itemsSeleccionadas = new String();
                 itemsSeleccionadas = jQuery("#list99").jqGrid('getGridParam', 'selarrrow');
                 var habSel = new String();
@@ -332,7 +397,7 @@
 
             }
 
-             function borrarH11() {
+            function borrarH11() {
                 var itemsSeleccionadas = new String();
                 itemsSeleccionadas = jQuery("#list99").jqGrid('getGridParam', 'selarrrow');
                 var habSel = new String();
@@ -344,8 +409,8 @@
                 document.getElementById('frameDel2').src = 'Residencial/prcBorrarResidencial.jsp?MDLG=' + habSel;
 
             }
-             
-             function mostrarH111() {
+
+            function mostrarH111() {
                 var itemsSeleccionadas = new String();
                 itemsSeleccionadas = jQuery("#list999").jqGrid('getGridParam', 'selarrrow');
                 var habSel = new String();
@@ -357,7 +422,7 @@
                 document.getElementById('frameDel3').src = 'Edificios/prcValidarEdificios.jsp?MDLG=' + habSel;
 
             }
-            
+
             function borrarH111() {
                 var itemsSeleccionadas = new String();
                 itemsSeleccionadas = jQuery("#list999").jqGrid('getGridParam', 'selarrrow');
@@ -368,6 +433,32 @@
                     habSel = habSel + jQuery("#list999").jqGrid('getCell', habi[i], '1') + ';';
                 }
                 document.getElementById('frameDel3').src = 'Edificios/prcBorrarEdificios.jsp?MDLG=' + habSel;
+
+            }
+
+            function mostrarH1111() {
+                var itemsSeleccionadas = new String();
+                itemsSeleccionadas = jQuery("#list9999").jqGrid('getGridParam', 'selarrrow');
+                var habSel = new String();
+                var habi = new Array();
+                habi = itemsSeleccionadas;
+                for (i = 0; i < habi.length; i++) {
+                    habSel = habSel + jQuery("#list9999").jqGrid('getCell', habi[i], '1') + ';';
+                }
+                document.getElementById('frameDel4').src = 'Rural/prcValidarRural.jsp?MDLG=' + habSel;
+
+            }
+
+            function borrarH1111() {
+                var itemsSeleccionadas = new String();
+                itemsSeleccionadas = jQuery("#list9999").jqGrid('getGridParam', 'selarrrow');
+                var habSel = new String();
+                var habi = new Array();
+                habi = itemsSeleccionadas;
+                for (i = 0; i < habi.length; i++) {
+                    habSel = habSel + jQuery("#list9999").jqGrid('getCell', habi[i], '1') + ';';
+                }
+                document.getElementById('frameDel4').src = 'Rural/prcBorrarRural.jsp?MDLG=' + habSel;
 
             }
 
@@ -452,13 +543,13 @@
 
                 <div id="tabs-1" >
 
-                   
-                        <table id="list9"></table>
-                        <div id="pager9"></div><br/>
 
-                        <input type="submit" onclick="mostrarH1()" border="10" style="border: #000 1px solid; background-color: #2e6e9e" value="Dar de Alta"/> <input type="button" style="border: #000 1px solid; background-color: #2e6e9e " onclick="borrarH1()" value="Borrar"/>
+                    <table id="list9"></table>
+                    <div id="pager9"></div><br/>
 
-                  
+                    <input type="submit" onclick="mostrarH1()" border="10" style="border: #000 1px solid; background-color: #2e6e9e" value="Dar de Alta"/> <input type="button" style="border: #000 1px solid; background-color: #2e6e9e " onclick="borrarH1()" value="Borrar"/>
+
+
                     <center>
                         <iframe id="frameDel" name="frameDel" width="1000" height="500" frameborder="0"></iframe>
                     </center>
@@ -470,12 +561,12 @@
                 <div id="tabs-2">
 
 
-                    
-                        <table id="list99"></table>
-                        <div id="pager99"></div><br/>
-                        <input type="submit" onclick="mostrarH11()" style="border: #000 1px solid; background-color: #2e6e9e" value="Seleccionar"/> <input type="button" style="border: #000 1px solid; background-color: #2e6e9e" onclick="borrarH11()" value="Borrar"/>
 
-                    
+                    <table id="list99"></table>
+                    <div id="pager99"></div><br/>
+                    <input type="submit" onclick="mostrarH11()" style="border: #000 1px solid; background-color: #2e6e9e" value="Seleccionar"/> <input type="button" style="border: #000 1px solid; background-color: #2e6e9e" onclick="borrarH11()" value="Borrar"/>
+
+
                     <center>
                         <iframe id="frameDel2" name="frameDel2" width="1000" height="500" frameborder="0"></iframe>
                     </center>
@@ -485,12 +576,12 @@
 
 
                 <div id="tabs-3">
-                     
-                        <table id="list999"></table>
-                        <div id="pager999"></div><br/>
-                        <input type="submit" onclick="mostrarH111()" style="border: #000 1px solid; background-color: #2e6e9e" value="Seleccionar"/> <input type="button" style="border: #000 1px solid; background-color: #2e6e9e" onclick="borrarH111()" value="Borrar"/>
 
-                   
+                    <table id="list999"></table>
+                    <div id="pager999"></div><br/>
+                    <input type="submit" onclick="mostrarH111()" style="border: #000 1px solid; background-color: #2e6e9e" value="Seleccionar"/> <input type="button" style="border: #000 1px solid; background-color: #2e6e9e" onclick="borrarH111()" value="Borrar"/>
+
+
                     <center>
                         <iframe id="frameDel3" name="frameDel3" width="1000" height="500" frameborder="0"></iframe>
                     </center>
@@ -499,7 +590,14 @@
                 </div>
 
                 <div id="tabs-4">
+                    <table id="list9999"></table>
+                    <div id="pager9999"></div><br/>
+                    <input type="submit" onclick="mostrarH1111()" style="border: #000 1px solid; background-color: #2e6e9e" value="Seleccionar"/> <input type="button" style="border: #000 1px solid; background-color: #2e6e9e" onclick="borrarH1111()" value="Borrar"/>
 
+
+                    <center>
+                        <iframe id="frameDel4" name="frameDel4" width="1000" height="500" frameborder="0"></iframe>
+                    </center>
 
                 </div>
             </div>
