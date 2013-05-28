@@ -66,4 +66,28 @@ public class ctrlSolicitudesInmuebles {
         }
         return false;
     }
+        
+        public boolean eliminarInmueblesEdificios(LinkedList<String> ids) {
+        if (ids != null) {
+            String query;
+            for (int i = 0; i < ids.size(); i++) {
+                query = "DELETE FROM edificios WHERE codigo ='" + ids.get(i) + "';";
+                conexion.actualizar(query);
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public boolean validarInmuebleEdificios(LinkedList<String> ids) {
+        if (ids != null) {
+            String query;
+            for (int i = 0; i < ids.size(); i++) {
+                query = "UPDATE edificios set validacion = 'TRUE' WHERE codigo ='" + ids.get(i) + "';";
+                conexion.actualizar(query);
+            }
+            return true;
+        }
+        return false;
+    }
 }
