@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -219,5 +220,605 @@ public class clsConexionBD {
             Logger.getLogger(clsConexionBD.class.getName()).log(Level.SEVERE, null, ex);
         }
         return jsonResult;
+    }
+    
+     
+    public LinkedList<InmuebleV2> buscarPorFecha(String fecha) {
+
+        LinkedList<modelo.InmuebleV2> listado = new LinkedList<modelo.InmuebleV2>();
+        String jsonResult = "";
+        String sql = "";
+        if(fecha.equals("RA"))
+        sql = "Select * from inmuebles where upper(estado) = 'ARRENDAMIENTO' and codigo in(select cod_inmueble from contratos)";
+        else
+            if(fecha.equals("RNA"))
+              sql = "Select * from inmuebles where upper(estado) = 'ARRENDAMIENTO' and codigo not in(select cod_inmueble from contratos)";  
+              else
+                if(fecha.equals("RV"))
+                    sql = "Select * from inmuebles where upper(estado) = 'VENTA' and codigo in(select cod_inmueble from contratos )";  
+        else
+                    if(fecha.equals("RNV"))
+                        sql = "Select * from inmuebles where upper(estado) = 'VENTA' and codigo not in(select cod_inmueble from contratos )";  
+        else
+                        if(fecha.equals("RO"))
+                            sql = "Select * from inmuebles where prioridad  is not null";
+        else
+                             sql = "Select * from inmuebles";
+        int col =9;
+        int columnas = 9;
+        try {
+            JQGridJSONModel json = new JQGridJSONModel();
+            java.util.List<JQGridRow> rows = new java.util.ArrayList<JQGridRow>();
+            JQGridRow row = new JQGridRow();
+            java.util.List<String> cells = new java.util.ArrayList<String>();
+            st = getCon().createStatement();
+            res = st.executeQuery(sql);
+            
+            int y = 1;
+            while (res.next()) {
+                cells = new java.util.ArrayList<String>();
+                row = new JQGridRow();
+                //row.setId(Integer.parseInt(res.getString(0)));
+                row.setId(y);
+                modelo.InmuebleV2 inmuble = new modelo.InmuebleV2();
+                col = 1;
+                while (col <= columnas) {
+                    cells.add(res.getString(col));
+                    if(col==1)
+                        inmuble.setCodigo(Integer.parseInt(res.getString(col)));
+                        else
+                        if(col==2)
+                            inmuble.setPrecio(res.getString(col));
+                            else
+                        if(col==3)
+                            inmuble.setDireccion(res.getString(col));
+                            else
+                        if(col==4)
+                            inmuble.setEstrato((res.getString(col)));
+                            else
+                        if(col==5)
+                            inmuble.setCodPropietario(Integer.parseInt(res.getString(col)));
+                            else
+                        if(col==6){
+                            String aux = res.getString(col);
+                            System.out.println(aux);
+                            
+                            if(aux != null)
+                            inmuble.setPrioridad(Integer.parseInt(res.getString(col)));
+                        }
+                            else
+                        if(col==7)
+                            inmuble.setArea(Integer.parseInt(res.getString(col)));
+                            else
+                        if(col==8)
+                            inmuble.setDescripcion(res.getString(col));
+                            else
+                        if(col==9)
+                            inmuble.setEstado(res.getString(col));
+                            
+                    col++;
+                    if(col==9)
+                        listado.add(inmuble);
+                }
+                row.setCell(cells);
+                rows.add(row);
+                y++;
+            }
+            if(y==1){
+                cells = new java.util.ArrayList<String>();
+                cells.add("FECHA INCORRECTA");
+                cells.add("FECHA INCORRECTA");
+                cells.add("FECHA INCORRECTA");
+                cells.add("NO SE PUEDE");
+                 row = new JQGridRow();
+                row.setId(y);
+                row.setCell(cells);
+                rows.add(row);
+                y++;
+            }
+            json.setPage("1");
+            json.setRecords(y);
+            json.setTotal("+" + (y <= 10 ? 1 : 2) + "");
+            json.setRows(rows);
+            
+            flexjson.JSONSerializer serializer = new flexjson.JSONSerializer();
+            jsonResult = serializer.exclude("*.class").deepSerialize(json);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(clsConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listado;
+    }
+    
+    public int buscarPorFecha2(String fecha) {
+
+        
+        String jsonResult = "";
+        String sql = "";
+        if(fecha.equals("ARR"))
+        sql = "Select count(*) from inmuebles where upper(estado)='ARRENDAMIENTO'";
+        else
+            if(fecha.equals("VEN"))
+                sql = "Select count(*) from inmuebles where upper(estado)='VENTA'";
+            else 
+                if(fecha.equals("OFE"))
+                    sql = "Select count(*) from inmuebles;";
+        int col = 1;
+        int columnas = 1;
+        int cantidadTotal = 0;
+        try {
+            JQGridJSONModel json = new JQGridJSONModel();
+            java.util.List<JQGridRow> rows = new java.util.ArrayList<JQGridRow>();
+            JQGridRow row = new JQGridRow();
+            java.util.List<String> cells = new java.util.ArrayList<String>();
+            st = getCon().createStatement();
+            res = st.executeQuery(sql);
+            
+            int y = 1;
+            while (res.next()) {
+                cells = new java.util.ArrayList<String>();
+                row = new JQGridRow();
+                //row.setId(Integer.parseInt(res.getString(0)));
+                row.setId(y);
+                
+                col = 1;
+                while (col <= columnas) {
+                    cells.add(res.getString(col));
+                   
+                    cantidadTotal = Integer.parseInt(res.getString(col));
+                    col++;
+                    
+                }
+                row.setCell(cells);
+                rows.add(row);
+                y++;
+            }
+            if(y==1){
+                cells = new java.util.ArrayList<String>();
+                cells.add("FECHA INCORRECTA");
+                cells.add("FECHA INCORRECTA");
+                cells.add("FECHA INCORRECTA");
+                cells.add("NO SE PUEDE");
+                 row = new JQGridRow();
+                row.setId(y);
+                row.setCell(cells);
+                rows.add(row);
+                y++;
+            }
+            json.setPage("1");
+            json.setRecords(y);
+            json.setTotal("+" + (y <= 10 ? 1 : 2) + "");
+            json.setRows(rows);
+            
+            flexjson.JSONSerializer serializer = new flexjson.JSONSerializer();
+            jsonResult = serializer.exclude("*.class").deepSerialize(json);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(clsConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return cantidadTotal;
+    }
+    
+    public int buscarAno(int año, String tipo) {
+
+        
+        String jsonResult = "";
+        String sql = "";
+        if(tipo.equals("ARR"))
+       sql = "select count(*) from contratos where to_char(fecha, 'yyyy') = '" +año+"' and upper(descripcion)='ARRENDAMIENTO'" ;
+        else
+              if(tipo.equals("VEN"))
+            sql = "select count(*) from contratos where to_char(fecha, 'yyyy') = '" +año+"' and upper(descripcion)='VENTA'" ;
+    else
+        if(tipo.equals("USU"))
+            sql = "select count(*) from personas where to_char(fecha_reg, 'yyyy') = '" +año+"'" ;
+        else
+        if(tipo.equals("INM"))
+            sql = "select count(*) from inmuebles where to_char(fecha_reg, 'yyyy') = '" +año+"'" ;
+        int col = 1;
+        int columnas = 1;
+        int cantidadTotal = 0;
+        try {
+            JQGridJSONModel json = new JQGridJSONModel();
+            java.util.List<JQGridRow> rows = new java.util.ArrayList<JQGridRow>();
+            JQGridRow row = new JQGridRow();
+            java.util.List<String> cells = new java.util.ArrayList<String>();
+            st = getCon().createStatement();
+            res = st.executeQuery(sql);
+            
+            int y = 1;
+            while (res.next()) {
+                cells = new java.util.ArrayList<String>();
+                row = new JQGridRow();
+                //row.setId(Integer.parseInt(res.getString(0)));
+                row.setId(y);
+                
+                col = 1;
+                while (col <= columnas) {
+                    cells.add(res.getString(col));
+                   String aux = res.getString(col);
+                            System.out.println(aux);
+                            
+                            if(aux != null)
+                    cantidadTotal = Integer.parseInt(res.getString(col));
+                            else
+                                cantidadTotal+=0;
+                    col++;
+                    
+                }
+                row.setCell(cells);
+                rows.add(row);
+                y++;
+            }
+            if(y==1){
+                cells = new java.util.ArrayList<String>();
+                cells.add("FECHA INCORRECTA");
+                cells.add("FECHA INCORRECTA");
+                cells.add("FECHA INCORRECTA");
+                cells.add("NO SE PUEDE");
+                 row = new JQGridRow();
+                row.setId(y);
+                row.setCell(cells);
+                rows.add(row);
+                y++;
+            }
+            json.setPage("1");
+            json.setRecords(y);
+            json.setTotal("+" + (y <= 10 ? 1 : 2) + "");
+            json.setRows(rows);
+            
+            flexjson.JSONSerializer serializer = new flexjson.JSONSerializer();
+            jsonResult = serializer.exclude("*.class").deepSerialize(json);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(clsConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return cantidadTotal;
+    }
+    
+    public double buscarAnoGanancia(int año, String tipo) {
+
+        
+        String jsonResult = "";
+        String sql = "";
+        if(tipo.equals("ARR"))
+       sql = "select sum(valor) from contratos where to_char(fecha, 'yyyy') = '" +año+"' and upper(descripcion)='ARRENDAMIENTO'" ;
+        else
+            if(tipo.equals("VEN"))
+            sql = "select sum(valor) from contratos where to_char(fecha, 'yyyy') = '" +año+"' and upper(descripcion)='VENTA'" ;
+        if(tipo.equals("USU"))
+            sql = "select sum(valor) from contratos where to_char(fecha, 'yyyy') = '" +año+"' and upper(descripcion)='VENTA'" ;
+        int col = 1;
+        int columnas = 1;
+        int cantidadTotal = 0;
+        try {
+            JQGridJSONModel json = new JQGridJSONModel();
+            java.util.List<JQGridRow> rows = new java.util.ArrayList<JQGridRow>();
+            JQGridRow row = new JQGridRow();
+            java.util.List<String> cells = new java.util.ArrayList<String>();
+            st = getCon().createStatement();
+            res = st.executeQuery(sql);
+            
+            int y = 1;
+            while (res.next()) {
+                cells = new java.util.ArrayList<String>();
+                row = new JQGridRow();
+                //row.setId(Integer.parseInt(res.getString(0)));
+                row.setId(y);
+                
+                col = 1;
+                while (col <= columnas) {
+                    cells.add(res.getString(col));
+                   String aux = res.getString(col);
+                            System.out.println(aux);
+                            
+                            if(aux != null)
+                    cantidadTotal = Integer.parseInt(res.getString(col));
+                            else
+                                cantidadTotal+=0;
+                    col++;
+                    
+                }
+                row.setCell(cells);
+                rows.add(row);
+                y++;
+            }
+            if(y==1){
+                cells = new java.util.ArrayList<String>();
+                cells.add("FECHA INCORRECTA");
+                cells.add("FECHA INCORRECTA");
+                cells.add("FECHA INCORRECTA");
+                cells.add("NO SE PUEDE");
+                 row = new JQGridRow();
+                row.setId(y);
+                row.setCell(cells);
+                rows.add(row);
+                y++;
+            }
+            json.setPage("1");
+            json.setRecords(y);
+            json.setTotal("+" + (y <= 10 ? 1 : 2) + "");
+            json.setRows(rows);
+            
+            flexjson.JSONSerializer serializer = new flexjson.JSONSerializer();
+            jsonResult = serializer.exclude("*.class").deepSerialize(json);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(clsConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return cantidadTotal;
+    }
+    
+    public int buscarMes(int mes,int año, String tipo) {
+
+        
+        String jsonResult = "";
+        String sql = "";
+        if(mes < 10 && tipo.equals("ARR"))
+       sql = "select count(*) from contratos where to_char(fecha, 'mm') = '0"+mes+"' and to_char(fecha, 'yyyy') = '"+año+"' and upper(descripcion)='ARRENDAMIENTO'" ;
+        else 
+            if(tipo.equals("ARR"))
+            sql = "select count(*) from contratos where to_char(fecha, 'mm') = '"+mes+"' and to_char(fecha, 'yyyy') = '"+año+"' and upper(descripcion)='ARRENDAMIENTO'";
+        else
+                if(mes <10 && tipo.equals("VEN"))
+                     sql = "select count(*) from contratos where to_char(fecha, 'mm') = '0"+mes+"' and to_char(fecha, 'yyyy') = '"+año+"' and upper(descripcion)='VENTA'";
+                else
+                    if(tipo.equals("VEN"))
+                     sql = "select count(*) from contratos where to_char(fecha, 'mm') = '"+mes+"' and to_char(fecha, 'yyyy') = '"+año+"' and upper(descripcion)='VENTA'";
+        else
+                if(mes <10 && tipo.equals("USU"))
+                     sql = "select count(*) from personas where to_char(fecha_reg, 'mm') = '0"+mes+"' and to_char(fecha_reg, 'yyyy') = '"+año+"'";
+                else
+                    if(tipo.equals("USU"))
+                     sql = "select count(*) from personas where to_char(fecha_reg, 'mm') = '"+mes+"' and to_char(fecha_reg, 'yyyy') = '"+año+"'";
+        else
+                if(mes <10 && tipo.equals("INM"))
+                     sql = "select count(*) from inmuebles where to_char(fecha_reg, 'mm') = '0"+mes+"' and to_char(fecha_reg, 'yyyy') = '"+año+"'";
+                else
+                    if(tipo.equals("INM"))
+                     sql = "select count(*) from inmuebles where to_char(fecha_reg, 'mm') = '"+mes+"' and to_char(fecha_reg, 'yyyy') = '"+año+"'";
+        int col = 1;
+        int columnas = 1;
+        int cantidadTotal = 0;
+        try {
+            JQGridJSONModel json = new JQGridJSONModel();
+            java.util.List<JQGridRow> rows = new java.util.ArrayList<JQGridRow>();
+            JQGridRow row = new JQGridRow();
+            java.util.List<String> cells = new java.util.ArrayList<String>();
+            st = getCon().createStatement();
+            res = st.executeQuery(sql);
+            
+            int y = 1;
+            while (res.next()) {
+                cells = new java.util.ArrayList<String>();
+                row = new JQGridRow();
+                //row.setId(Integer.parseInt(res.getString(0)));
+                row.setId(y);
+                
+                col = 1;
+                while (col <= columnas) {
+                    cells.add(res.getString(col));
+                   
+                    cantidadTotal = Integer.parseInt(res.getString(col));
+                    col++;
+                    
+                }
+                row.setCell(cells);
+                rows.add(row);
+                y++;
+            }
+            if(y==1){
+                cells = new java.util.ArrayList<String>();
+                cells.add("FECHA INCORRECTA");
+                cells.add("FECHA INCORRECTA");
+                cells.add("FECHA INCORRECTA");
+                cells.add("NO SE PUEDE");
+                 row = new JQGridRow();
+                row.setId(y);
+                row.setCell(cells);
+                rows.add(row);
+                y++;
+            }
+            json.setPage("1");
+            json.setRecords(y);
+            json.setTotal("+" + (y <= 10 ? 1 : 2) + "");
+            json.setRows(rows);
+            
+            flexjson.JSONSerializer serializer = new flexjson.JSONSerializer();
+            jsonResult = serializer.exclude("*.class").deepSerialize(json);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(clsConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return cantidadTotal;
+    }
+    
+    public double buscarMesGanancia(int mes, int año, String tipo) {
+
+        
+        String jsonResult = "";
+        String sql = "";
+        if(mes <10 && tipo.equals("ARR"))
+       sql = "select sum(valor) from contratos where to_char(fecha, 'mm') ='0"+mes+"' and to_char(fecha, 'yyyy') = '"+año+"' and upper(descripcion)='ARRENDAMIENTO'" ;
+        else
+            if(tipo.equals("ARR"))
+            sql = "select sum(valor) from contratos where to_char(fecha, 'mm') = '"+mes+"' and to_char(fecha, 'yyyy') = '"+año+"' and upper(descripcion)='ARRENDAMIENTO'" ;
+        else
+                if(mes < 10 && tipo.equals("VEN"))
+                    sql = "select sum(valor) from contratos where to_char(fecha, 'mm') ='0"+mes+"' and to_char(fecha, 'yyyy') = '"+año+"' and upper(descripcion)='VENTA'" ;
+        else
+                    if(tipo.equals("VEN"))
+            sql = "select sum(valor) from contratos where to_char(fecha, 'mm') = '"+mes+"' and to_char(fecha, 'yyyy') = '"+año+"' and upper(descripcion)='VENTA'" ;
+       else
+                if(mes <10 && tipo.equals("USU"))
+                     sql = "select count(*) from personas where to_char(fecha_reg, 'mm') = '0"+mes+"' and to_char(fecha_reg, 'yyyy') = '"+año+"'";
+                else
+                    if(tipo.equals("USU"))
+                     sql = "select count(*) from personas where to_char(fecha_reg, 'mm') = '"+mes+"' and to_char(fecha_reg, 'yyyy') = '"+año+"'";
+         else
+                if(mes <10 && tipo.equals("INM"))
+                     sql = "select count(*) from inmuebles where to_char(fecha_reg, 'mm') = '0"+mes+"' and to_char(fecha_reg, 'yyyy') = '"+año+"'";
+                else
+                    if(tipo.equals("INM"))
+                     sql = "select count(*) from inmuebles where to_char(fecha_reg, 'mm') = '"+mes+"' and to_char(fecha_reg, 'yyyy') = '"+año+"'";
+        int col = 1;
+        int columnas = 1;
+        int cantidadTotal = 0;
+        try {
+            JQGridJSONModel json = new JQGridJSONModel();
+            java.util.List<JQGridRow> rows = new java.util.ArrayList<JQGridRow>();
+            JQGridRow row = new JQGridRow();
+            java.util.List<String> cells = new java.util.ArrayList<String>();
+            st = getCon().createStatement();
+            res = st.executeQuery(sql);
+            
+            int y = 1;
+            while (res.next()) {
+                cells = new java.util.ArrayList<String>();
+                row = new JQGridRow();
+                //row.setId(Integer.parseInt(res.getString(0)));
+                row.setId(y);
+                
+                col = 1;
+                while (col <= columnas) {
+                    cells.add(res.getString(col));
+                   String aux = res.getString(col);
+                            System.out.println(aux);
+                            
+                            if(aux != null)
+                    cantidadTotal = Integer.parseInt(res.getString(col));
+                            else cantidadTotal += 0;
+                    col++;
+                    
+                }
+                row.setCell(cells);
+                rows.add(row);
+                y++;
+            }
+            if(y==1){
+                cells = new java.util.ArrayList<String>();
+                cells.add("FECHA INCORRECTA");
+                cells.add("FECHA INCORRECTA");
+                cells.add("FECHA INCORRECTA");
+                cells.add("NO SE PUEDE");
+                 row = new JQGridRow();
+                row.setId(y);
+                row.setCell(cells);
+                rows.add(row);
+                y++;
+            }
+            json.setPage("1");
+            json.setRecords(y);
+            json.setTotal("+" + (y <= 10 ? 1 : 2) + "");
+            json.setRows(rows);
+            
+            flexjson.JSONSerializer serializer = new flexjson.JSONSerializer();
+            jsonResult = serializer.exclude("*.class").deepSerialize(json);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(clsConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return cantidadTotal;
+    }
+    
+    public LinkedList<Persona> buscarPersonaPorFecha(String fecha) {
+
+        LinkedList<modelo.Persona> listado = new LinkedList<modelo.Persona>();
+        String jsonResult = "";
+        String sql = "";
+        
+                             sql = "select * from personas where to_char(fecha_reg, 'yyyy') = '"+fecha+"';";
+        int col =10;
+        int columnas = 10;
+        try {
+            JQGridJSONModel json = new JQGridJSONModel();
+            java.util.List<JQGridRow> rows = new java.util.ArrayList<JQGridRow>();
+            JQGridRow row = new JQGridRow();
+            java.util.List<String> cells = new java.util.ArrayList<String>();
+            st = getCon().createStatement();
+            res = st.executeQuery(sql);
+            
+            int y = 1;
+            while (res.next()) {
+                cells = new java.util.ArrayList<String>();
+                row = new JQGridRow();
+                //row.setId(Integer.parseInt(res.getString(0)));
+                row.setId(y);
+                modelo.Persona persona = new modelo.Persona();
+                col = 1;
+                while (col <= columnas) {
+                    cells.add(res.getString(col));
+                    if(col==1)
+                        persona.setIdentificacion(Integer.parseInt(res.getString(col)));
+                    else
+                        if(col==2)
+                            persona.setTipoIdentificacion(res.getString(col));
+                            else
+                        if(col==3)
+                            persona.setNombre(res.getString(col));
+                            else
+                        if(col==4)
+                           persona.setApellido((res.getString(col)));
+                            else
+                        if(col==5)
+                            persona.setDireccion(res.getString(col));
+                            else
+                        if(col==6){
+                            String aux = res.getString(col);
+                            System.out.println(aux);
+                            
+                            if(aux != null)
+                            persona.setTelefono(res.getString(col));
+                        }
+                            else
+                        if(col==7)
+                            persona.setCorreo(res.getString(col));
+                            else
+                        if(col==8)
+                            persona.setContrasena(res.getString(col));
+                            else
+                        if(col==9)
+                            persona.setRol(res.getString(col));
+                            
+                    if(col==10)
+                        persona.setFechaDeRegistro(res.getString(col));
+                            
+                    col++;
+                    if(col==10)
+                        listado.add(persona);
+                }
+                row.setCell(cells);
+                rows.add(row);
+                y++;
+            }
+            if(y==1){
+                cells = new java.util.ArrayList<String>();
+                cells.add("FECHA INCORRECTA");
+                cells.add("FECHA INCORRECTA");
+                cells.add("FECHA INCORRECTA");
+                cells.add("NO SE PUEDE");
+                 row = new JQGridRow();
+                row.setId(y);
+                row.setCell(cells);
+                rows.add(row);
+                y++;
+            }
+            json.setPage("1");
+            json.setRecords(y);
+            json.setTotal("+" + (y <= 10 ? 1 : 2) + "");
+            json.setRows(rows);
+            
+            flexjson.JSONSerializer serializer = new flexjson.JSONSerializer();
+            jsonResult = serializer.exclude("*.class").deepSerialize(json);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(clsConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listado;
     }
 }
