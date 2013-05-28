@@ -733,8 +733,8 @@ public class clsConexionBD {
         String sql = "";
         
                              sql = "select * from personas where to_char(fecha_reg, 'yyyy') = '"+fecha+"';";
-        int col =10;
-        int columnas = 10;
+        int col =9;
+        int columnas = 9;
         try {
             JQGridJSONModel json = new JQGridJSONModel();
             java.util.List<JQGridRow> rows = new java.util.ArrayList<JQGridRow>();
@@ -785,11 +785,10 @@ public class clsConexionBD {
                         if(col==9)
                             persona.setRol(res.getString(col));
                             
-                    if(col==10)
-                        persona.setFechaDeRegistro(res.getString(col));
+                    
                             
                     col++;
-                    if(col==10)
+                    if(col==9)
                         listado.add(persona);
                 }
                 row.setCell(cells);
