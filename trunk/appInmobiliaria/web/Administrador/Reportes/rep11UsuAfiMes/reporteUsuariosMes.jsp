@@ -191,7 +191,7 @@
                         <td align="center"> 
                             <table cellspacing="3" cellpadding="3" border="1"> 
                                 <tr>
-                                    <td colspan="10" align="center" bgcolor="336699"><font color="#FFFFFF"><strong>Reporte Usuarios Afiliados</strong></font></td>
+                                    <td colspan="9" align="center" bgcolor="336699"><font color="#FFFFFF"><strong>Reporte Usuarios Afiliados</strong></font></td>
                                 </tr>
 
                                 <tr bgcolor="FFCD00">
@@ -204,7 +204,7 @@
                                     <td align="center">CORREO</td>
                                     <td align="center">CONTRASEÑA</td>
                                     <td align="center">ROL</td>
-                                    <td align="center">FECHA REGISTRO</td>
+                                   
                                 </tr>
                                 <%
                                     for (int i = 0; i < usuarios.size(); i++) {
@@ -221,7 +221,7 @@
                                     <td align="center"><%=usuarios.get(i).getCorreo()%></td> 
                                     <td align="center"><%=usuarios.get(i).getContrasena()%></td> 
                                     <td align="center"><%=usuarios.get(i).getRol()%></td> 
-                                    <td align="center"><%=usuarios.get(i).getFechaDeRegistro()%></td> 
+                                    
                                 </tr>
                                 <%
                                 } else {
@@ -236,7 +236,7 @@
                                     <td align="center"><%=usuarios.get(i).getCorreo()%></td> 
                                     <td align="center"><%=usuarios.get(i).getContrasena()%></td> 
                                     <td align="center"><%=usuarios.get(i).getRol()%></td> 
-                                    <td align="center"><%=usuarios.get(i).getFechaDeRegistro()%></td> 
+                                    
                                 </tr>
                                 <%
                                         }
