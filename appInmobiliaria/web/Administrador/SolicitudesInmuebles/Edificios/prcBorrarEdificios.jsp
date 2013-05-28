@@ -1,6 +1,6 @@
 <%-- 
     Document   : prcBorrarComercial
-    Created on : 28/05/2013, 10:14:57 AM
+    Created on : 28/05/2013, 10:44:58 AM
     Author     : Camilo
 --%>
 
@@ -70,7 +70,7 @@
                 }
                 if (lista != null) {
                     controladores.ctrlSolicitudesInmuebles sol = new controladores.ctrlSolicitudesInmuebles();
-                    boolean b= sol.eliminarInmueblesResidencial(lista);             
+                    boolean b= sol.eliminarInmueblesEdificios(lista);             
                 }
 
             %>

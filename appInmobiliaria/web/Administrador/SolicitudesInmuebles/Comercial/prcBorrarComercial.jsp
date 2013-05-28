@@ -56,7 +56,7 @@
             .Estilo1 {color: #FF0000}
         </style>
     </head>
-    <body><pre><strong>Inmuebles Validados</strong>
+    <body><pre><strong>Inmuebles Borrados</strong>
 
             <%
                 String h = request.getParameter("MDLG");
