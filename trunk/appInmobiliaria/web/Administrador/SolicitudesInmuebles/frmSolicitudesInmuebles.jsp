@@ -232,21 +232,26 @@
                 //alert(t);alert(f);
                 jQuery("#list999").empty();
                 jQuery("#list999").jqGrid({
-                    url: 'rCargarVentas.jsp',
+                    url: 'Edificios/rCargarEdificios.jsp',
                     datatype: "json",
                     mtype: 'GET',
-                    colNames: ['Codigo', 'Codigo Vendedor', 'Codigo Comprador', 'Descripcion', 'Fecha', 'Codigo Inmueble', 'Valor', 'Comision', 'Duracion'],
+                    colNames: ['Codigo', 'Precio', 'Direccion', 'Estrato', 'Propietario', 'Prioridad', 'Area', 'Descripcion', 'Estado','Registro','Validacion','Pisos','Parqueaderos','Barrio'],
                     colModel: [
                         {name: 'codigo', index: 'codigo', width: 70, sortable: false, align: "center"},
-                        {name: 'codArrendador', index: 'codArrendador', width: 150, align: "center"},
-                        {name: 'codArrendatario', index: 'codArrendatario', width: 160, align: "center"},
+                        {name: 'precio', index: 'precio', width: 130, align: "center"},
+                        {name: 'direccion', index: 'direccion', width: 150, align: "center"},
+                        {name: 'estrato', index: 'estrato', width: 60, align: "center"},
+                        {name: 'cod_propietario', index: 'cod_propietario', width: 90, align: "center"},
+                        {name: 'prioridad', index: 'prioridad', width: 60, align: "center"},
+                        {name: 'area', index: 'area', width: 60, align: "center"},
                         {name: 'descripcion', index: 'descripcion', width: 100, align: "center"},
-                        {name: 'fecha', index: 'fecha', width: 100, align: "center"},
-                        {name: 'codInmueble', index: 'codInmueble', width: 140, align: "center"},
-                        {name: 'valor', index: 'valor', width: 100, align: "center"},
-                        {name: 'comision', index: 'comision', width: 100, align: "center"},
-                        {name: 'duracion', index: 'duracion', width: 100, align: "center"}
-
+                        {name: 'estado', index: 'estado', width: 70, align: "center"},
+                        {name: 'fecha_registro', index: 'fecha_registro', width: 80, align: "center"},
+                        {name: 'validacion', index: 'validacion', width: 70, align: "center"},
+                        {name: 'num_pisos', index: 'num_pisos', width: 55, align: "center"},
+                        {name: 'num_parqueaderos', index: 'num_parqueaderos', width: 80, align: "center"},
+                        {name: 'cod_barrio', index: 'cod_barrio', width: 50, align: "center"}
+                        
                     ],
                     rowNum: 10,
                     rowList: [10, 20, 30],
@@ -266,7 +271,7 @@
                 });
 
                 jQuery("#m1s").click(function() {
-                    jQuery("#list999").jqGrid('setSelection', "13");
+                    jQuery("#list999").jqGrid('setSelection', "14");
                 });
             }
 
@@ -349,10 +354,22 @@
                 for (i = 0; i < habi.length; i++) {
                     habSel = habSel + jQuery("#list999").jqGrid('getCell', habi[i], '1') + ';';
                 }
-                document.getElementById('frameDel3').src = 'frmOpcionSeleccionada.jsp?MDLG=' + habSel;
+                document.getElementById('frameDel3').src = 'Edificios/prcValidarEdificios.jsp?MDLG=' + habSel;
 
             }
+            
+            function borrarH111() {
+                var itemsSeleccionadas = new String();
+                itemsSeleccionadas = jQuery("#list999").jqGrid('getGridParam', 'selarrrow');
+                var habSel = new String();
+                var habi = new Array();
+                habi = itemsSeleccionadas;
+                for (i = 0; i < habi.length; i++) {
+                    habSel = habSel + jQuery("#list999").jqGrid('getCell', habi[i], '1') + ';';
+                }
+                document.getElementById('frameDel3').src = 'Edificios/prcBorrarEdificios.jsp?MDLG=' + habSel;
 
+            }
 
 
         </script>
@@ -468,12 +485,12 @@
 
 
                 <div id="tabs-3">
-                     <center>
+                     
                         <table id="list999"></table>
                         <div id="pager999"></div><br/>
-                        <input type="submit" onclick="mostrarH111()" style="border: #000 1px solid; background-color: #2e6e9e" value="Seleccionar"/> <input type="button" style="border: #000 1px solid; background-color: #2e6e9e" onclick="refresh()" value="Actualizar"/>
+                        <input type="submit" onclick="mostrarH111()" style="border: #000 1px solid; background-color: #2e6e9e" value="Seleccionar"/> <input type="button" style="border: #000 1px solid; background-color: #2e6e9e" onclick="borrarH111()" value="Borrar"/>
 
-                    </center>
+                   
                     <center>
                         <iframe id="frameDel3" name="frameDel3" width="1000" height="500" frameborder="0"></iframe>
                     </center>
