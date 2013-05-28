@@ -336,7 +336,55 @@
                 });
 
                 jQuery("#m1s").click(function() {
-                    jQuery("#list9999").jqGrid('setSelection', "14");
+                    jQuery("#list9999").jqGrid('setSelection', "15");
+                });
+            }
+
+            function grid5() {
+                var t = new String();
+                var f = new String();
+                t = 'tipo'; //document.getElementById('id_tipo_hab').value;
+                f = '';//$('#widgetField').get(0).innerHTML;
+                //alert(t);alert(f);
+                jQuery("#list99999").empty();
+                jQuery("#list99999").jqGrid({
+                    url: 'Lotes/rCargarLotes.jsp',
+                    datatype: "json",
+                    mtype: 'GET',
+                    colNames: ['Codigo', 'Precio', 'Direccion', 'Estrato', 'Propietario', 'Prioridad', 'Area', 'Descripcion', 'Estado', 'Registro', 'Validacion', 'Tipo'],
+                    colModel: [
+                        {name: 'codigo', index: 'codigo', width: 70, sortable: false, align: "center"},
+                        {name: 'precio', index: 'precio', width: 130, align: "center"},
+                        {name: 'direccion', index: 'direccion', width: 150, align: "center"},
+                        {name: 'estrato', index: 'estrato', width: 60, align: "center"},
+                        {name: 'cod_propietario', index: 'cod_propietario', width: 90, align: "center"},
+                        {name: 'prioridad', index: 'prioridad', width: 60, align: "center"},
+                        {name: 'area', index: 'area', width: 60, align: "center"},
+                        {name: 'descripcion', index: 'descripcion', width: 100, align: "center"},
+                        {name: 'estado', index: 'estado', width: 70, align: "center"},
+                        {name: 'fecha_registro', index: 'fecha_registro', width: 80, align: "center"},
+                        {name: 'validacion', index: 'validacion', width: 70, align: "center"},
+                        {name: 'tipo', index: 'tipo', width: 55, align: "center"}
+                    ],
+                    rowNum: 10,
+                    rowList: [10, 20, 30],
+                    pager: '#pager99999',
+                    sortname: 'codigo',
+                    recordpos: 'left',
+                    viewrecords: true,
+                    sortorder: "desc",
+                    multiselect: true,
+                    caption: "Seleccione "});
+
+                jQuery("#list99999").jqGrid('navGrid', '#pager99999', {add: false, del: false, edit: false, position: 'right'});
+
+                jQuery("#m1").click(function() {
+                    s = jQuery("#list99999").jqGrid('getGridParam', 'selarrrow');
+                    alert(s);
+                });
+
+                jQuery("#m1s").click(function() {
+                    jQuery("#list99999").jqGrid('setSelection', "12");
                 });
             }
 
@@ -461,6 +509,33 @@
                 document.getElementById('frameDel4').src = 'Rural/prcBorrarRural.jsp?MDLG=' + habSel;
 
             }
+
+            function mostrarH11111() {
+                var itemsSeleccionadas = new String();
+                itemsSeleccionadas = jQuery("#list99999").jqGrid('getGridParam', 'selarrrow');
+                var habSel = new String();
+                var habi = new Array();
+                habi = itemsSeleccionadas;
+                for (i = 0; i < habi.length; i++) {
+                    habSel = habSel + jQuery("#list99999").jqGrid('getCell', habi[i], '1') + ';';
+                }
+                document.getElementById('frameDel5').src = 'Lotes/prcValidarLotes.jsp?MDLG=' + habSel;
+
+            }
+
+            function borrarH11111() {
+                var itemsSeleccionadas = new String();
+                itemsSeleccionadas = jQuery("#list99999").jqGrid('getGridParam', 'selarrrow');
+                var habSel = new String();
+                var habi = new Array();
+                habi = itemsSeleccionadas;
+                for (i = 0; i < habi.length; i++) {
+                    habSel = habSel + jQuery("#list99999").jqGrid('getCell', habi[i], '1') + ';';
+                }
+                document.getElementById('frameDel5').src = 'Lotes/prcBorrarLotes.jsp?MDLG=' + habSel;
+
+            }
+
 
 
         </script>
@@ -597,6 +672,18 @@
 
                     <center>
                         <iframe id="frameDel4" name="frameDel4" width="1000" height="500" frameborder="0"></iframe>
+                    </center>
+
+                </div>
+
+                <div id="tabs-5">
+                    <table id="list99999"></table>
+                    <div id="pager99999"></div><br/>
+                    <input type="submit" onclick="mostrarH11111()" style="border: #000 1px solid; background-color: #2e6e9e" value="Seleccionar"/> <input type="button" style="border: #000 1px solid; background-color: #2e6e9e" onclick="borrarH11111()" value="Borrar"/>
+
+
+                    <center>
+                        <iframe id="frameDel5" name="frameDel5" width="1000" height="500" frameborder="0"></iframe>
                     </center>
 
                 </div>

@@ -89,6 +89,7 @@
             <section id="content"><div class="ic"></div>
                 <div class="container_12">	
                     <div class="grid_8">
+
                         <h2 class="top-1 p3">Ayuda</h2>
                         <strong>Comercial</strong></br>
                         En esta opción se puede ingresar información de los siguientes
@@ -98,16 +99,16 @@
                         <strong>Residencial</strong></br>
                         En esta opción se puede ingresar información de los siguientes
                         bienes inmuebles : Casas, Apartamentos y ApartaEstudios.
-                        
+
                         </br></br>
                         <strong>Edificios</strong></br>
                         En esta opción solo se ingresan los datos de un edificio.
-                        
-                         </br></br>
+
+                        </br></br>
                         <strong>Rural</strong></br>
                         En esta opción solo se ingresa información del sector rural
                         como lo son: Fincas, Casas Campestres y Cabañas.
-                            </br></br>
+                        </br></br>
                         <strong>Lotes</strong></br>
                         En esta opción solo se ingresa información básica del lote.
 
@@ -116,6 +117,7 @@
                     </div>
                     <div class="grid_4">
                         <div class="left-1">
+
                             <h2 class="top-1 p3">Categorias</h2>
                             <form id="form-1" class="form-1 bot-1"action="frmRegistrarInmueble.jsp">
                                 <div class="select-1">
@@ -131,6 +133,8 @@
                                 <a onClick="document.getElementById('form-1').submit()" class="button">Ingresar</a>
                                 <div class="clear"></div>
                             </form>
+                            <h2 class="top-1 p2">Peticiones</h2>
+                            <a onClick="window.location.href = '../SolicitudesInmuebles/frmSolicitudesInmuebles.jsp';" class="button">Ingresar</a>
 
 
                         </div>
