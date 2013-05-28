@@ -17,7 +17,7 @@ public class Persona {
     private String correo;
     private String contrasena;
     private String rol;
-    private String fechaDeRegistro;
+    private Date fechaDeRegistro;
 
     public Persona(int identificacion) {
         this.identificacion = identificacion;
@@ -26,7 +26,7 @@ public class Persona {
     public Persona() {
     }
 
-    public Persona(int identificacion, String tipoIdentificacion, String nombre, String apellido, String direccion, String telefono, String correo, String contrasena, String rol, String fechaDeRegistro) {
+    public Persona(int identificacion, String tipoIdentificacion, String nombre, String apellido, String direccion, String telefono, String correo, String contrasena, String rol, Date fechaDeRegistro) {
         this.identificacion = identificacion;
         this.tipoIdentificacion = tipoIdentificacion;
         this.nombre = nombre;
@@ -168,14 +168,14 @@ public class Persona {
     /**
      * @return the fechaDeRegistro
      */
-    public String getFechaDeRegistro() {
+    public Date getFechaDeRegistro() {
         return fechaDeRegistro;
     }
 
     /**
      * @param fechaDeRegistro the fechaDeRegistro to set
      */
-    public void setFechaDeRegistro(String fechaDeRegistro) {
+    public void setFechaDeRegistro(Date fechaDeRegistro) {
         this.fechaDeRegistro = fechaDeRegistro;
     }
 }
