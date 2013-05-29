@@ -1,0 +1,1005 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.2.4
+-- Dumped by pg_dump version 9.2.4
+-- Started on 2013-05-29 18:26:50
+
+SET statement_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- TOC entry 200 (class 3079 OID 11727)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 2122 (class 0 OID 0)
+-- Dependencies: 200
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+--
+-- TOC entry 169 (class 1259 OID 16396)
+-- Name: sec_barrios; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE sec_barrios
+    START WITH 101
+    INCREMENT BY 1
+    MINVALUE 101
+    MAXVALUE 999999
+    CACHE 1;
+
+
+ALTER TABLE public.sec_barrios OWNER TO postgres;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 176 (class 1259 OID 16425)
+-- Name: barrios; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE barrios (
+    codigo character varying DEFAULT ('bar'::text || nextval('sec_barrios'::regclass)) NOT NULL,
+    nombre character varying NOT NULL
+);
+
+
+ALTER TABLE public.barrios OWNER TO postgres;
+
+--
+-- TOC entry 170 (class 1259 OID 16398)
+-- Name: sec_inmuebles; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE sec_inmuebles
+    START WITH 101
+    INCREMENT BY 1
+    MINVALUE 101
+    MAXVALUE 999999
+    CACHE 1;
+
+
+ALTER TABLE public.sec_inmuebles OWNER TO postgres;
+
+--
+-- TOC entry 177 (class 1259 OID 16434)
+-- Name: inmuebles; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE inmuebles (
+    codigo character varying DEFAULT ('inm'::text || nextval('sec_inmuebles'::regclass)) NOT NULL,
+    precio integer,
+    direccion character varying,
+    estrato character varying,
+    cod_propietario integer NOT NULL,
+    prioridad integer,
+    area integer,
+    descripcion character varying,
+    estado character varying,
+    fecha_registro date,
+    validacion boolean
+);
+
+
+ALTER TABLE public.inmuebles OWNER TO postgres;
+
+--
+-- TOC entry 178 (class 1259 OID 16448)
+-- Name: comerciales; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE comerciales (
+    tipo character varying,
+    num_bannos integer,
+    num_pisos integer,
+    cod_barrio character varying
+)
+INHERITS (inmuebles);
+
+
+ALTER TABLE public.comerciales OWNER TO postgres;
+
+--
+-- TOC entry 172 (class 1259 OID 16402)
+-- Name: sec_contratos; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE sec_contratos
+    START WITH 101
+    INCREMENT BY 1
+    MINVALUE 101
+    MAXVALUE 999999
+    CACHE 1;
+
+
+ALTER TABLE public.sec_contratos OWNER TO postgres;
+
+--
+-- TOC entry 184 (class 1259 OID 16519)
+-- Name: contratos; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE contratos (
+    codigo character varying DEFAULT ('con'::text || nextval('sec_contratos'::regclass)) NOT NULL,
+    cod_arrendador integer NOT NULL,
+    cod_arrendatario integer NOT NULL,
+    descripcion character varying,
+    fecha date,
+    cod_inmueble character varying NOT NULL,
+    valor integer,
+    comision integer,
+    duracion integer
+);
+
+
+ALTER TABLE public.contratos OWNER TO postgres;
+
+--
+-- TOC entry 168 (class 1259 OID 16394)
+-- Name: sec_documentos; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE sec_documentos
+    START WITH 101
+    INCREMENT BY 1
+    MINVALUE 101
+    MAXVALUE 999999
+    CACHE 1;
+
+
+ALTER TABLE public.sec_documentos OWNER TO postgres;
+
+--
+-- TOC entry 174 (class 1259 OID 16406)
+-- Name: documentos; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE documentos (
+    codigo character varying DEFAULT ('doc'::text || nextval('sec_documentos'::regclass)) NOT NULL,
+    nombre character varying,
+    archivo character varying
+);
+
+
+ALTER TABLE public.documentos OWNER TO postgres;
+
+--
+-- TOC entry 179 (class 1259 OID 16462)
+-- Name: edificios; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE edificios (
+    num_pisos integer,
+    num_parqueaderos integer,
+    cod_barrio character varying
+)
+INHERITS (inmuebles);
+
+
+ALTER TABLE public.edificios OWNER TO postgres;
+
+--
+-- TOC entry 173 (class 1259 OID 16404)
+-- Name: sec_fotos; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE sec_fotos
+    START WITH 101
+    INCREMENT BY 1
+    MINVALUE 101
+    MAXVALUE 999999
+    CACHE 1;
+
+
+ALTER TABLE public.sec_fotos OWNER TO postgres;
+
+--
+-- TOC entry 185 (class 1259 OID 16538)
+-- Name: fotos; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE fotos (
+    codigo character varying DEFAULT ('fot'::text || nextval('sec_fotos'::regclass)) NOT NULL,
+    archivo character varying NOT NULL,
+    cod_inmueble character varying NOT NULL
+);
+
+
+ALTER TABLE public.fotos OWNER TO postgres;
+
+--
+-- TOC entry 180 (class 1259 OID 16476)
+-- Name: lotes; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE lotes (
+    tipo character varying
+)
+INHERITS (inmuebles);
+
+
+ALTER TABLE public.lotes OWNER TO postgres;
+
+--
+-- TOC entry 175 (class 1259 OID 16415)
+-- Name: personas; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE personas (
+    identificacion integer NOT NULL,
+    tipo_identificacion character varying NOT NULL,
+    nombre character varying NOT NULL,
+    apellido character varying NOT NULL,
+    direccion character varying(50) NOT NULL,
+    telefono character varying NOT NULL,
+    correo character varying NOT NULL,
+    contrasenna character varying NOT NULL,
+    rol character varying NOT NULL,
+    fecha_registro date
+);
+
+
+ALTER TABLE public.personas OWNER TO postgres;
+
+--
+-- TOC entry 181 (class 1259 OID 16485)
+-- Name: residenciales; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE residenciales (
+    tipo character varying,
+    num_bannos integer,
+    num_habitaciones integer,
+    num_pisos integer,
+    parqueadero boolean,
+    cod_barrio character varying
+)
+INHERITS (inmuebles);
+
+
+ALTER TABLE public.residenciales OWNER TO postgres;
+
+--
+-- TOC entry 182 (class 1259 OID 16499)
+-- Name: rurales; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE rurales (
+    tipo character varying,
+    num_bannos integer,
+    num_habitaciones integer,
+    num_piscinas integer
+)
+INHERITS (inmuebles);
+
+
+ALTER TABLE public.rurales OWNER TO postgres;
+
+--
+-- TOC entry 171 (class 1259 OID 16400)
+-- Name: sec_solicitudes; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE sec_solicitudes
+    START WITH 101
+    INCREMENT BY 1
+    MINVALUE 101
+    MAXVALUE 999999
+    CACHE 1;
+
+
+ALTER TABLE public.sec_solicitudes OWNER TO postgres;
+
+--
+-- TOC entry 183 (class 1259 OID 16508)
+-- Name: solicitudes; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE solicitudes (
+    codigo character varying DEFAULT ('sol'::text || nextval('sec_solicitudes'::regclass)) NOT NULL,
+    nombre character varying NOT NULL,
+    apellido character varying NOT NULL,
+    telefono integer,
+    correo character varying,
+    cod_inmueble character varying NOT NULL
+);
+
+
+ALTER TABLE public.solicitudes OWNER TO postgres;
+
+--
+-- TOC entry 189 (class 1259 OID 16560)
+-- Name: v_comerciales_bod; Type: VIEW; Schema: public; Owner: postgres
+--
+
+CREATE VIEW v_comerciales_bod AS
+    SELECT c.tipo, c.estado, b.nombre AS barrio, c.direccion, c.precio, c.estrato, c.area, c.num_bannos, c.num_pisos, c.descripcion, (((p.nombre)::text || ' '::text) || (p.apellido)::text) AS propietario FROM comerciales c, barrios b, personas p WHERE (((upper((c.tipo)::text) = 'bodega'::text) AND ((c.cod_barrio)::text = (b.codigo)::text)) AND (c.cod_propietario = p.identificacion));
+
+
+ALTER TABLE public.v_comerciales_bod OWNER TO postgres;
+
+--
+-- TOC entry 188 (class 1259 OID 16556)
+-- Name: v_comerciales_con; Type: VIEW; Schema: public; Owner: postgres
+--
+
+CREATE VIEW v_comerciales_con AS
+    SELECT c.tipo, c.estado, b.nombre AS barrio, c.direccion, c.precio, c.estrato, c.area, c.num_bannos, c.num_pisos, c.descripcion, (((p.nombre)::text || ' '::text) || (p.apellido)::text) AS propietario FROM comerciales c, barrios b, personas p WHERE (((upper((c.tipo)::text) = 'CONSULTORIO'::text) AND ((c.cod_barrio)::text = (b.codigo)::text)) AND (c.cod_propietario = p.identificacion));
+
+
+ALTER TABLE public.v_comerciales_con OWNER TO postgres;
+
+--
+-- TOC entry 186 (class 1259 OID 16548)
+-- Name: v_comerciales_loc; Type: VIEW; Schema: public; Owner: postgres
+--
+
+CREATE VIEW v_comerciales_loc AS
+    SELECT c.tipo, c.estado, b.nombre AS barrio, c.direccion, c.precio, c.estrato, c.area, c.num_bannos, c.num_pisos, c.descripcion, (((p.nombre)::text || ' '::text) || (p.apellido)::text) AS propietario FROM comerciales c, barrios b, personas p WHERE (((upper((c.tipo)::text) = 'LOCAL'::text) AND ((c.cod_barrio)::text = (b.codigo)::text)) AND (c.cod_propietario = p.identificacion));
+
+
+ALTER TABLE public.v_comerciales_loc OWNER TO postgres;
+
+--
+-- TOC entry 187 (class 1259 OID 16552)
+-- Name: v_comerciales_ofi; Type: VIEW; Schema: public; Owner: postgres
+--
+
+CREATE VIEW v_comerciales_ofi AS
+    SELECT c.tipo, c.estado, b.nombre AS barrio, c.direccion, c.precio, c.estrato, c.area, c.num_bannos, c.num_pisos, c.descripcion, (((p.nombre)::text || ' '::text) || (p.apellido)::text) AS propietario FROM comerciales c, barrios b, personas p WHERE (((upper((c.tipo)::text) = 'OFICINA'::text) AND ((c.cod_barrio)::text = (b.codigo)::text)) AND (c.cod_propietario = p.identificacion));
+
+
+ALTER TABLE public.v_comerciales_ofi OWNER TO postgres;
+
+--
+-- TOC entry 190 (class 1259 OID 16564)
+-- Name: v_comerciales_par; Type: VIEW; Schema: public; Owner: postgres
+--
+
+CREATE VIEW v_comerciales_par AS
+    SELECT c.tipo, c.estado, b.nombre AS barrio, c.direccion, c.precio, c.estrato, c.area, c.num_bannos, c.num_pisos, c.descripcion, (((p.nombre)::text || ' '::text) || (p.apellido)::text) AS propietario FROM comerciales c, barrios b, personas p WHERE (((upper((c.tipo)::text) = 'PARQUEADERO'::text) AND ((c.cod_barrio)::text = (b.codigo)::text)) AND (c.cod_propietario = p.identificacion));
+
+
+ALTER TABLE public.v_comerciales_par OWNER TO postgres;
+
+--
+-- TOC entry 191 (class 1259 OID 16568)
+-- Name: v_edificios_edi; Type: VIEW; Schema: public; Owner: postgres
+--
+
+CREATE VIEW v_edificios_edi AS
+    SELECT e.estado, b.nombre AS barrio, e.direccion, e.precio, e.estrato, e.area, e.num_pisos, e.num_parqueaderos, e.descripcion, (((p.nombre)::text || ' '::text) || (p.apellido)::text) AS propietario FROM edificios e, barrios b, personas p WHERE (((e.cod_barrio)::text = (b.codigo)::text) AND (e.cod_propietario = p.identificacion));
+
+
+ALTER TABLE public.v_edificios_edi OWNER TO postgres;
+
+--
+-- TOC entry 198 (class 1259 OID 16600)
+-- Name: v_rango_inm1; Type: VIEW; Schema: public; Owner: postgres
+--
+
+CREATE VIEW v_rango_inm1 AS
+    SELECT i.precio, i.codigo, i.direccion, i.descripcion, (((p.nombre)::text || ' '::text) || (p.apellido)::text) AS propietario FROM inmuebles i, personas p WHERE (((i.precio >= 100000) AND (i.precio <= 1000000)) AND (i.cod_propietario = p.identificacion)) ORDER BY i.precio;
+
+
+ALTER TABLE public.v_rango_inm1 OWNER TO postgres;
+
+--
+-- TOC entry 199 (class 1259 OID 16604)
+-- Name: v_rango_inm2; Type: VIEW; Schema: public; Owner: postgres
+--
+
+CREATE VIEW v_rango_inm2 AS
+    SELECT i.precio, i.codigo, i.direccion, i.descripcion, (((p.nombre)::text || ' '::text) || (p.apellido)::text) AS propietario FROM inmuebles i, personas p WHERE (((i.precio >= 1000000) AND (i.precio <= 10000000)) AND (i.cod_propietario = p.identificacion)) ORDER BY i.precio;
+
+
+ALTER TABLE public.v_rango_inm2 OWNER TO postgres;
+
+--
+-- TOC entry 193 (class 1259 OID 16577)
+-- Name: v_residenciales_apa; Type: VIEW; Schema: public; Owner: postgres
+--
+
+CREATE VIEW v_residenciales_apa AS
+    SELECT r.tipo, r.estado, b.nombre AS barrio, r.direccion, r.precio, r.estrato, r.area, r.num_bannos, r.num_habitaciones, r.num_pisos, r.descripcion, (((p.nombre)::text || ' '::text) || (p.apellido)::text) AS propietario FROM residenciales r, barrios b, personas p WHERE (((upper((r.tipo)::text) = 'APARTAMENTO'::text) AND ((r.cod_barrio)::text = (b.codigo)::text)) AND (r.cod_propietario = p.identificacion));
+
+
+ALTER TABLE public.v_residenciales_apa OWNER TO postgres;
+
+--
+-- TOC entry 194 (class 1259 OID 16582)
+-- Name: v_residenciales_ape; Type: VIEW; Schema: public; Owner: postgres
+--
+
+CREATE VIEW v_residenciales_ape AS
+    SELECT r.tipo, r.estado, b.nombre AS barrio, r.direccion, r.precio, r.estrato, r.area, r.num_bannos, r.num_habitaciones, r.num_pisos, r.descripcion, (((p.nombre)::text || ' '::text) || (p.apellido)::text) AS propietario FROM residenciales r, barrios b, personas p WHERE ((upper((r.tipo)::text) = 'APARTAESTUDIO'::text) OR (((upper((r.tipo)::text) = 'APARTA ESTUDIO'::text) AND ((r.cod_barrio)::text = (b.codigo)::text)) AND (r.cod_propietario = p.identificacion)));
+
+
+ALTER TABLE public.v_residenciales_ape OWNER TO postgres;
+
+--
+-- TOC entry 192 (class 1259 OID 16572)
+-- Name: v_residenciales_cas; Type: VIEW; Schema: public; Owner: postgres
+--
+
+CREATE VIEW v_residenciales_cas AS
+    SELECT r.tipo, r.estado, b.nombre AS barrio, r.direccion, r.precio, r.estrato, r.area, r.num_bannos, r.num_habitaciones, r.num_pisos, r.descripcion, (((p.nombre)::text || ' '::text) || (p.apellido)::text) AS propietario FROM residenciales r, barrios b, personas p WHERE (((upper((r.tipo)::text) = 'CASA'::text) AND ((r.cod_barrio)::text = (b.codigo)::text)) AND (r.cod_propietario = p.identificacion));
+
+
+ALTER TABLE public.v_residenciales_cas OWNER TO postgres;
+
+--
+-- TOC entry 197 (class 1259 OID 16595)
+-- Name: v_rurales_cab; Type: VIEW; Schema: public; Owner: postgres
+--
+
+CREATE VIEW v_rurales_cab AS
+    SELECT r.tipo, r.estado, r.direccion, r.precio, r.estrato, r.area, r.num_bannos, r.num_habitaciones, r.num_piscinas, r.descripcion, (((p.nombre)::text || ' '::text) || (p.apellido)::text) AS propietario FROM rurales r, personas p WHERE (((upper((r.tipo)::text) = 'CABANNA'::text) OR (upper((r.tipo)::text) = 'CABANA'::text)) OR ((upper((r.tipo)::text) = 'CABAÑA'::text) AND (r.cod_propietario = p.identificacion)));
+
+
+ALTER TABLE public.v_rurales_cab OWNER TO postgres;
+
+--
+-- TOC entry 196 (class 1259 OID 16591)
+-- Name: v_rurales_cas; Type: VIEW; Schema: public; Owner: postgres
+--
+
+CREATE VIEW v_rurales_cas AS
+    SELECT r.tipo, r.estado, r.direccion, r.precio, r.estrato, r.area, r.num_bannos, r.num_habitaciones, r.num_piscinas, r.descripcion, (((p.nombre)::text || ' '::text) || (p.apellido)::text) AS propietario FROM rurales r, personas p WHERE ((upper((r.tipo)::text) = 'CASA CAMPESTRE'::text) OR ((upper((r.tipo)::text) = 'CASACAMPESTRE'::text) AND (r.cod_propietario = p.identificacion)));
+
+
+ALTER TABLE public.v_rurales_cas OWNER TO postgres;
+
+--
+-- TOC entry 195 (class 1259 OID 16587)
+-- Name: v_rurales_fin; Type: VIEW; Schema: public; Owner: postgres
+--
+
+CREATE VIEW v_rurales_fin AS
+    SELECT r.tipo, r.estado, r.direccion, r.precio, r.estrato, r.area, r.num_bannos, r.num_habitaciones, r.num_piscinas, r.descripcion, (((p.nombre)::text || ' '::text) || (p.apellido)::text) AS propietario FROM rurales r, personas p WHERE ((upper((r.tipo)::text) = 'FINCA'::text) AND (r.cod_propietario = p.identificacion));
+
+
+ALTER TABLE public.v_rurales_fin OWNER TO postgres;
+
+--
+-- TOC entry 2055 (class 2604 OID 16451)
+-- Name: codigo; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY comerciales ALTER COLUMN codigo SET DEFAULT ('inm'::text || nextval('sec_inmuebles'::regclass));
+
+
+--
+-- TOC entry 2056 (class 2604 OID 16465)
+-- Name: codigo; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY edificios ALTER COLUMN codigo SET DEFAULT ('inm'::text || nextval('sec_inmuebles'::regclass));
+
+
+--
+-- TOC entry 2057 (class 2604 OID 16479)
+-- Name: codigo; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY lotes ALTER COLUMN codigo SET DEFAULT ('inm'::text || nextval('sec_inmuebles'::regclass));
+
+
+--
+-- TOC entry 2058 (class 2604 OID 16488)
+-- Name: codigo; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY residenciales ALTER COLUMN codigo SET DEFAULT ('inm'::text || nextval('sec_inmuebles'::regclass));
+
+
+--
+-- TOC entry 2059 (class 2604 OID 16502)
+-- Name: codigo; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY rurales ALTER COLUMN codigo SET DEFAULT ('inm'::text || nextval('sec_inmuebles'::regclass));
+
+
+--
+-- TOC entry 2105 (class 0 OID 16425)
+-- Dependencies: 176
+-- Data for Name: barrios; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY barrios (codigo, nombre) FROM stdin;
+bar101	Chipre
+bar102	Lucitania
+bar103	Enea
+bar104	San Jorge
+bar105	La Argentina
+bar106	Laureles
+bar107	La Carola
+bar108	Fatima
+bar109	Colinas
+bar110	Kenedy
+bar111	Villa pilar
+bar112	El bosque
+bar113	Aranjuez
+bar114	La Fuente
+bar115	Villa Carmenza
+bar116	Palermo
+bar117	Milan
+bar118	Arboleda
+bar119	Centro
+bar120	Campoamor
+bar121	Fundadores
+bar122	Hoyo frío
+bar123	Las americas
+bar124	Los agustinos
+bar125	La palma
+bar126	Belmira
+bar127	Buenavista
+bar128	Chupaderos
+bar129	El desquite
+bar130	El paraiso
+bar131	La esperanza
+bar132	La favorita
+bar133	Altamar
+\.
+
+
+--
+-- TOC entry 2107 (class 0 OID 16448)
+-- Dependencies: 178
+-- Data for Name: comerciales; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY comerciales (codigo, precio, direccion, estrato, cod_propietario, prioridad, area, descripcion, estado, fecha_registro, validacion, tipo, num_bannos, num_pisos, cod_barrio) FROM stdin;
+inm108	1500000	CARRERA 22 # 25-11	4	1000000008	1	800	Parquea lo que sea	venta	2012-06-10	t	Parqueadero	2	10	bar105
+inm107	200000	Carrera 25 #54-11	2	1000000004	\N	500	le cabe de todo	venta	2012-04-30	t	Bodega	1	1	bar104
+inm104	300000	CALLE 65 #30-18	2	1000000002	2	20	vende de todo	arrendamiento	2012-03-19	f	Local	1	1	bar101
+inm105	450000	CALLE 32 # 11-11	3	1000000004	3	80	Que elegancia	arrendamiento	2012-04-19	f	Oficina	1	1	bar102
+inm106	800000	Calle 19 #23-12	3	1000000006	1	120	muy amplio	libre	2012-04-29	f	Consultorio	2	2	bar103
+\.
+
+
+--
+-- TOC entry 2113 (class 0 OID 16519)
+-- Dependencies: 184
+-- Data for Name: contratos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY contratos (codigo, cod_arrendador, cod_arrendatario, descripcion, fecha, cod_inmueble, valor, comision, duracion) FROM stdin;
+con108	1000000014	1000000015	07_Des	2012-07-01	inm107	7	7	7
+con109	1000000016	1000000017	08_Des	2012-08-01	inm108	8	8	8
+con110	1000000018	1000000019	09_Des	2012-09-01	inm109	9	9	9
+con102	1000000002	1000000003	arrendamiento	2012-01-01	inm105	1	1	8
+con103	1000000004	1000000005	arrendamiento	2012-02-01	inm109	2	2	4
+con101	1059784989	1105455450	arrendamiento	2011-01-01	inm102	0	0	6
+con104	1000000006	1000000007	arrendamiento	2013-03-01	inm116	3	3	3
+con107	1000000012	1000000013	venta	2013-06-01	inm113	6	6	6
+con106	1000000010	1000000011	venta	2012-05-01	inm112	5	5	5
+con105	1000000008	1000000009	venta	2012-04-01	inm108	4	4	4
+\.
+
+
+--
+-- TOC entry 2103 (class 0 OID 16406)
+-- Dependencies: 174
+-- Data for Name: documentos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY documentos (codigo, nombre, archivo) FROM stdin;
+doc101	00_Documento	00_Archivo
+doc102	01_Documento	01_Archivo
+doc103	02_Documento	02_Archivo
+doc104	03_Documento	03_Archivo
+doc105	04_Documento	04_Archivo
+doc106	05_Documento	05_Archivo
+doc107	06_Documento	06_Archivo
+doc108	07_Documento	07_Archivo
+doc109	08_Documento	08_Archivo
+doc110	09_Documento	09_Archivo
+\.
+
+
+--
+-- TOC entry 2108 (class 0 OID 16462)
+-- Dependencies: 179
+-- Data for Name: edificios; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY edificios (codigo, precio, direccion, estrato, cod_propietario, prioridad, area, descripcion, estado, fecha_registro, validacion, num_pisos, num_parqueaderos, cod_barrio) FROM stdin;
+inm116	20000000	CARRERA 24 #70-11	4	1000000016	8	1200	muy alto	arrendamiento	2012-01-19	t	50	100	\N
+\.
+
+
+--
+-- TOC entry 2114 (class 0 OID 16538)
+-- Dependencies: 185
+-- Data for Name: fotos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY fotos (codigo, archivo, cod_inmueble) FROM stdin;
+fot102	02_Arc	inm102
+fot103	03_Arc	inm103
+fot104	04_Arc	inm104
+fot105	05_Arc	inm105
+fot106	06_Arc	inm106
+fot107	07_Arc	inm107
+fot108	08_Arc	inm108
+fot109	09_Arc	inm109
+fot101	fotos/1.jpg	inm101
+\.
+
+
+--
+-- TOC entry 2106 (class 0 OID 16434)
+-- Dependencies: 177
+-- Data for Name: inmuebles; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY inmuebles (codigo, precio, direccion, estrato, cod_propietario, prioridad, area, descripcion, estado, fecha_registro, validacion) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2109 (class 0 OID 16476)
+-- Dependencies: 180
+-- Data for Name: lotes; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY lotes (codigo, precio, direccion, estrato, cod_propietario, prioridad, area, descripcion, estado, fecha_registro, validacion, tipo) FROM stdin;
+inm115	1000000	Villamaria para arriba	2	1000000016	1	5000	Buenos pastos	venta	2012-11-21	t	Ganaderia
+inm113	250000	Via bar c	2	1000000018	3	200	Pa lo que quiera	venta	2012-10-21	f	Construccion
+inm114	400000	Bar c pa arriba	2	1000000018	2	3000	pega lo que le siembre	arrendamiento	2012-11-01	f	Cultivo
+\.
+
+
+--
+-- TOC entry 2104 (class 0 OID 16415)
+-- Dependencies: 175
+-- Data for Name: personas; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY personas (identificacion, tipo_identificacion, nombre, apellido, direccion, telefono, correo, contrasenna, rol, fecha_registro) FROM stdin;
+1000000010	C.C.	10_Nom	10_Ape	10_Dir	10_Tel	10@00.00	10_con	arrendador	2012-05-12
+1000000011	C.C.	11_Nom	11_Ape	11_Dir	11_Tel	11@00.00	11_con	arrendatario	2012-09-12
+1000000012	C.C.	12_Nom	12_Ape	12_Dir	12_Tel	12@00.00	12_con	arrendador	2012-09-29
+1000000013	C.C.	13_Nom	13_Ape	13_Dir	13_Tel	13@00.00	13_con	arrendatario	2012-10-09
+1000000014	C.C.	14_Nom	14_Ape	14_Dir	14_Tel	14@00.00	14_con	arrendador	2012-10-19
+1000000015	C.C.	15_Nom	15_Ape	15_Dir	15_Tel	15@00.00	15_con	arrendatario	2012-10-29
+1059784989	C.C.	DAVID	ARROYAVE	CALLE 65 # 30-17	8875841	davidg20@gmail.com	Admin	arrendador	2013-12-21
+1000000016	C.C.	16_Nom	16_Ape	16_Dir	16_Tel	16@00.00	16_con	arrendador	2010-10-30
+1000000017	C.C.	17_Nom	17_Ape	17_Dir	17_Tel	17@00.00	17_con	arrendatario	2011-11-10
+1000000018	C.C.	18_Nom	18_Ape	18_Dir	18_Tel	18@00.00	18_con	arrendador	2010-11-11
+1000000019	C.C.	19_Nom	19_Ape	19_Dir	19_Tel	19@00.00	19_con	arrendatario	2010-11-21
+1000000020	C.C.	20_Nom	20_Ape	20_Dir	20_Tel	20@00.00	20_con	administrador	2013-01-30
+1000000021	C.C.	21_Nom	21_Ape	21_Dir	21_Tel	21@00.00	21_con	administrador	2013-02-01
+1000000022	C.C.	22_Nom	22_Ape	22_Dir	22_Tel	22@00.00	22_con	administrador	2011-12-11
+1000000023	C.C.	23_Nom	23_Ape	23_Dir	23_Tel	23@00.00	23_con	administrador	2011-12-16
+1000000024	C.C.	24_Nom	24_Ape	24_Dir	24_Tel	24@00.00	24_con	administrador	2013-04-21
+1000000002	C.C.	Camilo	Varela López	02_Dir	8851217	juan55860@gmail.com	44b96f0b4e	administrador	2010-12-12
+1000000003	C.C.	Carla	Zuluaga	03_Dir	8851122	karlazuluaga24@gmail.com	Carla	arrendatario	2010-02-21
+1000000004	C.C.	Sandro	Gonzalez	04_Dir	8872121	sandrouniversidad2011@gmail.com	Sandro	arrendador	2013-11-21
+1000000005	cedula	Leonardo	Agudelo Villamizar	05_Dir	8851234	daviko.50@gmail.com	Leonardo	arrendador	2011-01-19
+1000000006	C.C.	Martha	gomez mejia	06_Dir	8851432	mgliliana1028@gmail.com	Martha	arrendador	2011-01-30
+1000000007	C.C.	Andres Humberto	Hernandez Gonzalez	07_Dir	8872212	andreshumberto619@gmail.com	Andres	arrendatario	2012-03-18
+1000000008	C.C.	Juan	Rendon	08_Dir	8557212	jcrendon@gmail.com	Juan	arrendador	2012-04-18
+1000000009	C.C.	alejandra	ospina aguirre	09_Dir	8879213	aleopig@gmail.com	Alejandra	arrendatario	2012-04-22
+1105455450	C.C.	ESTEFANIA	MACIAS	CARREARA 25 #56-119	8858217	estefaniamacias@gmail.com	ESTEFANIA	arrendatario	2011-10-11
+\.
+
+
+--
+-- TOC entry 2110 (class 0 OID 16485)
+-- Dependencies: 181
+-- Data for Name: residenciales; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY residenciales (codigo, precio, direccion, estrato, cod_propietario, prioridad, area, descripcion, estado, fecha_registro, validacion, tipo, num_bannos, num_habitaciones, num_pisos, parqueadero, cod_barrio) FROM stdin;
+inm103	500000	CARRERA 5 CALLE 11 #103	3	1105455450	5	50	MUY BONITO	LIBRE	2012-03-09	t	Apartaestudio	1	1	1	f	bar111
+inm101	1800000	CARRERA 3 #11-13	4	1105455450	\N	800	MUY BONITO	LIBRE	2012-01-21	f	Casa	3	8	2	t	bar111
+inm102	900000	CARRERA 5 CALLE 10 Edificio Pinares #404	4	1105455450	5	200	MUY BONITO	arrendamiento	2011-02-11	f	Apartamento	2	3	1	f	bar111
+\.
+
+
+--
+-- TOC entry 2111 (class 0 OID 16499)
+-- Dependencies: 182
+-- Data for Name: rurales; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY rurales (codigo, precio, direccion, estrato, cod_propietario, prioridad, area, descripcion, estado, fecha_registro, validacion, tipo, num_bannos, num_habitaciones, num_piscinas) FROM stdin;
+inm112	2500000	Via Neira	4	1000000014	\N	350	ReRebonita	venta	2011-10-17	t	Casa campestre	3	8	1
+inm109	120000	kilometro 40	1	1000000002	5	2000	tranquila	arrendamiento	2011-06-22	f	finca	2	5	0
+inm110	3000000	La pintada	6	1000000010	2	300	Rebonita	libre	2012-07-22	f	Casa campestre	3	6	2
+inm111	250000	3 letras	1	1000000012	4	150	mucho frio	venta	2012-07-27	f	Cabana	1	1	0
+\.
+
+
+--
+-- TOC entry 2123 (class 0 OID 0)
+-- Dependencies: 169
+-- Name: sec_barrios; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('sec_barrios', 133, true);
+
+
+--
+-- TOC entry 2124 (class 0 OID 0)
+-- Dependencies: 172
+-- Name: sec_contratos; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('sec_contratos', 110, true);
+
+
+--
+-- TOC entry 2125 (class 0 OID 0)
+-- Dependencies: 168
+-- Name: sec_documentos; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('sec_documentos', 110, true);
+
+
+--
+-- TOC entry 2126 (class 0 OID 0)
+-- Dependencies: 173
+-- Name: sec_fotos; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('sec_fotos', 109, true);
+
+
+--
+-- TOC entry 2127 (class 0 OID 0)
+-- Dependencies: 170
+-- Name: sec_inmuebles; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('sec_inmuebles', 116, true);
+
+
+--
+-- TOC entry 2128 (class 0 OID 0)
+-- Dependencies: 171
+-- Name: sec_solicitudes; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('sec_solicitudes', 110, true);
+
+
+--
+-- TOC entry 2112 (class 0 OID 16508)
+-- Dependencies: 183
+-- Data for Name: solicitudes; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY solicitudes (codigo, nombre, apellido, telefono, correo, cod_inmueble) FROM stdin;
+sol101	Juan Camilo	Varela López	8851217	juan55860@gmail.com	inm101
+sol102	Carla	Zuluaga	8851122	karlazuluaga24@gmail.com	inm102
+sol103	David	Arroyave	8875841	davidg20@gmail.com	inm103
+sol104	Sandro	Gonzalez	8872121	sandrouniversidad2011@gmail.com	inm104
+sol105	David Leonardo	Agudelo Villa	8851234	daviko.50@gmail.com	inm105
+sol106	martha liliana	gomez mejia	8851432	mgliliana1028@gmail.com	inm106
+sol107	Andres Humberto	Hernandez Gonzalez	8872212	andreshumberto619@gmail.com	inm107
+sol108	Alejandra	Ospina Aguirre	8879213	aleopig@gmail.com	inm108
+sol109	Pepito	Perez	8557213	pepito@Perez	inm109
+sol110	Alejandro	Arroyave Franco	8723232	alejandrof@gmail.com	inm110
+\.
+
+
+--
+-- TOC entry 2070 (class 2606 OID 16433)
+-- Name: pk_barrios_cod; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY barrios
+    ADD CONSTRAINT pk_barrios_cod PRIMARY KEY (codigo);
+
+
+--
+-- TOC entry 2090 (class 2606 OID 16546)
+-- Name: pk_cod_foto; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY fotos
+    ADD CONSTRAINT pk_cod_foto PRIMARY KEY (codigo);
+
+
+--
+-- TOC entry 2074 (class 2606 OID 16456)
+-- Name: pk_comerciales_cod; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY comerciales
+    ADD CONSTRAINT pk_comerciales_cod PRIMARY KEY (codigo);
+
+
+--
+-- TOC entry 2088 (class 2606 OID 16527)
+-- Name: pk_contratos_cod; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY contratos
+    ADD CONSTRAINT pk_contratos_cod PRIMARY KEY (codigo);
+
+
+--
+-- TOC entry 2064 (class 2606 OID 16414)
+-- Name: pk_documentos_cod; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY documentos
+    ADD CONSTRAINT pk_documentos_cod PRIMARY KEY (codigo);
+
+
+--
+-- TOC entry 2076 (class 2606 OID 16470)
+-- Name: pk_edificios_cod; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY edificios
+    ADD CONSTRAINT pk_edificios_cod PRIMARY KEY (codigo);
+
+
+--
+-- TOC entry 2072 (class 2606 OID 16442)
+-- Name: pk_inmuebles_cod; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY inmuebles
+    ADD CONSTRAINT pk_inmuebles_cod PRIMARY KEY (codigo);
+
+
+--
+-- TOC entry 2078 (class 2606 OID 16484)
+-- Name: pk_lotes_cod; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY lotes
+    ADD CONSTRAINT pk_lotes_cod PRIMARY KEY (codigo);
+
+
+--
+-- TOC entry 2066 (class 2606 OID 16422)
+-- Name: pk_personas_cod; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY personas
+    ADD CONSTRAINT pk_personas_cod PRIMARY KEY (identificacion);
+
+
+--
+-- TOC entry 2080 (class 2606 OID 16493)
+-- Name: pk_residenciales_cod; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY residenciales
+    ADD CONSTRAINT pk_residenciales_cod PRIMARY KEY (codigo);
+
+
+--
+-- TOC entry 2082 (class 2606 OID 16507)
+-- Name: pk_rurales_cod; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY rurales
+    ADD CONSTRAINT pk_rurales_cod PRIMARY KEY (codigo);
+
+
+--
+-- TOC entry 2084 (class 2606 OID 16516)
+-- Name: pk_solicitudes_cod; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY solicitudes
+    ADD CONSTRAINT pk_solicitudes_cod PRIMARY KEY (codigo);
+
+
+--
+-- TOC entry 2068 (class 2606 OID 16424)
+-- Name: uq_personas_correo; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY personas
+    ADD CONSTRAINT uq_personas_correo UNIQUE (correo);
+
+
+--
+-- TOC entry 2086 (class 2606 OID 16518)
+-- Name: uq_solicitudes_cor; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY solicitudes
+    ADD CONSTRAINT uq_solicitudes_cor UNIQUE (correo);
+
+
+--
+-- TOC entry 2092 (class 2606 OID 16457)
+-- Name: fk_comerciales_cod_bar; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY comerciales
+    ADD CONSTRAINT fk_comerciales_cod_bar FOREIGN KEY (cod_barrio) REFERENCES barrios(codigo) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2093 (class 2606 OID 16471)
+-- Name: fk_comerciales_cod_bar; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY edificios
+    ADD CONSTRAINT fk_comerciales_cod_bar FOREIGN KEY (cod_barrio) REFERENCES barrios(codigo) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2095 (class 2606 OID 16528)
+-- Name: fk_contratos_cod1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY contratos
+    ADD CONSTRAINT fk_contratos_cod1 FOREIGN KEY (cod_arrendador) REFERENCES personas(identificacion) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2096 (class 2606 OID 16533)
+-- Name: fk_contratos_cod2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY contratos
+    ADD CONSTRAINT fk_contratos_cod2 FOREIGN KEY (cod_arrendatario) REFERENCES personas(identificacion) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2091 (class 2606 OID 16443)
+-- Name: fk_inmuebles_cod_pro; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY inmuebles
+    ADD CONSTRAINT fk_inmuebles_cod_pro FOREIGN KEY (cod_propietario) REFERENCES personas(identificacion) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2094 (class 2606 OID 16494)
+-- Name: fk_residenciales_cod_bar; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY residenciales
+    ADD CONSTRAINT fk_residenciales_cod_bar FOREIGN KEY (cod_barrio) REFERENCES barrios(codigo) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2121 (class 0 OID 0)
+-- Dependencies: 5
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+-- Completed on 2013-05-29 18:26:53
+
+--
+-- PostgreSQL database dump complete
+--
+
