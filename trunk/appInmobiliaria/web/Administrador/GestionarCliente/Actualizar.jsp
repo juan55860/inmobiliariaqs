@@ -1,7 +1,7 @@
 <%-- 
     Document   : frmRegistrarInm
     Created on : 8/05/2013, 01:42:36 AM
-    Author     : usuario
+    Author     : sandro
 --%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.ParseException"%>

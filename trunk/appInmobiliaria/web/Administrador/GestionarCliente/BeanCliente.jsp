@@ -1,4 +1,8 @@
-
+<%-- 
+    Document   : frmRegistrarInm
+    Created on : 8/05/2013, 01:42:36 AM
+    Author     : sandro
+--%>
 <%@page import="controladores.ctrlIngresarPersona"%>
 <%@page import="modelo.Persona"%>
 <jsp:useBean id="b" scope="page" class="modelo.Persona">
@@ -11,7 +15,8 @@
         </head>
         <%
             if (b.getOpcion().equals("actualiza")) {
-                boolean res = new ctrlIngresarPersona().actualizar(b.getNombre(), b.getDireccion(), b.getTelefono(), b.getCorreo(), b.getContrasena());
+                 boolean res = new ctrlIngresarPersona().actualizar(b);
+                //boolean res = new ctrlIngresarPersona().actualizar(b.getNombre(), b.getDireccion(), b.getTelefono(), b.getCorreo(), b.getContrasena());
                 if (res) {
         %>
         <script type="text/javascript">
