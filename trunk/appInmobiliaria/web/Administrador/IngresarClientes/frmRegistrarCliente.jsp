@@ -77,7 +77,7 @@
                             <li><a href="../ArrendamientosVentas/frmArrendamientosVentas.jsp">Financiera</a></li>
                             <li><a href="../GestionarPrioridadInmueble/GestionarPrioridad.jsp" >Prioridad</a></li>
                             <li><a href="../ingresarInmuebles/frmSeleccionInmueble.jsp" >Inmuebles</a></li>
-                            <li><a class="current" href="../IngresarClientes/frmRegistrarCliente.jsp" >Clientes</a></li> 
+                            <li><a class="current" href="../GestionarCliente/Actualizar.jsp" >Clientes</a></li> 
                             <li><a href="../SubirArchivos/cargarArchivo.jsp">Archivos</a></li>
                             <li><a href="../Reportes/frmReportes.jsp">Reportes</a></li>
 
