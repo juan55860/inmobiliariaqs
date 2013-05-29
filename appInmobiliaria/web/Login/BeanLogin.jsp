@@ -15,15 +15,29 @@
             <title>Documento sin t&iacute;tulo</title>
         </head>
         <%
-            boolean res = new ctrlIngresarPersona().login(b.getNombre(), b.getContrasena());
+            boolean res = new ctrlIngresarPersona().login(b.getNombre(), b.getContrasena(), b.getRol());
             if (res) {
                 session.setAttribute("theName", b.getNombre());
                 session.setAttribute("thePass", b.getContrasena());
+                session.setAttribute("theRol", b.getRol());
+                if (b.getRol().equals("administrador")) {
         %>
         <script>
             window.top.location.href = "../Administrador/Administrador.jsp";
         </script>
-         
+        <% }
+                else{
+        %>
+        <script>
+            window.top.location.href = "../Cliente/gestionarUsuario/frmAdministrarDatos.jsp";
+        </script>
+                    <%
+                }
+        %>
+        <script>
+            window.top.location.href = "../Administrador/Administrador.jsp";
+        </script>
+
         <h3><font color="green">Fue ingresada correctamente el inmueble</font></h3>
             <%  } else {
 

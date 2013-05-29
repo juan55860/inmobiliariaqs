@@ -10,13 +10,13 @@
 <title>Documento sin t&iacute;tulo</title>
 </head>
 <%
-boolean res=new ctrlIngresarPersona().actualizar(b.getNombre(), b.getDireccion(), b.getTelefono(), b.getCorreo(), b.getContrasena());
+    boolean res=new ctrlIngresarPersona().actualizar(b.getNombre(), b.getDireccion(), b.getTelefono(), b.getCorreo(), b.getContrasena());
 if (res){
   %>
-  <script type="text/javascript">
-        alert("Sus datos han sido actualizados!");
-        window.close();
-    </script>
+    <script type="text/javascript">
+          alert("Sus datos han sido actualizados!");
+          window.close();
+      </script>
   <%
 }
 else{

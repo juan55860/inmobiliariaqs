@@ -1,7 +1,7 @@
 <%-- 
     Document   : home
     Created on : 7/05/2013, 11:54:21 PM
-    Author     : usuario
+    Author     : sandro
 --%>
 <!DOCTYPE html>
 <html lang="en">
@@ -94,8 +94,18 @@
                                 <div>
                                     <input name="contrasena"  id="password" placeholder="Escriba su password" type="password" class="form-poshytip" title="Escriba su clave"  required=""/>
                                 </div>
+                                <div class="select-1">
+                                        <label>Rol</label>
+                                        <select name="rol" id="rol">
+                                            <option value="administrador">Administrador</option>
+                                            <option value="arrendador">Arrendador</option>
+                                            <option value="arrendatario">Arrendatario</option>
+                                        </select>   
+                                    </div>
                                 <p><input type="submit" value="Acceder" name="SubmitName" id="submit" /></p>
                                 <iframe height="60" width="100%" name="des" frameborder="0"> </iframe>
+                                
+                                
                             </fieldset>
                         </form>
 

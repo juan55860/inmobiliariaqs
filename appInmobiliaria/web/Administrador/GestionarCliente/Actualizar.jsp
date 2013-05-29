@@ -3,12 +3,16 @@
     Created on : 8/05/2013, 01:42:36 AM
     Author     : usuario
 --%>
+<%@page import="java.util.Date"%>
+<%@page import="java.text.ParseException"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Vector"%>
 <%@page import="controladores.ctrlIngresarInmueble"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <html>
     <head>
-        <title>Cuenta de Usuario</title>
+        <title>Gestionar Usuario</title>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" media="screen" href="../../sitio/css/reset.css">
         <link rel="stylesheet" type="text/css" media="screen" href="../../sitio/css/style.css">
@@ -74,58 +78,70 @@
                     </div>
                     <nav>
                         <ul class="menu">
-                            <li><a href="../../home.jsp">Inicio</a></li>
-                            <li><a href="../afiliarInmueble/frmSeleccionInmueble.jsp">Seleccion Inmueble</a></li>
-                                <% if (session.getAttribute("theName") != null) {
-                                %>
-                            <li><a href="../../Login/Logout.jsp" >Cerrar Sesion</a></li>
+                            <li><a href="../ArrendamientosVentas/frmArrendamientosVentas.jsp">Financiera</a></li>
+                            <li><a href="../GestionarPrioridadInmueble/GestionarPrioridad.jsp" >Prioridad</a></li>
+                            <li><a href="../ingresarInmuebles/frmSeleccionInmueble.jsp" >Inmuebles</a></li>
+                            <li><a class="current" href="../IngresarClientes/frmRegistrarCliente.jsp" >Clientes</a></li> 
+                            <li><a href="../SubirArchivos/cargarArchivo.jsp">Archivos</a></li>
+                            <li><a href="#">Reportes</a></li>
 
-                            <%}
-                            %>
                         </ul>
                     </nav>
                 </div>
             </header>   
             <!--==============================content================================-->
             <section id="content"><div class="ic"></div>
-                <div class="container_12">	
-                    <div class="grid_8">
+                <div class="container_12">
+
+                    <div class="grid_8"></div>
+                    <div id="tabs-1">
                         <div class="grid_4">
-                            <iframe height="60" width="100%" name="des" frameborder="0"> </iframe>
+
                             <div class="left-1">
-
-
-                                <% if (session.getAttribute("theName") != null) {
+                                <%@page import="modelo.Persona"%>
+                                <%@page import="controladores.ctrlIngresarPersona"%>
+                                <%@page import="java.sql.ResultSet"%>
+                                <%
+                                    ctrlIngresarPersona control = new ctrlIngresarPersona();
+                                    ResultSet rs = control.listbyNit();
+                                    String nombre = rs.getString("Nombre");
+                                    if (session.getAttribute("theName") != null) {
                                 %>
 
-
-                                <h2 class="top-1 p3">Cuenta de: <%=session.getAttribute("theName")%></h2>
-                                <form name="form1" id="form-1"  class="form-1 bot-1" action="BeanUpdate.jsp" target="des">
-                                    <input type="hidden" name="nombre" id="nombre" value=<%=session.getAttribute("theName")%> />
-                                    <div>
-                                        <label>Dirección</label>
-                                        <input type="text"  required name="direccion" id="direccion"/>
-                                    </div>
-                                    <div>
-                                        <label>Teléfono</label>
-                                        <input type="text"  required name="telefono" id="telefono"/>
-                                    </div>
-                                    <div>
-                                        <label>Correo</label>
-                                        <input type="email" id="correo" name="correo" placeholder="ejemplo@hotmail.com" required />
-                                    </div>
-                                    <div>
-                                        <label>Contraseña</label>
-                                        <input type="text" required id="contrasena" name="contrasena" />
+                                <h2 class="top-1 p3">Actividad</h2>
+                                <form name="form1" id="form-1"  class="form-1 bot-1" action="BeanCliente.jsp">
+                                    <div class="select-1">
+                                        <label><font color="blue"> Nombre</font></label>
+                                        <select name="nombre" id="nombre">
+                                            <option value="<%=nombre%>"><%=nombre%></option>
+                                            <%
+                                                while (rs.next()) {
+                                                    nombre = rs.getString("Nombre");
+                                            %> 
+                                            <option value="<%=nombre%>"><%=nombre%></option> 
+                                            <%
+                                                }
+                                            %>
+                                        </select>
                                     </div>
 
-                                    <div>
-                                        <input type="submit" name="enviar" id="enviar" value="Modificar datos"/>
+                                    <div class="select-1">
+                                        <label><font color="red"> Opcion</font></label>
+                                        <select name="opcion" id="opcion">
+                                            <option value="actualizar">Actualizar</option>
+                                            <option value="crear">Crear</option>
+                                            <option value="elimina">Eliminar</option>
+                                            <option value="ver">Ver</option>
+                                        </select>   
                                     </div>
+
+                                    <div>
+
+                                        <input type="submit" name="enviar" id="enviar" value="Hacer operacion"/>
+                                    </div>
+
                                     <div class="clear"></div>
                                 </form>
-
-                                <h3>Si quiere modificar otros datos comuniquese con el administrador gracias.</h3>
 
                                 <%} else {%>
                                 <h1>
@@ -136,6 +152,7 @@
                                 <%}
 
                                 %>
+
 
                             </div>
                         </div>

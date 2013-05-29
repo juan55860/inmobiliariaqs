@@ -3,12 +3,16 @@
     Created on : 8/05/2013, 01:42:36 AM
     Author     : usuario
 --%>
+<%@page import="java.util.Date"%>
+<%@page import="java.text.ParseException"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Vector"%>
 <%@page import="controladores.ctrlIngresarInmueble"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <html>
     <head>
-        <title>Cuenta de Usuario</title>
+        <title>Gestionar Usuario</title>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" media="screen" href="../../sitio/css/reset.css">
         <link rel="stylesheet" type="text/css" media="screen" href="../../sitio/css/style.css">
@@ -74,58 +78,95 @@
                     </div>
                     <nav>
                         <ul class="menu">
-                            <li><a href="../../home.jsp">Inicio</a></li>
-                            <li><a href="../afiliarInmueble/frmSeleccionInmueble.jsp">Seleccion Inmueble</a></li>
-                                <% if (session.getAttribute("theName") != null) {
-                                %>
-                            <li><a href="../../Login/Logout.jsp" >Cerrar Sesion</a></li>
+                            <li><a href="../ArrendamientosVentas/frmArrendamientosVentas.jsp">Financiera</a></li>
+                            <li><a href="../GestionarPrioridadInmueble/GestionarPrioridad.jsp" >Prioridad</a></li>
+                            <li><a href="../ingresarInmuebles/frmSeleccionInmueble.jsp" >Inmuebles</a></li>
+                            <li><a class="current" href="../IngresarClientes/frmRegistrarCliente.jsp" >Clientes</a></li> 
+                            <li><a href="../SubirArchivos/cargarArchivo.jsp">Archivos</a></li>
+                            <li><a href="#">Reportes</a></li>
 
-                            <%}
-                            %>
                         </ul>
                     </nav>
                 </div>
             </header>   
             <!--==============================content================================-->
             <section id="content"><div class="ic"></div>
-                <div class="container_12">	
-                    <div class="grid_8">
+                <div class="container_12">
+                    
+                    <div class="grid_8"></div>
+                        <div id="tabs-1">
                         <div class="grid_4">
-                            <iframe height="60" width="100%" name="des" frameborder="0"> </iframe>
+                            
                             <div class="left-1">
-
-
-                                <% if (session.getAttribute("theName") != null) {
+                                <%@page import="modelo.Persona"%>
+                                <%@page import="controladores.ctrlIngresarPersona"%>
+                                <%@page import="java.sql.ResultSet"%>
+                                <%
+                                    ctrlIngresarPersona control = new ctrlIngresarPersona();
+                                    ResultSet rs = control.listbyNit(session.getAttribute("cambiar")+"");
+                                    String nombre = rs.getString("Nombre");
+                                    String apellido = rs.getString("apellido");
+                                    String correo = rs.getString("correo");
+                                    String direccion = rs.getString("direccion");
+                                    String identificacion = rs.getString("identificacion");
+                                    String telefono = rs.getString("telefono");
+                                    String contrasenna = rs.getString("contrasenna");
+                                    if (session.getAttribute("theName") != null) {
                                 %>
 
-
-                                <h2 class="top-1 p3">Cuenta de: <%=session.getAttribute("theName")%></h2>
-                                <form name="form1" id="form-1"  class="form-1 bot-1" action="BeanUpdate.jsp" target="des">
-                                    <input type="hidden" name="nombre" id="nombre" value=<%=session.getAttribute("theName")%> />
+                                <h2 class="top-1 p3">Actualizar Cliente</h2>
+                                <form name="form1" id="form-1"  class="form-1 bot-1" action="BeanCliente.jsp">
+                                    <input type="hidden" name="opcion" id="opcion" value="actualiza" />
+                                    <div class="select-1">
+                                        <label>Tipo Identificación</label>
+                                        <select name="tipo_identificacion" id="tipo_identificacion">
+                                            <option value = "cedula">Cedula</option>
+                                            <option value = "nit">NIT</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label>Identificación</label>
+                                        <input type="number" value="<%=identificacion%>"  id="identificacion" name="identificacion" required />
+                                    </div>
+                                    <div>
+                                        <label>Nombre</label>
+                                        <input type="text" id="nombre" value="<%=nombre%>"  name="nombre"  required/>
+                                    </div>
+                                    
+                                    <div>
+                                        <label>Apellido</label>
+                                        <input type="text" id="apellido" value="<%=apellido%>"  name="apellido"  required/>
+                                    </div>
                                     <div>
                                         <label>Dirección</label>
-                                        <input type="text"  required name="direccion" id="direccion"/>
+                                        <input type="text" value="<%=direccion%>"  required name="direccion" id="direccion"/>
                                     </div>
                                     <div>
                                         <label>Teléfono</label>
-                                        <input type="text"  required name="telefono" id="telefono"/>
+                                        <input type="text" value="<%=telefono%>"  required name="telefono" id="telefono"/>
                                     </div>
                                     <div>
                                         <label>Correo</label>
-                                        <input type="email" id="correo" name="correo" placeholder="ejemplo@hotmail.com" required />
+                                        <input type="email"  value="<%=correo%>" id="correo" name="correo" placeholder="quienfue@hotmail.com" required />
                                     </div>
                                     <div>
                                         <label>Contraseña</label>
-                                        <input type="text" required id="contrasena" name="contrasena" />
+                                        <input type="text"  value="<%=contrasenna%>"  required id="contrasena" name="contrasena" />
                                     </div>
-
+                                       <div class="select-1">
+                                        <label>Rol</label>
+                                        <select name="rol" id="rol">
+                                            <option value="administrador">Administrador</option>
+                                            <option value="arrendador">Arrendador</option>
+                                            <option value="arrendatario">Arrendatario</option>
+                                        </select>   
+                                    </div>
+                                    
                                     <div>
-                                        <input type="submit" name="enviar" id="enviar" value="Modificar datos"/>
+                                        <input type="submit" name="enviar" id="enviar" value="Enviar"/>
                                     </div>
                                     <div class="clear"></div>
                                 </form>
-
-                                <h3>Si quiere modificar otros datos comuniquese con el administrador gracias.</h3>
 
                                 <%} else {%>
                                 <h1>
@@ -136,6 +177,7 @@
                                 <%}
 
                                 %>
+
 
                             </div>
                         </div>
@@ -152,8 +194,8 @@
             <p>© 2013 Quality Solutions</p>
         </footer>	    
         <script>
-                        Cufon.now()
-                ;
+                                    Cufon.now()
+                                            ;
         </script>
 
     </body>

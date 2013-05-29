@@ -18,6 +18,7 @@ public class Persona {
     private String contrasena;
     private String rol;
     private Date fechaDeRegistro;
+    private String opcion;
 
     public Persona(int identificacion) {
         this.identificacion = identificacion;
@@ -177,5 +178,19 @@ public class Persona {
      */
     public void setFechaDeRegistro(Date fechaDeRegistro) {
         this.fechaDeRegistro = fechaDeRegistro;
+    }
+
+    /**
+     * @return the opcion
+     */
+    public String getOpcion() {
+        return opcion;
+    }
+
+    /**
+     * @param opcion the opcion to set
+     */
+    public void setOpcion(String opcion) {
+        this.opcion = opcion;
     }
 }
