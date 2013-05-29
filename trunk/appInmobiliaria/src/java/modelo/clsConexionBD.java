@@ -264,8 +264,11 @@ public class clsConexionBD {
                 col = 1;
                 while (col <= columnas) {
                     cells.add(res.getString(col));
-                    if(col==1)
-                        inmuble.setCodigo(Integer.parseInt(res.getString(col)));
+                    if(col==1){
+                        String aux = res.getString(col);
+                        int aux2 = Integer.parseInt(aux.substring(3, aux.length()));
+                        inmuble.setCodigo(aux2);
+                    }
                         else
                         if(col==2)
                             inmuble.setPrecio(res.getString(col));
@@ -412,10 +415,10 @@ public class clsConexionBD {
             sql = "select count(*) from contratos where to_char(fecha, 'yyyy') = '" +año+"' and upper(descripcion)='VENTA'" ;
     else
         if(tipo.equals("USU"))
-            sql = "select count(*) from personas where to_char(fecha_reg, 'yyyy') = '" +año+"'" ;
+            sql = "select count(*) from personas where to_char(fecha_registro, 'yyyy') = '" +año+"'" ;
         else
         if(tipo.equals("INM"))
-            sql = "select count(*) from inmuebles where to_char(fecha_reg, 'yyyy') = '" +año+"'" ;
+            sql = "select count(*) from inmuebles where to_char(fecha_registro, 'yyyy') = '" +año+"'" ;
         int col = 1;
         int columnas = 1;
         int cantidadTotal = 0;
@@ -570,16 +573,16 @@ public class clsConexionBD {
                      sql = "select count(*) from contratos where to_char(fecha, 'mm') = '"+mes+"' and to_char(fecha, 'yyyy') = '"+año+"' and upper(descripcion)='VENTA'";
         else
                 if(mes <10 && tipo.equals("USU"))
-                     sql = "select count(*) from personas where to_char(fecha_reg, 'mm') = '0"+mes+"' and to_char(fecha_reg, 'yyyy') = '"+año+"'";
+                     sql = "select count(*) from personas where to_char(fecha_registro, 'mm') = '0"+mes+"' and to_char(fecha_registro, 'yyyy') = '"+año+"'";
                 else
                     if(tipo.equals("USU"))
-                     sql = "select count(*) from personas where to_char(fecha_reg, 'mm') = '"+mes+"' and to_char(fecha_reg, 'yyyy') = '"+año+"'";
+                     sql = "select count(*) from personas where to_char(fecha_registro, 'mm') = '"+mes+"' and to_char(fecha_registro, 'yyyy') = '"+año+"'";
         else
                 if(mes <10 && tipo.equals("INM"))
-                     sql = "select count(*) from inmuebles where to_char(fecha_reg, 'mm') = '0"+mes+"' and to_char(fecha_reg, 'yyyy') = '"+año+"'";
+                     sql = "select count(*) from inmuebles where to_char(fecha_registro, 'mm') = '0"+mes+"' and to_char(fecha_registro, 'yyyy') = '"+año+"'";
                 else
                     if(tipo.equals("INM"))
-                     sql = "select count(*) from inmuebles where to_char(fecha_reg, 'mm') = '"+mes+"' and to_char(fecha_reg, 'yyyy') = '"+año+"'";
+                     sql = "select count(*) from inmuebles where to_char(fecha_registro, 'mm') = '"+mes+"' and to_char(fecha_registro, 'yyyy') = '"+año+"'";
         int col = 1;
         int columnas = 1;
         int cantidadTotal = 0;
@@ -655,16 +658,16 @@ public class clsConexionBD {
             sql = "select sum(valor) from contratos where to_char(fecha, 'mm') = '"+mes+"' and to_char(fecha, 'yyyy') = '"+año+"' and upper(descripcion)='VENTA'" ;
        else
                 if(mes <10 && tipo.equals("USU"))
-                     sql = "select count(*) from personas where to_char(fecha_reg, 'mm') = '0"+mes+"' and to_char(fecha_reg, 'yyyy') = '"+año+"'";
+                     sql = "select count(*) from personas where to_char(fecha_registro, 'mm') = '0"+mes+"' and to_char(fecha_registro, 'yyyy') = '"+año+"'";
                 else
                     if(tipo.equals("USU"))
-                     sql = "select count(*) from personas where to_char(fecha_reg, 'mm') = '"+mes+"' and to_char(fecha_reg, 'yyyy') = '"+año+"'";
+                     sql = "select count(*) from personas where to_char(fecha_registro, 'mm') = '"+mes+"' and to_char(fecha_registro, 'yyyy') = '"+año+"'";
          else
                 if(mes <10 && tipo.equals("INM"))
-                     sql = "select count(*) from inmuebles where to_char(fecha_reg, 'mm') = '0"+mes+"' and to_char(fecha_reg, 'yyyy') = '"+año+"'";
+                     sql = "select count(*) from inmuebles where to_char(fecha_registro, 'mm') = '0"+mes+"' and to_char(fecha_registro, 'yyyy') = '"+año+"'";
                 else
                     if(tipo.equals("INM"))
-                     sql = "select count(*) from inmuebles where to_char(fecha_reg, 'mm') = '"+mes+"' and to_char(fecha_reg, 'yyyy') = '"+año+"'";
+                     sql = "select count(*) from inmuebles where to_char(fecha_registro, 'mm') = '"+mes+"' and to_char(fecha_registro, 'yyyy') = '"+año+"'";
         int col = 1;
         int columnas = 1;
         int cantidadTotal = 0;
@@ -732,7 +735,7 @@ public class clsConexionBD {
         String jsonResult = "";
         String sql = "";
         
-                             sql = "select * from personas where to_char(fecha_reg, 'yyyy') = '"+fecha+"';";
+                             sql = "select * from personas where to_char(fecha_registro, 'yyyy') = '"+fecha+"';";
         int col =9;
         int columnas = 9;
         try {
