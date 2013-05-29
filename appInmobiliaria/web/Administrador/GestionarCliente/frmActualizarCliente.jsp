@@ -119,7 +119,7 @@
                                     <input type="hidden" name="opcion" id="opcion" value="actualiza" />
                                     <div class="select-1">
                                         <label>Tipo Identificación</label>
-                                        <select name="tipo_identificacion" id="tipo_identificacion">
+                                        <select name="tipoIdentificacion" id="tipoIdentificacion">
                                             <option value = "cedula">Cedula</option>
                                             <option value = "nit">NIT</option>
                                         </select>

@@ -46,6 +46,15 @@ public class ctrlIngresarPersona extends Persona {
         }
         return false;
     }
+    
+    public boolean actualizar(modelo.Persona p) {
+        String sql = "UPDATE personas  SET nombre ='" + p.getNombre()+ "', apellido='" + p.getApellido() + "', telefono='" + p.getTelefono() + "', correo='" + p.getCorreo()+ "', identificacion='" + p.getIdentificacion()+ "', tipo_identificacion='" + p.getTipoIdentificacion()+ "', rol='" + p.getRol() + "', contrasenna='" + p.getContrasena()   + 
+                "' where nombre='"+p.getNombre()+"';";
+        if (conexion.actualizar(sql) == 1) {
+            return true;
+        }
+        return false;
+    }
 
     public boolean login(String name, String password, String rol) {
         String sql = "SELECT * FROM personas where contrasenna='" + password + "'and nombre='" + name+ "'and rol='" + rol + "';";

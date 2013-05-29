@@ -34,11 +34,6 @@
                     <%
                 }
         %>
-        <script>
-            window.top.location.href = "../Administrador/Administrador.jsp";
-        </script>
-
-        <h3><font color="green">Fue ingresada correctamente el inmueble</font></h3>
             <%  } else {
 
             %>
