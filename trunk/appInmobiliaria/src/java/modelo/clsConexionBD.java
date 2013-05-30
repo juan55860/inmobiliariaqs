@@ -167,6 +167,34 @@ public class clsConexionBD {
         return "-1";
 
     }
+ public StringBuffer Genera(String tabla)//aarma el carrusel con los dato de las vistas
+{
+        StringBuffer sb = new StringBuffer();
+        try{
+        ResultSet resC=null;
+        String sql="Select * from "+tabla;
+        st=getCon().createStatement();
+        resC= st.executeQuery(sql);
+      
+        while (resC.next()){
+    sb.append("<li>");
+
+        sb.append("<a href=ensayo.jsp?VariableQueViaja="+resC.getString(1) + ">" +"<img width=\"70\" height=\"70\" src=\"Noticias/images/1.png"+ "\">");
+         sb.append(" <h5>"+resC.getString(2)+"</a></h5>");    
+          sb.append(" <h5>"+resC.getString(3)+"</a></h5>");  
+            sb.append(" <h5>"+resC.getString(4)+"</a></h5>");  
+            sb.append(" <h5>"+resC.getString(5)+"</a></h5>");  
+            
+        sb.append("</li>");
+        }
+         
+        }
+        catch(SQLException e){
+        sb.append(e.toString());
+        return sb;
+        }
+        return sb;
+        }
 
     public StringBuffer cmbGenera(String tabla, int col) {
         StringBuffer sb = new StringBuffer();
