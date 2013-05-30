@@ -61,4 +61,20 @@ public class ctrlIngresarSolicitud extends Solicitud {
         return res;
     }
     
+     public StringBuffer buscarCodInmueblePorFotos(String archivo) {
+        StringBuffer sb = new StringBuffer();
+        try {
+            java.sql.ResultSet rs = null;
+            String sql = "SELECT cod_inmueble from fotos where archivo='" + archivo + "'";
+            rs = conexion.consultar(sql);
+            if (rs.next()) {
+                sb.append(rs.getString(1));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ctrlIngresarInmueble.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return sb;
+    }
+    
 }
