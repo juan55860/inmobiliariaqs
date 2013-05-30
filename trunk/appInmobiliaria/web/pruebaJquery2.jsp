@@ -1,21 +1,19 @@
+
+<%@page import="controladores.ctrlIngresarInmueble"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="modelo.clsConexionBD"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%-- 
     Document   : pruebaJquery2
     Created on : 08-may-2013, 20:57:56
-    Author     : liliana
---%>
-
-
-<%-- 
-    Document   : home
-    Created on : 7/05/2013, 11:54:21 PM
-    Author     : usuario
+    Author     : liliana  ESTE ES EL MALO
 --%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <title>Home Inmobiliaria</title>
         <meta charset="utf-8">
-       
+
         <link rel="stylesheet" type="text/css" media="screen" href="sitio/css/reset.css">
         <link rel="stylesheet" type="text/css" media="screen" href="sitio/css/style.css">
         <link rel="stylesheet" type="text/css" media="screen" href="sitio/css/grid_12.css">
@@ -30,8 +28,8 @@
         <script src="sitio/js/tms-0.4.x.js"></script>
         <script src="sitio/js/jquery.jqtransform.js"></script>
         <script src="sitio/js/FF-cash.js"></script>
-      
-        
+
+
         <script>
             $(document).ready(function() {
                 $('.form-1').jqTransform();
@@ -92,46 +90,79 @@
             </header>   
             <!--==============================content===============================corte desde aca=-->
 
-            <section id="content"><div class="ic"></div>
+            <section id="content">
+                <div class="ic">
+
+                </div>
                 <div class="container_12">
                     </br></br>
-                    <h2>Maravillosa Oferta!</h2>
+                    <h2>Maravillosa Oferta!</h2> 
                     <%
-            String source = request.getParameter("source");
-            if(source.equals("Noticias/images/c1.png")){                
-                out.print("<br><img height='400' width='300' align='center'; src='Noticias/images/c1.jpg' /><br>");
-            }
-            else{
-            out.print("<br><img height='400' width='415'; src='" + source + "' /><br>");
-            out.print("<br><img height='100' width='100' align='center'; src='Noticias/images/c1.1.jpg' />"+" "+"<img height='100' width='100' align='center'; src='Noticias/images/c1.2.jpg' />"+" "+"<img height='100' width='100' align='center'; src='Noticias/images/c1.3.jpg' />"+" "+"<img height='100' width='100' align='center'; src='Noticias/images/c1.4.jpg' /></br>");
-            out.print("Aire acondicionado en 2 habitaciones, ventiladores en sala, comedor y habitaciones, dos parqueaderos");
-            }
-            if(source.equals("Noticias/images/c2.png")){
-                out.print("<br><img height='400' width='415'; src='" + source + "' /><br>");
-            out.print("<br><img height='100' width='100' align='center'; src='Noticias/images/c21.jpg' />"+" "+"<img height='100' width='100' align='center'; src='Noticias/images/c22.jpg' />"+" "+"<img height='100' width='100' align='center'; src='Noticias/images/c23.jpg' />");
-            out.print("casa nueva");        
-                            }
-            
-            
-            
-             
+                        clsConexionBD con = new clsConexionBD();
+                        String source = request.getParameter("source");
+                        ResultSet rs = con.consultar("select * from fotos where cod_inmueble = all(select  cod_inmueble from fotos where archivo='" + source + "')");
+                        out.print("<center><img height='400' width='415'; src='" + source + "' /></center><br/><center>");
+                        while (rs.next()) {
 
-            
-                    %>
-                    
-                      
+                            out.print("<a><img  width='120' height='80' src='" + rs.getString("archivo") + "'/</a>");
+                        }
+                        out.print("</center>");
+                        // }//select * from fotos where cod_inmueble = all(select  cod_inmueble from fotos where archivo='fotos/c1.jpg');
+                    %>            
                 </div>
+
+
+                <div class="container_12">	
+                    <div class="grid_8">
+                        <div class="grid_4">
+                            <div class="left-1">
+
+                                <% ctrlIngresarInmueble inmueble = new ctrlIngresarInmueble();%>
+                                <h2 class="top-1 p3">Solicitud</h2>
+                                <form name="form1" id="form-1"  class="form-1 bot-1"  action ="prcIngresarSolicitud.jsp" >
+                                    <input type="hidden" id="codinmueble" name="codinmueble" value=<%=inmueble.buscarCodInmueblePorFotos(source)%> />                                    
+                                    <div>
+                                        <label>Nombre del solicitante</label>
+                                        <input required id="nombreSol"  name="nombreSol" type="text" />
+                                    </div>
+                                    <div>
+                                        <label>Apellido del solicitante</label>
+                                        <input required id="apellido"  name="apellido" type="text" />
+                                    </div>
+                                    <div>
+                                        <label>Telefono del solicitante</label>
+                                        <input required id="telefono"  name="telefono" type="number" />
+                                    </div>
+                                    <div>
+                                        <label>Email del solicitante</label>
+                                        <input required id="email"  name="email" type="email" />
+                                    </div>                                    
+                                    <div>
+
+                                        <input  type="submit" name="enviar" value="Enviar" />
+                                    </div>
+                                    <div class="clear"></div>
+                                </form>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+
                 <div class="clear"></div>
-        </div>  
-    </section> 
-</div>    
-<!--==============================footer=================================-->
-<footer>
-    <img src="sitio/images/LogoQS.JPG" width="120" height="90">
-    <p>© 2013 Quality Solutions</p>
-</footer>	    
-<script>
-    Cufon.now();
-</script>
-</body>
+            </section> 
+        </div>
+        <!--==============================footer </div>=================================-->
+        <footer>
+            <img src="sitio/images/LogoQS.JPG" width="120" height="90">
+            <p>Â© 2013 Quality Solutions</p>
+        </footer>	    
+        <script>
+            Cufon.now();
+        </script>
+    </body>
 </html>
