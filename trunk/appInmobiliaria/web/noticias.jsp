@@ -20,12 +20,12 @@
                             <div id="sidebar"><center><h1>OFERTAS</h1></center>
                                 <ul class="spy">
                                     <%
-                                        clsConexionBD con = new clsConexionBD();
-                                        ResultSet rs = con.consultar("select * from fotos");
-                                        while (rs.next()) {
+                                        clsConexionBD con = new clsConexionBD();//INSTANCIA DE LA CONEXION
+                                        ResultSet rs = con.consultar("select * from fotos");//PASA EL RESULTADO DEL SQL A UN VAR. rs
+                                        while (rs.next()) {//recorre todos los registros
                                             out.print("<li>");
                                             out.print("<center><a><img onclick='GuargarId(this)' width='120' height='80' src='"+rs.getString("archivo")+"'/></a><center/>");
-                                            
+                                            //donde src contiene los datos de la columna archivo
                                             out.print("</li>");
                                         }
                                     %>
