@@ -21,4 +21,8 @@ public class clsDAOInmueble extends Prioridad {
         }
         return false;
     }
+       public String obtenerDatos(String datos){
+        String res=ConexionBD.Genera(datos).toString();
+        return res;
+    }
 }
