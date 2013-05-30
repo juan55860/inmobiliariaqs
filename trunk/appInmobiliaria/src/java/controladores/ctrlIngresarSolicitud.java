@@ -49,4 +49,16 @@ public class ctrlIngresarSolicitud extends Solicitud {
         }
         return res;
     }
+    
+    public String insertarSolicitud(Solicitud solicitud, String codinmueble) {
+        String res = "No inserto";       
+        String sql = "INSERT INTO solicitudes(nombre, apellido, telefono, correo, cod_inmueble)"
+                + "VALUES('" + solicitud.getNombre() + "','" + solicitud.getApellido() + "',"
+                + solicitud.getTelefono() + ",'" + solicitud.getCorreo() + "','" + codinmueble + "');";
+        if (conexion.actualizar(sql) == 1) {
+            res = "";
+        }
+        return res;
+    }
+    
 }
