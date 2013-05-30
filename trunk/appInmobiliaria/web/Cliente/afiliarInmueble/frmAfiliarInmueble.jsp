@@ -76,7 +76,15 @@
                     </div>
                     <nav>
                         <ul class="menu">
-                            <li><a href="../../home.jsp">Inicio</a></li>
+                            <nav>
+                                <ul class="menu">
+                                    <li class="current"><a href="../../home.jsp">Inicio</a></li>
+                                    <li><a href="../../Informacion/servicios.jsp">Servicios</a></li>
+                                    <li><a href="../../Informacion/contacto.jsp">Contacto</a></li>
+                                    <li><a href="../../Cliente/afiliarInmueble/frmSeleccionInmueble.jsp">Afiliar inmueble</a></li>
+                                    <li><a href="../../Login/login.jsp">Iniciar Sesion</a></li>
+                                </ul>
+                            </nav>
                         </ul>
                     </nav>
                 </div>
@@ -87,11 +95,11 @@
                     <div class="grid_8">
                         <div class="grid_4">
                             <div class="left-1">
-                                
+
                                 <%!ctrlIngresarInmueble inmueble = new ctrlIngresarInmueble();%>
-                                
+
                                 <%String jsp = inmueble.direccionarJsp(request.getParameter("categoria"));%>
-                                
+
                                 <h2 class="top-1 p3">AFILIAR <%= request.getParameter("categoria")%> </h2>
                                 <form name="form1" id="form-1"  class="form-1 bot-1"  action = <%=jsp%>>
                                     <input type="hidden" id="cat" name="cat" value=<%= request.getParameter("categoria")%>>
@@ -149,7 +157,7 @@
 
                                         </select>   
                                     </div>
-                                   
+
 
                                     <div>
 
