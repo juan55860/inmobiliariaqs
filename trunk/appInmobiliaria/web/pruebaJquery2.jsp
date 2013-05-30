@@ -1,4 +1,5 @@
 
+<%@page import="controladores.ctrlIngresarSolicitud"%>
 <%@page import="controladores.ctrlIngresarInmueble"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="modelo.clsConexionBD"%>
@@ -117,10 +118,10 @@
                         <div class="grid_4">
                             <div class="left-1">
 
-                                <% ctrlIngresarInmueble inmueble = new ctrlIngresarInmueble();%>
+                                <%ctrlIngresarSolicitud ctrlSolicitud = new ctrlIngresarSolicitud();%>
                                 <h2 class="top-1 p3">Solicitud</h2>
                                 <form name="form1" id="form-1"  class="form-1 bot-1"  action ="prcIngresarSolicitud.jsp" >
-                                    <input type="hidden" id="codinmueble" name="codinmueble" value=<%=inmueble.buscarCodInmueblePorFotos(source)%> />                                    
+                                    <input type="hidden" id="codinmueble" name="codinmueble" value=<%=ctrlSolicitud.buscarCodInmueblePorFotos(source)%> />                                    
                                     <div>
                                         <label>Nombre del solicitante</label>
                                         <input required id="nombreSol"  name="nombreSol" type="text" />
