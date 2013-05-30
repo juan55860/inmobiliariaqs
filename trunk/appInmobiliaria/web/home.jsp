@@ -102,39 +102,31 @@
                     <div class="grid_4">
                         <div class="left-1">
                             <h2 class="top-1 p3">Busqueda</h2>
-                            <form id="form-1" class="form-1 bot-1">
+                            <form  method="GET"id="form-1" class="form-1 bot-1" action=inmuebles.jsp>
                                 <div class="select-1">
                                     <label>Tipo de Inmueble</label>
                                     <select name="select" >
-                                        <option>APARTAMENTO</option>
-                                        <option>CASA</option>
-                                        <option>EDIFICIO</option>
-                                         <option>APARTAESTUDIO</option>
+                                        <option value="v_comerciales_loc">Locales</option>
+                                        <option value="v_comerciales_con">Consultorios</option>
+                                        <option value="v_comerciales_ofi">Oficinas</option>
+                                        <option value="v_comerciales_bod">Bodegas</option>
+                                        <option value="v_comerciales_par">Parqueadero</option>
+                                        <option value="v_edificios_edi">Edificios</option>
+                                        <option value="v_residenciales_cas">Casas</option>
+                                        <option value="v_residenciales_apa">Apartamentos</option>
+                                        <option value="v_residenciales_ape">Apartastudios</option>
+                                        <option value="v_rurales_fin">Fincas</option>
+                                        <option value="v_rurales_cas">Casas campestres</option>
+                                        <option value="v_rurales_cab">Cabannas</option>
+                                        <option value="v_rango_inm1">Entre 100000 & 1000000</option>
+                                        <option value="v_rango_inm2">Entre 1000000 & 10000000</option>
                                     </select>   
                                 </div>
-                                <div>
-                                    <label>Barrio</label>
-                                    <input type="text" value="Barrio" onBlur="if (this.value == '')
-                    this.value = 'Address, City, Zip'" onFocus="if (this.value == 'Barrio')
-                    this.value = ''"  />
-                                </div>
-                                <div class="select-2">
-                                    <label>Habitaciones</label>
-                                    <select name="select" >
-                                        <option>&nbsp;</option>
-                                    </select>   
-                                </div>
-                                <div class="select-2 last">
-                                    <label>Baños</label>
-                                    <select name="select" >
-                                        <option>&nbsp;</option>
-                                    </select>   
-                                </div> 
-                                <a onClick="document.getElementById('form-1').submit()" class="button">Buscar</a>
+                               <a onClick="document.getElementById('form-1').submit()" class="button">Buscar</a>
                                 <div class="clear"></div>
+                             <div class="clear"></div>
                             </form>
-
-                            <iframe width="400" height="500" name="des1" id="des1" src="noticias.jsp"> </iframe>
+                       <iframe width="400" height="500" name="des1" id="des1" src="noticias.jsp"> </iframe>
                         </div>
                     </div>
                     <div class="clear"></div>
