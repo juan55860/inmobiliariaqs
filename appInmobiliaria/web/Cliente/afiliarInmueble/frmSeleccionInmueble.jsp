@@ -71,8 +71,14 @@
                         <a href="#" class="prev"></a><a href="#" class="next"></a>
                     </div>
                     <nav>
-                        <ul class="menu">
-                            
+                     <ul class="menu">
+                                    <li class="current"><a href="../../home.jsp">Inicio</a></li>
+                                    <li><a href="../../Informacion/servicios.jsp">Servicios</a></li>
+                                    <li><a href="../../Informacion/contacto.jsp">Contacto</a></li>
+                                    <li><a href="../../Cliente/afiliarInmueble/frmSeleccionInmueble.jsp">Afiliar inmueble</a></li>
+                                    <li><a href="../../Login/login.jsp">Iniciar Sesion</a></li>
+                                </ul>
+                    </nav>  
                         </ul>
                     </nav>
                 </div>
